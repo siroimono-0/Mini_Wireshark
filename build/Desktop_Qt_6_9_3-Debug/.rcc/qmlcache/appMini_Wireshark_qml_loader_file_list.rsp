@@ -1,0 +1,7 @@
+--resource
+/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/qmake_Mini_Wireshark.qrc
+--resource
+/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0.qrc
+/qt/qml/Mini_Wireshark/Main.qml
+/qt/qml/Mini_Wireshark/NicListView.qml
+/qt/qml/Mini_Wireshark/CaptureView.qml

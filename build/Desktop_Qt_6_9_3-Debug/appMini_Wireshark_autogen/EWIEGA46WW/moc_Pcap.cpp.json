@@ -1,0 +1,82 @@
+{
+    "classes": [
+        {
+            "className": "Worker",
+            "lineNumber": 20,
+            "object": true,
+            "qualifiedClassName": "Worker",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "sig_end",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        },
+        {
+            "className": "Pcap",
+            "lineNumber": 51,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "qba",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 1,
+                    "name": "create_Th",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "name": "stop_Th",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "name": "md",
+                    "notify": "sig_md",
+                    "read": "get_md",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "Capture*",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "Pcap",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "sig_md",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "Pcap.h",
+    "outputRevision": 69
+}

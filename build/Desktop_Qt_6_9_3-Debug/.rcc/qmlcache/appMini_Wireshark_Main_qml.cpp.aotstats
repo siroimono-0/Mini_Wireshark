@@ -1,0 +1,20 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessful": false,
+                        "column": 23,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"fill\".",
+                        "functionName": "fill",
+                        "line": 15
+                    }
+                ],
+                "filePath": "/home/gray/gray/Mini_Wireshark/Main.qml"
+            }
+        ],
+        "moduleId": "Mini_Wireshark(appMini_Wireshark)"
+    }
+]

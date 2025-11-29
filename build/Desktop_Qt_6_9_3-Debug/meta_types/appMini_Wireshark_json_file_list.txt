@@ -1,0 +1,3 @@
+/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/include/../EWIEGA46WW/moc_Capture.cpp.json
+/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/include/../EWIEGA46WW/moc_NicList.cpp.json
+/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/include/../EWIEGA46WW/moc_Pcap.cpp.json

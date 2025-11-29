@@ -1,0 +1,33 @@
+{
+    "classes": [
+        {
+            "className": "Capture",
+            "enums": [
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "Role",
+                    "values": [
+                        "Num_Role",
+                        "Src_Role",
+                        "Dst_Role",
+                        "Proto_Role",
+                        "Len_Role",
+                        "Info_Role"
+                    ]
+                }
+            ],
+            "lineNumber": 15,
+            "object": true,
+            "qualifiedClassName": "Capture",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractListModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "Capture.h",
+    "outputRevision": 69
+}
