@@ -6,6 +6,7 @@
     <file alias="img/mini.png">/home/gray/gray/Mini_Wireshark/img/mini.png</file>
     <file alias="img/back.png">/home/gray/gray/Mini_Wireshark/img/back.png</file>
     <file alias="img/stop.png">/home/gray/gray/Mini_Wireshark/img/stop.png</file>
+    <file alias="img/reset.png">/home/gray/gray/Mini_Wireshark/img/reset.png</file>
   </qresource>
 </RCC>
 

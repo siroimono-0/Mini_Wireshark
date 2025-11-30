@@ -43,6 +43,7 @@ public:
     //==============================Default==============================
 
     void update_md(st_pkt& pkt);
+    void reset();
 
 public slots:
 

@@ -106,13 +106,17 @@
             },
             {
                 "className": "Pcap",
-                "lineNumber": 51,
+                "lineNumber": 53,
                 "methods": [
                     {
                         "access": "public",
                         "arguments": [
                             {
                                 "name": "qba",
+                                "type": "QVariant"
+                            },
+                            {
+                                "name": "ft",
                                 "type": "QVariant"
                             }
                         ],
@@ -124,6 +128,12 @@
                         "access": "public",
                         "index": 2,
                         "name": "stop_Th",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "name": "reset_md",
                         "returnType": "void"
                     }
                 ],

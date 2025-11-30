@@ -2,12 +2,10 @@
 /home/gray/gray/Mini_Wireshark/Pcap.cpp
 /home/gray/gray/Mini_Wireshark/main.cpp
 /home/gray/gray/Mini_Wireshark/Struct_in.h
-/home/gray/gray/Mini_Wireshark/Capture.h
+/home/gray/gray/Mini_Wireshark/NicList.h
  mmc:Q_OBJECT
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject
- mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread
- mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVariant
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20functional.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20memory.h
@@ -42,9 +40,7 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qcontiguouscache.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdarwinhelpers.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdatastream.h
- mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdeadlinetimer.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdebug.h
- mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qelapsedtimer.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qexceptionhandling.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qflags.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qfloat16.h
@@ -112,7 +108,6 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtenvironmentvariables.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtextstream.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtformat_impl.h
- mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qthread.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtmetamacros.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtnoop.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtpreprocessorsupport.h
@@ -129,19 +124,16 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qversiontagging.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qxptype_traits.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qyieldcpu.h
- mdp:/home/gray/gray/Mini_Wireshark/Capture.h
- mdp:/home/gray/gray/Mini_Wireshark/Struct_in.h
+ mdp:/home/gray/gray/Mini_Wireshark/NicList.h
  mdp:/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h
  mdp:/usr/include/alloca.h
  mdp:/usr/include/arpa/inet.h
  mdp:/usr/include/asm-generic/bitsperlong.h
  mdp:/usr/include/asm-generic/errno-base.h
  mdp:/usr/include/asm-generic/errno.h
- mdp:/usr/include/asm-generic/int-ll64.h
  mdp:/usr/include/asm-generic/posix_types.h
  mdp:/usr/include/asm-generic/socket.h
  mdp:/usr/include/asm-generic/sockios.h
- mdp:/usr/include/asm-generic/types.h
  mdp:/usr/include/assert.h
  mdp:/usr/include/c++/13/algorithm
  mdp:/usr/include/c++/13/array
@@ -155,7 +147,6 @@
  mdp:/usr/include/c++/13/bits/allocated_ptr.h
  mdp:/usr/include/c++/13/bits/allocator.h
  mdp:/usr/include/c++/13/bits/atomic_base.h
- mdp:/usr/include/c++/13/bits/atomic_futex.h
  mdp:/usr/include/c++/13/bits/atomic_lockfree_defines.h
  mdp:/usr/include/c++/13/bits/basic_string.h
  mdp:/usr/include/c++/13/bits/basic_string.tcc
@@ -202,8 +193,6 @@
  mdp:/usr/include/c++/13/bits/specfun.h
  mdp:/usr/include/c++/13/bits/std_abs.h
  mdp:/usr/include/c++/13/bits/std_function.h
- mdp:/usr/include/c++/13/bits/std_mutex.h
- mdp:/usr/include/c++/13/bits/std_thread.h
  mdp:/usr/include/c++/13/bits/stl_algo.h
  mdp:/usr/include/c++/13/bits/stl_algobase.h
  mdp:/usr/include/c++/13/bits/stl_bvector.h
@@ -232,7 +221,6 @@
  mdp:/usr/include/c++/13/bits/string_view.tcc
  mdp:/usr/include/c++/13/bits/stringfwd.h
  mdp:/usr/include/c++/13/bits/uniform_int_dist.h
- mdp:/usr/include/c++/13/bits/unique_lock.h
  mdp:/usr/include/c++/13/bits/unique_ptr.h
  mdp:/usr/include/c++/13/bits/unordered_map.h
  mdp:/usr/include/c++/13/bits/unordered_set.h
@@ -247,7 +235,6 @@
  mdp:/usr/include/c++/13/clocale
  mdp:/usr/include/c++/13/cmath
  mdp:/usr/include/c++/13/compare
- mdp:/usr/include/c++/13/condition_variable
  mdp:/usr/include/c++/13/cstddef
  mdp:/usr/include/c++/13/cstdint
  mdp:/usr/include/c++/13/cstdio
@@ -266,7 +253,6 @@
  mdp:/usr/include/c++/13/ext/string_conversions.h
  mdp:/usr/include/c++/13/ext/type_traits.h
  mdp:/usr/include/c++/13/functional
- mdp:/usr/include/c++/13/future
  mdp:/usr/include/c++/13/initializer_list
  mdp:/usr/include/c++/13/iosfwd
  mdp:/usr/include/c++/13/iterator
@@ -274,7 +260,6 @@
  mdp:/usr/include/c++/13/list
  mdp:/usr/include/c++/13/map
  mdp:/usr/include/c++/13/memory
- mdp:/usr/include/c++/13/mutex
  mdp:/usr/include/c++/13/new
  mdp:/usr/include/c++/13/numeric
  mdp:/usr/include/c++/13/optional
@@ -319,19 +304,12 @@
  mdp:/usr/include/inttypes.h
  mdp:/usr/include/limits.h
  mdp:/usr/include/linux/errno.h
- mdp:/usr/include/linux/if_ether.h
  mdp:/usr/include/linux/limits.h
  mdp:/usr/include/linux/posix_types.h
  mdp:/usr/include/linux/stddef.h
- mdp:/usr/include/linux/types.h
  mdp:/usr/include/locale.h
- mdp:/usr/include/net/ethernet.h
- mdp:/usr/include/net/if_arp.h
  mdp:/usr/include/netdb.h
- mdp:/usr/include/netinet/if_ether.h
  mdp:/usr/include/netinet/in.h
- mdp:/usr/include/netinet/ip.h
- mdp:/usr/include/netinet/tcp.h
  mdp:/usr/include/pcap.h
  mdp:/usr/include/pcap/bpf.h
  mdp:/usr/include/pcap/compiler-tests.h
@@ -357,7 +335,6 @@
  mdp:/usr/include/x86_64-linux-gnu/asm/posix_types_64.h
  mdp:/usr/include/x86_64-linux-gnu/asm/socket.h
  mdp:/usr/include/x86_64-linux-gnu/asm/sockios.h
- mdp:/usr/include/x86_64-linux-gnu/asm/types.h
  mdp:/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h
  mdp:/usr/include/x86_64-linux-gnu/bits/byteswap.h
  mdp:/usr/include/x86_64-linux-gnu/bits/cpu-set.h
@@ -900,10 +877,12 @@
  mdp:/usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
  mdp:/usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h
  mdp:/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
-/home/gray/gray/Mini_Wireshark/NicList.h
+/home/gray/gray/Mini_Wireshark/Capture.h
  mmc:Q_OBJECT
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject
+ mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread
+ mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVariant
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20functional.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20memory.h
@@ -938,7 +917,9 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qcontiguouscache.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdarwinhelpers.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdatastream.h
+ mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdeadlinetimer.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qdebug.h
+ mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qelapsedtimer.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qexceptionhandling.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qflags.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qfloat16.h
@@ -1006,6 +987,7 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtenvironmentvariables.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtextstream.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtformat_impl.h
+ mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qthread.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtmetamacros.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtnoop.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtpreprocessorsupport.h
@@ -1022,16 +1004,19 @@
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qversiontagging.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qxptype_traits.h
  mdp:/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qyieldcpu.h
- mdp:/home/gray/gray/Mini_Wireshark/NicList.h
+ mdp:/home/gray/gray/Mini_Wireshark/Capture.h
+ mdp:/home/gray/gray/Mini_Wireshark/Struct_in.h
  mdp:/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h
  mdp:/usr/include/alloca.h
  mdp:/usr/include/arpa/inet.h
  mdp:/usr/include/asm-generic/bitsperlong.h
  mdp:/usr/include/asm-generic/errno-base.h
  mdp:/usr/include/asm-generic/errno.h
+ mdp:/usr/include/asm-generic/int-ll64.h
  mdp:/usr/include/asm-generic/posix_types.h
  mdp:/usr/include/asm-generic/socket.h
  mdp:/usr/include/asm-generic/sockios.h
+ mdp:/usr/include/asm-generic/types.h
  mdp:/usr/include/assert.h
  mdp:/usr/include/c++/13/algorithm
  mdp:/usr/include/c++/13/array
@@ -1045,6 +1030,7 @@
  mdp:/usr/include/c++/13/bits/allocated_ptr.h
  mdp:/usr/include/c++/13/bits/allocator.h
  mdp:/usr/include/c++/13/bits/atomic_base.h
+ mdp:/usr/include/c++/13/bits/atomic_futex.h
  mdp:/usr/include/c++/13/bits/atomic_lockfree_defines.h
  mdp:/usr/include/c++/13/bits/basic_string.h
  mdp:/usr/include/c++/13/bits/basic_string.tcc
@@ -1091,6 +1077,8 @@
  mdp:/usr/include/c++/13/bits/specfun.h
  mdp:/usr/include/c++/13/bits/std_abs.h
  mdp:/usr/include/c++/13/bits/std_function.h
+ mdp:/usr/include/c++/13/bits/std_mutex.h
+ mdp:/usr/include/c++/13/bits/std_thread.h
  mdp:/usr/include/c++/13/bits/stl_algo.h
  mdp:/usr/include/c++/13/bits/stl_algobase.h
  mdp:/usr/include/c++/13/bits/stl_bvector.h
@@ -1119,6 +1107,7 @@
  mdp:/usr/include/c++/13/bits/string_view.tcc
  mdp:/usr/include/c++/13/bits/stringfwd.h
  mdp:/usr/include/c++/13/bits/uniform_int_dist.h
+ mdp:/usr/include/c++/13/bits/unique_lock.h
  mdp:/usr/include/c++/13/bits/unique_ptr.h
  mdp:/usr/include/c++/13/bits/unordered_map.h
  mdp:/usr/include/c++/13/bits/unordered_set.h
@@ -1133,6 +1122,7 @@
  mdp:/usr/include/c++/13/clocale
  mdp:/usr/include/c++/13/cmath
  mdp:/usr/include/c++/13/compare
+ mdp:/usr/include/c++/13/condition_variable
  mdp:/usr/include/c++/13/cstddef
  mdp:/usr/include/c++/13/cstdint
  mdp:/usr/include/c++/13/cstdio
@@ -1151,6 +1141,7 @@
  mdp:/usr/include/c++/13/ext/string_conversions.h
  mdp:/usr/include/c++/13/ext/type_traits.h
  mdp:/usr/include/c++/13/functional
+ mdp:/usr/include/c++/13/future
  mdp:/usr/include/c++/13/initializer_list
  mdp:/usr/include/c++/13/iosfwd
  mdp:/usr/include/c++/13/iterator
@@ -1158,6 +1149,7 @@
  mdp:/usr/include/c++/13/list
  mdp:/usr/include/c++/13/map
  mdp:/usr/include/c++/13/memory
+ mdp:/usr/include/c++/13/mutex
  mdp:/usr/include/c++/13/new
  mdp:/usr/include/c++/13/numeric
  mdp:/usr/include/c++/13/optional
@@ -1202,12 +1194,19 @@
  mdp:/usr/include/inttypes.h
  mdp:/usr/include/limits.h
  mdp:/usr/include/linux/errno.h
+ mdp:/usr/include/linux/if_ether.h
  mdp:/usr/include/linux/limits.h
  mdp:/usr/include/linux/posix_types.h
  mdp:/usr/include/linux/stddef.h
+ mdp:/usr/include/linux/types.h
  mdp:/usr/include/locale.h
+ mdp:/usr/include/net/ethernet.h
+ mdp:/usr/include/net/if_arp.h
  mdp:/usr/include/netdb.h
+ mdp:/usr/include/netinet/if_ether.h
  mdp:/usr/include/netinet/in.h
+ mdp:/usr/include/netinet/ip.h
+ mdp:/usr/include/netinet/tcp.h
  mdp:/usr/include/pcap.h
  mdp:/usr/include/pcap/bpf.h
  mdp:/usr/include/pcap/compiler-tests.h
@@ -1233,6 +1232,7 @@
  mdp:/usr/include/x86_64-linux-gnu/asm/posix_types_64.h
  mdp:/usr/include/x86_64-linux-gnu/asm/socket.h
  mdp:/usr/include/x86_64-linux-gnu/asm/sockios.h
+ mdp:/usr/include/x86_64-linux-gnu/asm/types.h
  mdp:/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h
  mdp:/usr/include/x86_64-linux-gnu/bits/byteswap.h
  mdp:/usr/include/x86_64-linux-gnu/bits/cpu-set.h

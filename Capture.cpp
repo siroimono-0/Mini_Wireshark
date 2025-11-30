@@ -26,8 +26,7 @@ QHash<int, QByteArray> Capture::roleNames() const
     roles[Dst_Role] = "destination";
     roles[Proto_Role] = "protocol";
     roles[Len_Role] = "length";
-    roles[Info_Role] = "info";
-    return roles;
+    roles[Info_Role] = "info"; return roles;
 }
 
 QVariant Capture::data(const QModelIndex &index, int role) const
@@ -68,7 +67,6 @@ QVariant Capture::data(const QModelIndex &index, int role) const
 
 void Capture::update_md(st_pkt& pkt)
 {
-    qDebug() << "update_md ?? ";
     int row = this->vec.size();
 
     beginInsertRows(QModelIndex(), row, row);
@@ -78,6 +76,10 @@ void Capture::update_md(st_pkt& pkt)
     return;
 }
 
-
-
-
+void Capture::reset()
+{
+    beginResetModel();
+    vec.clear();
+    endResetModel();
+    return;
+}

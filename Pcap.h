@@ -60,9 +60,11 @@ public:
 
     Q_INVOKABLE void create_Th(QVariant qba, QVariant ft);
     Q_INVOKABLE void stop_Th();
+    Q_INVOKABLE void reset_md();
 
     void set_wk_pp(pcap_t* set);
     void update_md(st_pkt pkt);
+    void set_wk_life(bool set);
 
 //========================================================================
     Capture* get_md();

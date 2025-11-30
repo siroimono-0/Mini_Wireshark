@@ -129,7 +129,9 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         "create_Th",
         "QVariant",
         "qba",
+        "ft",
         "stop_Th",
+        "reset_md",
         "md",
         "Capture*"
     };
@@ -138,15 +140,17 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         // Signal 'sig_md'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'create_Th'
-        QtMocHelpers::MethodData<void(QVariant)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 4, 5 },
+        QtMocHelpers::MethodData<void(QVariant, QVariant)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 4, 5 }, { 0x80000000 | 4, 6 },
         }}),
         // Method 'stop_Th'
-        QtMocHelpers::MethodData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::MethodData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'reset_md'
+        QtMocHelpers::MethodData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'md'
-        QtMocHelpers::PropertyData<Capture*>(7, 0x80000000 | 8, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
+        QtMocHelpers::PropertyData<Capture*>(9, 0x80000000 | 10, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -169,8 +173,9 @@ void Pcap::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->sig_md(); break;
-        case 1: _t->create_Th((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
+        case 1: _t->create_Th((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 2: _t->stop_Th(); break;
+        case 3: _t->reset_md(); break;
         default: ;
         }
     }
@@ -206,14 +211,14 @@ int Pcap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

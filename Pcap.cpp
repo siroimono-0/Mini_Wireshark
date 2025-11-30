@@ -190,6 +190,12 @@ int  Worker::set_Capture()
         qDebug() << "Err invo";
     }
 
+    bool set = true;
+    QMetaObject::invokeMethod(this->p_Pcap,
+                              &Pcap::set_wk_life,
+                              Qt::QueuedConnection,
+                              set);
+
     qDebug() << Q_FUNC_INFO;
 
     if(this->BFS_ft.empty())
@@ -199,12 +205,32 @@ int  Worker::set_Capture()
     }
     else if(!this->BFS_ft.empty())
     {
+        struct bpf_program st_bpf = {};
+        bpf_u_int32 net = 0xffffff00;
+        int ret_pcap = pcap_compile(this->pp,
+                                    &st_bpf,
+                                    BFS_ft.c_str(),
+                                    1, net);
+        if(ret_pcap == -1)
+        {
+            qDebug() << "Err pcap_compile";
+            return 0;
+        }
+
+        pcap_setfilter(this->pp, &st_bpf);
 
         pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
         qDebug() << Q_FUNC_INFO;
     }
 
     pcap_close(this->pp);
+
+    bool set_2 = false;
+    QMetaObject::invokeMethod(this->p_Pcap,
+                              &Pcap::set_wk_life,
+                              Qt::QueuedConnection,
+                              set_2);
+
     emit sig_end();
     return 0;
 }
@@ -283,3 +309,22 @@ Capture* Pcap::get_md()
     return this->md;
 }
 
+
+Q_INVOKABLE void  Pcap::reset_md()
+{
+    if(wk_life == false)
+    {
+        md->reset();
+    }
+    else
+    {
+        qDebug() << "Current Running...";
+    }
+    return;
+}
+
+void Pcap::set_wk_life(bool set)
+{
+    this->wk_life = set;
+    return;
+}

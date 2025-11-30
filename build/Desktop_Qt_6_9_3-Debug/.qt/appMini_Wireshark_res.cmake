@@ -8,6 +8,8 @@ set(src_and_dest_list
     "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/img/back.png"
     "/home/gray/gray/Mini_Wireshark/img/stop.png"
     "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/img/stop.png"
+    "/home/gray/gray/Mini_Wireshark/img/reset.png"
+    "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/img/reset.png"
 
 )
 set(timestamp_file "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/appMini_Wireshark_res.txt")

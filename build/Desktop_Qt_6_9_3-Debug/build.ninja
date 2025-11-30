@@ -385,7 +385,7 @@ build .rcc/qmlcache/appMini_Wireshark_CaptureView_qml.cpp .rcc/qmlcache/appMini_
 #############################################
 # Custom command for .qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp
 
-build .qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp: CUSTOM_COMMAND /home/gray/gray/Mini_Wireshark/Main.qml /home/gray/gray/Mini_Wireshark/NicListView.qml /home/gray/gray/Mini_Wireshark/CaptureView.qml /home/gray/gray/Mini_Wireshark/img/mini.png /home/gray/gray/Mini_Wireshark/img/back.png /home/gray/gray/Mini_Wireshark/img/stop.png .qt/rcc/appMini_Wireshark_raw_qml_0.qrc /home/gray/Qt/6.9.3/gcc_64/libexec/rcc || appMini_Wireshark_autogen appMini_Wireshark_autogen_timestamp_deps appMini_Wireshark_copy_qml appMini_Wireshark_copy_res appMini_Wireshark_qmlimportscan
+build .qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp: CUSTOM_COMMAND /home/gray/gray/Mini_Wireshark/Main.qml /home/gray/gray/Mini_Wireshark/NicListView.qml /home/gray/gray/Mini_Wireshark/CaptureView.qml /home/gray/gray/Mini_Wireshark/img/mini.png /home/gray/gray/Mini_Wireshark/img/back.png /home/gray/gray/Mini_Wireshark/img/stop.png /home/gray/gray/Mini_Wireshark/img/reset.png .qt/rcc/appMini_Wireshark_raw_qml_0.qrc /home/gray/Qt/6.9.3/gcc_64/libexec/rcc || appMini_Wireshark_autogen appMini_Wireshark_autogen_timestamp_deps appMini_Wireshark_copy_qml appMini_Wireshark_copy_res appMini_Wireshark_qmlimportscan
   COMMAND = cd /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug && /home/gray/Qt/6.9.3/gcc_64/libexec/rcc --output /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/qrc_appMini_Wireshark_raw_qml_0.cpp --name appMini_Wireshark_raw_qml_0 /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0.qrc
   DESC = Running rcc for resource appMini_Wireshark_raw_qml_0
   restat = 1
@@ -462,7 +462,7 @@ build CMakeFiles/appMini_Wireshark_copy_res | ${cmake_ninja_workdir}CMakeFiles/a
 #############################################
 # Custom command for .qt/appMini_Wireshark_res.txt
 
-build .qt/appMini_Wireshark_res.txt | ${cmake_ninja_workdir}.qt/appMini_Wireshark_res.txt: CUSTOM_COMMAND /home/gray/Qt/6.9.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake /home/gray/gray/Mini_Wireshark/img/mini.png /home/gray/gray/Mini_Wireshark/img/back.png /home/gray/gray/Mini_Wireshark/img/stop.png
+build .qt/appMini_Wireshark_res.txt | ${cmake_ninja_workdir}.qt/appMini_Wireshark_res.txt: CUSTOM_COMMAND /home/gray/Qt/6.9.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake /home/gray/gray/Mini_Wireshark/img/mini.png /home/gray/gray/Mini_Wireshark/img/back.png /home/gray/gray/Mini_Wireshark/img/stop.png /home/gray/gray/Mini_Wireshark/img/reset.png
   COMMAND = cd /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug && /home/gray/Qt/Tools/CMake/bin/cmake -DFILES_INFO_PATH=/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/appMini_Wireshark_res.cmake -P /home/gray/Qt/6.9.3/gcc_64/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake
   DESC = Copying appMini_Wireshark qml resources into build dir
   restat = 1

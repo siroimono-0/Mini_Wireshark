@@ -43,6 +43,7 @@ Item {
         }
     }
 
+    /*
     Rectangle{
         id: select_file
         anchors.left: rec_hello.right
@@ -108,6 +109,7 @@ Item {
         title: "Pcap Filse Select";
         visible: false
     }
+    */
 
     Text {
         id: input_text
