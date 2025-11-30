@@ -36,7 +36,12 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_shark.scale = 0.9;
-                pcap.create_Th(nicName);
+                pcap.create_Th(nicName, filter_tf.text);
+                filter_tf.clear();
+
+                // 애니메이션 시작
+                capture_animation.visible = true;
+                capture_animation.isCapturing = true;
             }
             onReleased: {
                 img_shark.scale = 1.0;
@@ -69,6 +74,9 @@ Item {
             onPressed: {
                 img_stop.scale = 0.9;
                 pcap.stop_Th();
+                // 애니메이션 정지
+                capture_animation.isCapturing = false;
+                // capture_animation.visible = false;
             }
             onReleased: {
                 img_stop.scale = 1.0;
@@ -96,6 +104,60 @@ Item {
         anchors.topMargin: 5
     }
 
+    // 캡처 중 애니메이션
+    Row {
+        id: capture_animation
+        anchors.left: nic_text.right
+        anchors.leftMargin: 15
+        anchors.verticalCenter: nic_text.verticalCenter
+        spacing: 4
+        visible: true
+
+        property bool isCapturing: false  // 캡처 상태
+
+        Repeater {
+            model: 5
+            Rectangle {
+                width: 4
+                height: 20
+                radius: 2
+                color: "#4FC3F7"
+                
+                // 각 막대마다 다른 타이밍으로 애니메이션
+                SequentialAnimation on height {
+                    loops: Animation.Infinite
+                    running: capture_animation.isCapturing
+                    
+                    // 딜레이 (각 막대마다 다름)
+                    PauseAnimation { 
+                        duration: index * 150 
+                    }
+                    
+                    // 올라가기
+                    NumberAnimation {
+                        from: 8
+                        to: 24
+                        duration: 400
+                        easing.type: Easing.InOutQuad
+                    }
+                    
+                    // 내려가기
+                    NumberAnimation {
+                        from: 24
+                        to: 8
+                        duration: 400
+                        easing.type: Easing.InOutQuad
+                    }
+                    
+                    // 잠깐 대기
+                    PauseAnimation { 
+                        duration: 200 
+                    }
+                }
+            }
+        }
+    }
+
     TextField{
         id: filter_tf
         anchors.left: parent.left
@@ -106,7 +168,8 @@ Item {
         width:root.width - 20
         height: 30;
 
-        placeholderText: "Apply a display filter ... ";
+        placeholderText:
+            "tcp   /   udp   /   icmp   /   port ..   /   tcp port 443   /   src host 192.168.1.10   /   dst host 8.8.8.8";
     }
 
     Image{

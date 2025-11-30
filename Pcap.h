@@ -32,6 +32,7 @@ public:
 
     void set_nicName(std::string set);
     void set_p_Pcap(Pcap* set);
+    void set_BFS_ft(std::string set);
 
 public slots:
 
@@ -39,6 +40,7 @@ private:
     pcap_t* pp;
     int num = 0;
     std::string nicName;
+    std::string BFS_ft;
 
     Pcap* p_Pcap = nullptr;
 signals:
@@ -56,7 +58,7 @@ class Pcap : public QObject
 public:
     explicit Pcap(QObject *parent = nullptr);
 
-    Q_INVOKABLE void create_Th(QVariant qba);
+    Q_INVOKABLE void create_Th(QVariant qba, QVariant ft);
     Q_INVOKABLE void stop_Th();
 
     void set_wk_pp(pcap_t* set);

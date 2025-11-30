@@ -323,6 +323,7 @@
   /usr/include/netinet/if_ether.h \
   /usr/include/netinet/in.h \
   /usr/include/netinet/ip.h \
+  /usr/include/netinet/tcp.h \
   /usr/include/pcap.h \
   /usr/include/pcap/bpf.h \
   /usr/include/pcap/compiler-tests.h \

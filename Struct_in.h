@@ -47,7 +47,7 @@ typedef struct ip_H{
     uint32_t daddr;
 }ip_H;
 
-struct tcp_H{
+typedef struct tcp_H{
     uint16_t source;
     uint16_t dest;
     uint32_t seq;
@@ -80,7 +80,36 @@ struct tcp_H{
     uint16_t window;
     uint16_t check;
     uint16_t urg_ptr;
-};
+}tcp_H;
+
+typedef struct udp_H {
+    uint16_t source;   // Source Port
+    uint16_t dest;     // Destination Port
+    uint16_t len;      // UDP header + data 전체 길이
+    uint16_t check;    // Checksum
+}udp_H;
+
+typedef struct icmp_H {
+    uint8_t  type;      // 메시지 타입
+
+    uint8_t  code;      // 부가 코드(세부 원인)
+
+    uint16_t checksum;  // ICMP checksum
+
+    union {
+        struct {
+            uint16_t id;
+            uint16_t sequence;
+        } echo;                 // ICMP Echo (ping)
+
+        uint32_t   gateway;     // Redirect 메시지에서 사용
+        struct {
+            uint16_t __unused;
+            uint16_t mtu;
+        } frag;                 // Fragmentation needed
+    } un;
+}icmp_H;
+
 #pragma pack(pop)
 
 

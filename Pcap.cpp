@@ -28,14 +28,122 @@ void Worker::my_packet_handler( u_char *user,
     if(ip_header->protocol == 6)
     {
         pkt.proto = "TCP";
+        tcp_H* tcp_header = (tcp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        QString qs_ret = "";
+
+        int port_src = ntohs(tcp_header->source);
+        QString qs_src = QString::number(port_src);
+
+        int port_dst = ntohs(tcp_header->dest);
+        QString qs_dst = QString::number(port_dst);
+
+        qs_ret += qs_src;
+        qs_ret += " ---> ";
+        qs_ret += qs_dst;
+
+        QString qs_flag = "   [ ";
+        qs_flag += (tcp_header->syn == 1) ? "SYN " : "";
+        qs_flag += (tcp_header->ack == 1) ? "ACK " : "";
+        qs_flag += (tcp_header->fin == 1) ? "FIN " : "";
+        qs_flag += (tcp_header->rst == 1) ? "RST " : "";
+        qs_flag += (tcp_header->psh == 1) ? "PSH " : "";
+        qs_flag += (tcp_header->urg == 1) ? "URG " : "";
+        qs_flag += "]   ";
+
+        qs_ret += qs_flag;
+
+        int seq = ntohl(tcp_header->seq);
+        QString qs_seq = QString::number(seq);
+
+        qs_ret += "Seq=";
+        qs_ret += qs_seq;  int ack = ntohl(tcp_header->ack_seq);
+        QString qs_ack = QString::number(ack);
+
+        qs_ret += "   Ack=";
+        qs_ret += qs_ack;
+
+        int winSize = ntohs(tcp_header->window);
+        QString qs_win = QString::number(winSize);
+
+        qs_ret += "   Win=";
+        qs_ret += qs_win;
+
+        int len = (ntohs(ip_header->tot_len)) -
+                  (ip_header->ihl * 4) -
+                  (tcp_header->doff * 4);
+        QString qs_len = QString::number(len);
+
+        qs_ret += "   Len=";
+        qs_ret += qs_len;
+
+        pkt.info = qs_ret;
     }
     else if(ip_header->protocol == 17)
     {
         pkt.proto = "UDP";
+        udp_H* udp_header = (udp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        QString qs_ret = "";
+
+        int port_src = ntohs(udp_header->source);
+        QString qs_src = QString::number(port_src);
+
+        int port_dst = ntohs(udp_header->dest);
+        QString qs_dst = QString::number(port_dst);
+
+        int len = ntohs(udp_header->len);
+        QString qs_len = QString::number(len);
+
+        qs_ret += qs_src;
+        qs_ret += " ---> ";
+        qs_ret += qs_dst;
+        qs_ret += "   Len=";
+        qs_ret += qs_len;
+
+        pkt.info = qs_ret;
+
     }
     else if(ip_header->protocol == 1)
     {
         pkt.proto = "ICMP";
+        icmp_H* icmp_header = (icmp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        QString qs_ret = "";
+
+        qs_ret += (icmp_header->type == 0) ? "Echo Reply" : "";
+        qs_ret += (icmp_header->type == 3) ? "Destination Unreachable" : "";
+        qs_ret += (icmp_header->type == 5) ? "Redirect" : "";
+        qs_ret += (icmp_header->type == 8) ? "Echo Request" : "";
+        qs_ret += (icmp_header->type == 11) ? "Time Exceeded" : "";
+        qs_ret += "   ";
+
+        if(icmp_header->type == 3)
+        {
+            qs_ret += (icmp_header->code == 0) ? "Network Unreachable" : "";
+            qs_ret += (icmp_header->code == 1) ? "Host Unreachable" : "";
+            qs_ret += (icmp_header->code == 3) ? "Port Unreachable" : "";
+        }
+        else if(icmp_header->type == 11)
+        {
+            qs_ret += (icmp_header->code == 0) ? "TTL exceeded" : "";
+            qs_ret += (icmp_header->code == 1)
+                          ? "fragment reassembly time exceeded" : "";
+        }
+        else if(icmp_header->type == 0 || icmp_header->type == 8)
+        {
+            qs_ret += "id=";
+            uint16_t id = ntohs(icmp_header->un.echo.id);
+            qs_ret += QString::number(id);
+            qs_ret += "   ";
+
+            qs_ret += "seq=";
+            uint16_t seq = ntohs(icmp_header->un.echo.sequence);
+            qs_ret += QString::number(seq);
+            qs_ret += "   ";
+
+            qs_ret += "ttl=";
+            qs_ret += QString::number(ip_header->ttl);
+        }
+
+        pkt.info = qs_ret;
     }
     else
     {
@@ -51,9 +159,9 @@ void Worker::my_packet_handler( u_char *user,
 
     bool ret_invo =
         QMetaObject::invokeMethod(p_this->p_Pcap,
-                                  &Pcap::update_md,
-                                  Qt::QueuedConnection,
-                                  pkt);
+                                              &Pcap::update_md,
+                                              Qt::QueuedConnection,
+                                              pkt);
 
 
     if(ret_invo == false)
@@ -84,10 +192,19 @@ int  Worker::set_Capture()
 
     qDebug() << Q_FUNC_INFO;
 
+    if(this->BFS_ft.empty())
+    {
+        pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
+        qDebug() << Q_FUNC_INFO;
+    }
+    else if(!this->BFS_ft.empty())
+    {
 
-    pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
-    qDebug() << Q_FUNC_INFO;
+        pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
+        qDebug() << Q_FUNC_INFO;
+    }
 
+    pcap_close(this->pp);
     emit sig_end();
     return 0;
 }
@@ -102,20 +219,28 @@ void Worker::set_p_Pcap(Pcap* set)
     this->p_Pcap = set;
 }
 
+void Worker::set_BFS_ft(std::string set)
+{
+    this->BFS_ft = set;
+}
+
 //=============================================================================
 //=============================================================================
 
-Q_INVOKABLE void Pcap::create_Th(QVariant qba)
+Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
 {
     QString qs = qba.toString();
     string str = qs.toStdString();
+
+    QString qs_2 = ft.toString();
+    string str_2 = qs_2.toStdString();
 
     QThread* th = new QThread;
     Worker* wk = new Worker();
     this->p_Wk = wk;
     wk->set_nicName(str);
     wk->set_p_Pcap(this);
-
+    wk->set_BFS_ft(str_2);
 
     wk->moveToThread(th);
     connect(th, &QThread::started, wk, &Worker::set_Capture);
