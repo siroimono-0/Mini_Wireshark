@@ -10,12 +10,17 @@ Item {
     visible: false
 
 
+    Item{
+        id: root_item
+        property string selectNic: ""
+    }
+
     NicList{
         id: nic
     }
 
     Component.onCompleted:{
-
+        root_item.selectNic = l_view.model.get_FirstNic();
     }
 
     Rectangle{
@@ -43,7 +48,7 @@ Item {
         }
     }
 
-    /*
+
     Rectangle{
         id: select_file
         anchors.left: rec_hello.right
@@ -108,8 +113,16 @@ Item {
         id: pacp_diaw
         title: "Pcap Filse Select";
         visible: false
+
+        onAccepted: {
+            // StackView에 접근해서 페이지 이동
+            stk.push("CaptureView.qml",
+                     {nicName: root_item.selectNic,
+                      pcap_path: pacp_diaw.selectedFile});
+
+        }
     }
-    */
+
 
     Text {
         id: input_text
@@ -140,7 +153,7 @@ Item {
         onActivated: function(index) {
             console.log("선택된 인덱스:", index)
             console.log("선택된 텍스트:", currentText)
-            
+
             // 텍스트에 따라 다른 동작 실행
             if (currentText === "All") {
                 // All 선택 시 실행할 코드
@@ -220,7 +233,7 @@ Item {
                     else return "white"  // 기본
                 }
             }
-            
+
             // hover 효과 활성화
             hoverEnabled: true
         }
@@ -244,7 +257,7 @@ Item {
         spacing: 5  // 항목 사이 간격
 
         model:nic
-        
+
         // 하이라이트 활성화
         focus: true
         highlightFollowsCurrentItem: true
@@ -253,7 +266,7 @@ Item {
             id:nic_rec
             width: 500
             height: 30
-            
+
             // 선택 여부에 따른 배경색
             color: {
                 if (ListView.isCurrentItem) {
@@ -266,7 +279,7 @@ Item {
                     else return "#FAFAFA"
                 }
             }
-            
+
             // 선택 여부에 따른 테두리 색상
             border.color: {
                 if (ListView.isCurrentItem) {
@@ -281,7 +294,7 @@ Item {
             }
             border.width: ListView.isCurrentItem ? 3 : 2  // 선택된 항목은 테두리 더 두껍게
             radius: 10
-            
+
             Text {
                 text: model.text
                 font.pixelSize: 18;
@@ -297,6 +310,7 @@ Item {
 
                 onClicked: {
                     l_view.currentIndex = index  // 클릭한 항목을 현재 항목으로 설정
+                    root_item.selectNic = model.text;
                 }
 
                 onDoubleClicked: {

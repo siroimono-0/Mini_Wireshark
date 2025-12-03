@@ -132,6 +132,8 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         "ft",
         "stop_Th",
         "reset_md",
+        "pcapFile_Read",
+        "path",
         "md",
         "Capture*"
     };
@@ -147,10 +149,14 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         QtMocHelpers::MethodData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'reset_md'
         QtMocHelpers::MethodData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'pcapFile_Read'
+        QtMocHelpers::MethodData<void(QString)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'md'
-        QtMocHelpers::PropertyData<Capture*>(9, 0x80000000 | 10, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
+        QtMocHelpers::PropertyData<Capture*>(11, 0x80000000 | 12, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -176,6 +182,7 @@ void Pcap::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 1: _t->create_Th((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 2: _t->stop_Th(); break;
         case 3: _t->reset_md(); break;
+        case 4: _t->pcapFile_Read((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -211,14 +218,14 @@ int Pcap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

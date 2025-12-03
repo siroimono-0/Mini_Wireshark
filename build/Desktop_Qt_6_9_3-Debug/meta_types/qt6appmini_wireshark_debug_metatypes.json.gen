@@ -67,6 +67,12 @@
                         "isCloned": true,
                         "name": "set_Nic",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "name": "get_FirstNic",
+                        "returnType": "QString"
                     }
                 ],
                 "object": true,
@@ -86,7 +92,7 @@
         "classes": [
             {
                 "className": "Worker",
-                "lineNumber": 20,
+                "lineNumber": 21,
                 "object": true,
                 "qualifiedClassName": "Worker",
                 "signals": [
@@ -106,7 +112,7 @@
             },
             {
                 "className": "Pcap",
-                "lineNumber": 53,
+                "lineNumber": 54,
                 "methods": [
                     {
                         "access": "public",
@@ -134,6 +140,18 @@
                         "access": "public",
                         "index": 3,
                         "name": "reset_md",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "name": "pcapFile_Read",
                         "returnType": "void"
                     }
                 ],

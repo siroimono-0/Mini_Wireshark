@@ -42,6 +42,7 @@ template <> constexpr inline auto NicList::qt_create_metaobjectdata<qt_meta_tag_
         "set_Nic",
         "",
         "set_flag",
+        "get_FirstNic",
         "Role",
         "TextRole",
         "TypeRole"
@@ -54,14 +55,16 @@ template <> constexpr inline auto NicList::qt_create_metaobjectdata<qt_meta_tag_
         }}),
         // Method 'set_Nic'
         QtMocHelpers::MethodData<void()>(1, 2, QMC::AccessPublic | QMC::MethodCloned, QMetaType::Void),
+        // Method 'get_FirstNic'
+        QtMocHelpers::MethodData<QString()>(4, 2, QMC::AccessPublic, QMetaType::QString),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
         // enum 'Role'
-        QtMocHelpers::EnumData<enum Role>(4, 4, QMC::EnumFlags{}).add({
-            {    5, Role::TextRole },
-            {    6, Role::TypeRole },
+        QtMocHelpers::EnumData<enum Role>(5, 5, QMC::EnumFlags{}).add({
+            {    6, Role::TextRole },
+            {    7, Role::TypeRole },
         }),
     };
     return QtMocHelpers::metaObjectData<NicList, qt_meta_tag_ZN7NicListE_t>(QMC::MetaObjectFlag{}, qt_stringData,
@@ -84,6 +87,8 @@ void NicList::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         switch (_id) {
         case 0: _t->set_Nic((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 1: _t->set_Nic(); break;
+        case 2: { QString _r = _t->get_FirstNic();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -108,14 +113,14 @@ int NicList::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

@@ -105,3 +105,8 @@ int NicList::compare_Nic(const QString& name, int flags)
     return 0;
 
 }
+
+Q_INVOKABLE QString NicList::get_FirstNic()
+{
+    return this->vec.at(0).first;
+}

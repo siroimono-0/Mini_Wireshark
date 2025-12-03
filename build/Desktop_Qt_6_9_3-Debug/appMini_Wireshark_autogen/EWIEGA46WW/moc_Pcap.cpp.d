@@ -2,6 +2,7 @@
   /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QUrl \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVariant \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20functional.h \
@@ -117,6 +118,7 @@
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtversionchecks.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtypeinfo.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qtypes.h \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qurl.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qutf8stringview.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvariant.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvarlengtharray.h \

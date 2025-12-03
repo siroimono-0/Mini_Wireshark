@@ -33,6 +33,12 @@
                     "isCloned": true,
                     "name": "set_Nic",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "name": "get_FirstNic",
+                    "returnType": "QString"
                 }
             ],
             "object": true,

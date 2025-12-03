@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVariant>
 #include <QThread>
+#include <QUrl>
 //=====================================================================
 #include "Struct_in.h"
 #include <pcap.h>
@@ -62,14 +63,23 @@ public:
     Q_INVOKABLE void stop_Th();
     Q_INVOKABLE void reset_md();
 
+    Q_INVOKABLE void pcapFile_Read(QString path);
+
+    Q_INVOKABLE void save_md(QString path);
+
     void set_wk_pp(pcap_t* set);
     void update_md(st_pkt pkt);
     void set_wk_life(bool set);
 
-//========================================================================
+    //========================================================================
     Capture* get_md();
-//========================================================================
+    //========================================================================
+    void packet_func( u_char *user,
+                     const struct pcap_pkthdr *header,
+                     const u_char * packet);
 
+    //========================================================================
+    //========================================================================
 public slots:
 
 private:
@@ -79,6 +89,10 @@ private:
 
     Capture* md = nullptr;
 
+    //========================================================================
+    pcap_t* p_pcap = nullptr;
+    int num = 0;
+    //========================================================================
 signals:
     void sig_md();
 };

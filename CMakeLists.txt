@@ -40,6 +40,7 @@ qt_add_qml_module(appMini_Wireshark
         img/back.png
         img/stop.png
         img/reset.png
+        img/save.png
 
 )
 
