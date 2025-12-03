@@ -357,7 +357,7 @@ Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 
 Q_INVOKABLE void Pcap::save_md(QString path)
 {
-    /*
+
     string localPath = QUrl(path).toLocalFile().toStdString();
 
     char errbuf[PCAP_ERRBUF_SIZE];
@@ -379,9 +379,9 @@ Q_INVOKABLE void Pcap::save_md(QString path)
 
 
     pcap_close(this->p_pcap);
-    this->num = 0;
+    // this->num = 0;
     return ;
-*/
+
 }
 
 void Pcap::packet_func( u_char *user,
