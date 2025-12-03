@@ -3,9 +3,9 @@
 
 Capture::Capture(QObject *parent) : QAbstractListModel{parent}
 {
-    st_pkt pkt = {0};
-    pkt.src = "hello";
-    this->update_md(pkt);
+    // st_pkt pkt = {0};
+    // pkt.src = "hello";
+    // this->update_md(pkt);
     // qDebug() << "update_md";
 }
 

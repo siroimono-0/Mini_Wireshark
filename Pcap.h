@@ -14,6 +14,12 @@
 #include <string>
 
 
+typedef struct dump_data
+{
+    pcap_pkthdr header;
+    QByteArray data;
+
+}dump_data;
 
 class Pcap;
 class Capture;
@@ -70,6 +76,7 @@ public:
     void set_wk_pp(pcap_t* set);
     void update_md(st_pkt pkt);
     void set_wk_life(bool set);
+    void dump_push_back(dump_data st_dump);
 
     //========================================================================
     Capture* get_md();
@@ -92,6 +99,9 @@ private:
     //========================================================================
     pcap_t* p_pcap = nullptr;
     int num = 0;
+    //========================================================================
+    QVector<dump_data> vec_dump;
+    bool stop_flag = false;
     //========================================================================
 signals:
     void sig_md();

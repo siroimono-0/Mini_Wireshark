@@ -144,7 +144,7 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_save.scale = 0.9
-                // pcap.save_md()
+                saveDia.open();
             }
             onReleased: {
                 img_save.scale = 1.0

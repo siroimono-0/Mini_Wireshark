@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 12,
-                        "durationMicroseconds": 103,
+                        "durationMicroseconds": 100,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "width",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 44,
+                        "durationMicroseconds": 42,
                         "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
                         "functionName": "onCompleted",
                         "line": 20
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 96,
+                        "durationMicroseconds": 97,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 33
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 72,
                         "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
                         "functionName": "onPressed",
                         "line": 41
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 79,
+                        "durationMicroseconds": 80,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 50
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 30,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 40
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 41,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 58
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 57,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 70
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 51,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 72
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 34,
                         "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
                         "functionName": "onPressed",
                         "line": 78
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 70,
+                        "durationMicroseconds": 68,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 85
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 49,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 107
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 20,
                         "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
                         "functionName": "onPressed",
                         "line": 113
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 64,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 117
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 27,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 112
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 35,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 125
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 59,
+                        "durationMicroseconds": 54,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 137
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 101,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 145
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 66,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 149
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 28,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 144
@@ -214,34 +214,58 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 35,
+                        "durationMicroseconds": 37,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 157
                     },
                     {
-                        "codegenSuccessful": false,
-                        "column": 15,
-                        "durationMicroseconds": 17,
-                        "errorMessage": "Cannot access value for name nicName",
-                        "functionName": "text",
-                        "line": 164
-                    },
-                    {
                         "codegenSuccessful": true,
-                        "column": 23,
-                        "durationMicroseconds": 52,
+                        "column": 19,
+                        "durationMicroseconds": 35,
                         "errorMessage": "",
-                        "functionName": "left",
-                        "line": 167
+                        "functionName": "fileMode",
+                        "line": 165
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "nameFilters",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessful": false,
+                        "column": 21,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
+                        "functionName": "onAccepted",
+                        "line": 169
+                    },
+                    {
+                        "codegenSuccessful": false,
+                        "column": 15,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Cannot access value for name nicName",
+                        "functionName": "text",
+                        "line": 176
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 23,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 179
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 22,
+                        "durationMicroseconds": 53,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 169
+                        "line": 181
                     },
                     {
                         "codegenSuccessful": true,
@@ -249,55 +273,55 @@
                         "durationMicroseconds": 53,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 176
+                        "line": 188
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 33,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 51,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
-                        "line": 178
+                        "line": 190
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 28,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 36,
                         "errorMessage": "",
                         "functionName": "loops",
-                        "line": 194
+                        "line": 206
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 30,
-                        "durationMicroseconds": 19,
+                        "durationMicroseconds": 18,
                         "errorMessage": "Cannot access value for name capture_animation",
                         "functionName": "running",
-                        "line": 195
+                        "line": 207
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 35,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 41,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "duration",
-                        "line": 199
+                        "line": 211
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 38,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 35,
                         "errorMessage": "",
                         "functionName": "type",
-                        "line": 207
+                        "line": 219
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 38,
-                        "durationMicroseconds": 34,
+                        "durationMicroseconds": 33,
                         "errorMessage": "",
                         "functionName": "type",
-                        "line": 215
+                        "line": 227
                     },
                     {
                         "codegenSuccessful": false,
@@ -305,7 +329,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"width\".",
                         "functionName": "width",
-                        "line": 234
+                        "line": 246
                     },
                     {
                         "codegenSuccessful": false,
@@ -313,7 +337,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"left\".",
                         "functionName": "left",
-                        "line": 229
+                        "line": 241
                     },
                     {
                         "codegenSuccessful": false,
@@ -321,7 +345,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"top\".",
                         "functionName": "top",
-                        "line": 231
+                        "line": 243
                     },
                     {
                         "codegenSuccessful": true,
@@ -329,55 +353,55 @@
                         "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 248
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 22,
-                        "durationMicroseconds": 54,
-                        "errorMessage": "",
-                        "functionName": "top",
-                        "line": 250
-                    },
-                    {
-                        "codegenSuccessful": false,
-                        "column": 24,
-                        "durationMicroseconds": 108,
-                        "errorMessage": "Cannot access value for name stk",
-                        "functionName": "onPressed",
-                        "line": 256
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 25,
-                        "durationMicroseconds": 69,
-                        "errorMessage": "",
-                        "functionName": "onReleased",
                         "line": 260
                     },
                     {
                         "codegenSuccessful": true,
-                        "column": 27,
-                        "durationMicroseconds": 27,
+                        "column": 22,
+                        "durationMicroseconds": 49,
                         "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 255
+                        "functionName": "top",
+                        "line": 262
                     },
                     {
-                        "codegenSuccessful": true,
-                        "column": 30,
-                        "durationMicroseconds": 34,
-                        "errorMessage": "",
-                        "functionName": "type",
+                        "codegenSuccessful": false,
+                        "column": 24,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "Cannot access value for name stk",
+                        "functionName": "onPressed",
                         "line": 268
                     },
                     {
                         "codegenSuccessful": true,
+                        "column": 25,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 272
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 27,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 267
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 30,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 280
+                    },
+                    {
+                        "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 54,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 278
+                        "line": 290
                     },
                     {
                         "codegenSuccessful": true,
@@ -385,7 +409,7 @@
                         "durationMicroseconds": 50,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 280
+                        "line": 292
                     },
                     {
                         "codegenSuccessful": false,
@@ -393,7 +417,7 @@
                         "durationMicroseconds": 14,
                         "errorMessage": "Cannot retrieve a non-object type by ID: filter_tf",
                         "functionName": "top",
-                        "line": 282
+                        "line": 294
                     },
                     {
                         "codegenSuccessful": true,
@@ -401,23 +425,7 @@
                         "durationMicroseconds": 27,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 291
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 35,
-                        "durationMicroseconds": 26,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 301
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 35,
-                        "durationMicroseconds": 26,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 311
+                        "line": 303
                     },
                     {
                         "codegenSuccessful": true,
@@ -425,7 +433,15 @@
                         "durationMicroseconds": 25,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 321
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 35,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 323
                     },
                     {
                         "codegenSuccessful": true,
@@ -433,7 +449,7 @@
                         "durationMicroseconds": 24,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 331
+                        "line": 333
                     },
                     {
                         "codegenSuccessful": true,
@@ -441,7 +457,15 @@
                         "durationMicroseconds": 24,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 341
+                        "line": 343
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 35,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 353
                     },
                     {
                         "codegenSuccessful": false,
@@ -449,39 +473,39 @@
                         "durationMicroseconds": 13,
                         "errorMessage": "Cannot retrieve a non-object type by ID: pcap",
                         "functionName": "model",
-                        "line": 361
+                        "line": 373
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 68,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 349
+                        "line": 361
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 55,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 351
+                        "line": 363
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 57,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 353
+                        "line": 365
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 56,
                         "errorMessage": "",
                         "functionName": "bottom",
-                        "line": 355
+                        "line": 367
                     },
                     {
                         "codegenSuccessful": false,
@@ -489,68 +513,44 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"policy\".",
                         "functionName": "policy",
-                        "line": 366
+                        "line": 378
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 30,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
-                        "line": 371
+                        "line": 383
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 26,
-                        "durationMicroseconds": 11,
+                        "durationMicroseconds": 10,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "opacity",
-                        "line": 374
+                        "line": 386
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 20,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 19,
                         "errorMessage": "Cannot access value for name l_view",
                         "functionName": "width",
-                        "line": 385
+                        "line": 397
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 35,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 393
-                    },
-                    {
-                        "codegenSuccessful": false,
-                        "column": 27,
-                        "durationMicroseconds": 17,
-                        "errorMessage": "Cannot access value for name model",
-                        "functionName": "text",
-                        "line": 398
+                        "line": 405
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 27,
                         "durationMicroseconds": 21,
-                        "errorMessage": "Cannot access value for name model",
-                        "functionName": "text",
-                        "line": 402
-                    },
-                    {
-                        "codegenSuccessful": false,
-                        "column": 27,
-                        "durationMicroseconds": 15,
-                        "errorMessage": "Cannot access value for name model",
-                        "functionName": "text",
-                        "line": 406
-                    },
-                    {
-                        "codegenSuccessful": false,
-                        "column": 27,
-                        "durationMicroseconds": 14,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 410
@@ -566,10 +566,34 @@
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 15,
+                        "durationMicroseconds": 14,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 418
+                    },
+                    {
+                        "codegenSuccessful": false,
+                        "column": 27,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 422
+                    },
+                    {
+                        "codegenSuccessful": false,
+                        "column": 27,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 426
+                    },
+                    {
+                        "codegenSuccessful": false,
+                        "column": 27,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 430
                     }
                 ],
                 "filePath": "/home/gray/gray/Mini_Wireshark/CaptureView.qml"

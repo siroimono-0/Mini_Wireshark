@@ -169,7 +169,23 @@ void Worker::my_packet_handler( u_char *user,
         qDebug() << "Err invo";
     }
 
-    // qDebug() << p_this->num;
+    QByteArray qba ((const char*)packet, header->len);
+    dump_data st_dump = {};
+    st_dump.data = qba;
+    st_dump.header = *header;
+
+     bool ret_invo_2 =
+        QMetaObject::invokeMethod(p_this->p_Pcap,
+                                              &Pcap::dump_push_back,
+                                              Qt::QueuedConnection,
+                                              st_dump);
+
+
+    if(ret_invo_2 == false)
+    {
+        qDebug() << "Err invo_2";
+    }
+
 }
 
 int  Worker::set_Capture()
@@ -357,31 +373,37 @@ Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 
 Q_INVOKABLE void Pcap::save_md(QString path)
 {
+    if(this->wk_pp == nullptr || this->vec_dump.empty() || this->stop_flag == false)
+    {
+        return;
+    }
 
     string localPath = QUrl(path).toLocalFile().toStdString();
 
     char errbuf[PCAP_ERRBUF_SIZE];
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
 
-    this->p_pcap = pcap_open_offline(localPath.c_str(), errbuf);
-    // this->pp = pcap_open_live("wlo1", 65535, 0, 0, errbuf);
+    pcap_dumper_t* p_dump_handle =
+    pcap_dump_open(this->wk_pp, localPath.c_str());
 
-    qDebug() << Q_FUNC_INFO;
-
-
-    const u_char *pkt_data = nullptr;
-    struct pcap_pkthdr* pkt_h = nullptr;
-
-    while(pcap_next_ex(this->p_pcap, &pkt_h, &pkt_data) == 1)
+    if(p_dump_handle == NULL)
     {
-        this->packet_func((u_char*)this, pkt_h, pkt_data);
+        qDebug() << "Err pcap_dump_open";
     }
 
+    for(auto& v : this->vec_dump)
+    {
+        pcap_dump((u_char*)p_dump_handle,
+                  &v.header,
+                  (const u_char*)v.data.constData());
+    }
 
-    pcap_close(this->p_pcap);
-    // this->num = 0;
-    return ;
+    pcap_dump_close(p_dump_handle);
 
+    return;
+    /*
+     need icon change //
+     */
 }
 
 void Pcap::packet_func( u_char *user,
@@ -525,6 +547,10 @@ void Pcap::packet_func( u_char *user,
 
     pkt.len = header->len;
 
-    Pcap::update_md(pkt);
+    this->update_md(pkt);
+}
 
+void Pcap::dump_push_back(dump_data st_dump)
+{
+    this->vec_dump.push_back(st_dump);
 }

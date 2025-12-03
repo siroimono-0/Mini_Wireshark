@@ -92,7 +92,7 @@
         "classes": [
             {
                 "className": "Worker",
-                "lineNumber": 21,
+                "lineNumber": 27,
                 "object": true,
                 "qualifiedClassName": "Worker",
                 "signals": [
@@ -112,7 +112,7 @@
             },
             {
                 "className": "Pcap",
-                "lineNumber": 54,
+                "lineNumber": 60,
                 "methods": [
                     {
                         "access": "public",
@@ -152,6 +152,18 @@
                         ],
                         "index": 4,
                         "name": "pcapFile_Read",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 5,
+                        "name": "save_md",
                         "returnType": "void"
                     }
                 ],

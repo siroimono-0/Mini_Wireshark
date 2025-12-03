@@ -144,7 +144,7 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_save.scale = 0.9
-                // pcap.save_md()
+                saveDia.open();
             }
             onReleased: {
                 img_save.scale = 1.0
@@ -156,6 +156,18 @@ Item {
                 duration: 80
                 easing.type: Easing.InOutQuad
             }
+        }
+    }
+
+    FileDialog{
+        id: saveDia;
+        title: "Save Pcap File";
+        fileMode: FileDialog.SaveFile;
+        nameFilters: ["PCAP Files (*.pcap)"];
+        defaultSuffix: "pcap";
+
+        onAccepted: {
+            pcap.save_md(saveDia.selectedFile);
         }
     }
 

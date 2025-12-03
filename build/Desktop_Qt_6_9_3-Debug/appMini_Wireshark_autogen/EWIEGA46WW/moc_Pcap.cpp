@@ -134,6 +134,7 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         "reset_md",
         "pcapFile_Read",
         "path",
+        "save_md",
         "md",
         "Capture*"
     };
@@ -153,10 +154,14 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         QtMocHelpers::MethodData<void(QString)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 10 },
         }}),
+        // Method 'save_md'
+        QtMocHelpers::MethodData<void(QString)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 10 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'md'
-        QtMocHelpers::PropertyData<Capture*>(11, 0x80000000 | 12, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
+        QtMocHelpers::PropertyData<Capture*>(12, 0x80000000 | 13, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -183,6 +188,7 @@ void Pcap::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 2: _t->stop_Th(); break;
         case 3: _t->reset_md(); break;
         case 4: _t->pcapFile_Read((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->save_md((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -218,14 +224,14 @@ int Pcap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
