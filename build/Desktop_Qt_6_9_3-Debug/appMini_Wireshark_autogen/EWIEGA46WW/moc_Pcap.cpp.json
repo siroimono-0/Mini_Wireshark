@@ -36,19 +36,19 @@
                             "type": "QVariant"
                         }
                     ],
-                    "index": 1,
+                    "index": 3,
                     "name": "create_Th",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 2,
+                    "index": 4,
                     "name": "stop_Th",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 3,
+                    "index": 5,
                     "name": "reset_md",
                     "returnType": "void"
                 },
@@ -60,7 +60,7 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 4,
+                    "index": 6,
                     "name": "pcapFile_Read",
                     "returnType": "void"
                 },
@@ -72,7 +72,7 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 5,
+                    "index": 7,
                     "name": "save_md",
                     "returnType": "void"
                 }
@@ -92,6 +92,36 @@
                     "stored": true,
                     "type": "Capture*",
                     "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 1,
+                    "name": "stop_flag",
+                    "notify": "sig_stop_flag",
+                    "read": "get_stop_flag",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "write": "set_stop_flag"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
+                    "name": "wk_flag",
+                    "notify": "sig_wk_flag",
+                    "read": "get_wk_flag",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "write": "set_wk_flag"
                 }
             ],
             "qualifiedClassName": "Pcap",
@@ -100,6 +130,18 @@
                     "access": "public",
                     "index": 0,
                     "name": "sig_md",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "name": "sig_stop_flag",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "name": "sig_wk_flag",
                     "returnType": "void"
                 }
             ],

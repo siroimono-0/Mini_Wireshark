@@ -25,10 +25,13 @@ Item {
 
     Image {
         id: img_shark
-        source: "img/mini.png"
 
         width: 100
         height: 100
+
+        source: capture_animation.isCapturing
+                ? "img/mini_gray.png"
+                : "img/mini.png"
 
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -38,6 +41,8 @@ Item {
         MouseArea {
             id: img_mouse
             anchors.fill: parent
+
+            enabled: !capture_animation.isCapturing;
             onPressed: {
                 img_shark.scale = 0.9
                 pcap.create_Th(nicName, filter_tf.text)
@@ -62,10 +67,14 @@ Item {
 
     Image {
         id: img_stop
-        source: "img/stop.png"
 
         width: 100
         height: 100
+
+        source: capture_animation.isCapturing
+                ? "img/stop.png"
+                : "img/stop_gray"
+
 
         anchors.left: img_shark.right
         anchors.leftMargin: 10
@@ -75,12 +84,16 @@ Item {
         MouseArea {
             id: img_stop_m
             anchors.fill: parent
+
+            enabled: capture_animation.isCapturing;
+
             onPressed: {
                 img_stop.scale = 0.9
                 pcap.stop_Th()
                 // 애니메이션 정지
                 capture_animation.isCapturing = false
                 // capture_animation.visible = false;
+
             }
             onReleased: {
                 img_stop.scale = 1.0
@@ -129,7 +142,37 @@ Item {
 
     Image {
         id: img_save
-        source: "img/save.png"
+        source: func_save()
+
+        function func_save()
+        {
+            if(pcap.stop_flag === true && pcap.wk_flag === false)
+            {
+                return "img/save.png"
+            }
+            else if(pcap.stop_flag === true &&
+                    pcap.wk_flag === false)
+            {
+                return "img/save_gray.png"
+            }
+            else if(pcap.stop_flag === false &&
+                    pcap.wk_flag === false)
+            {
+                return "img/save_gray.png"
+            }
+        }
+
+        function func_can()
+        {
+            if(pcap.stop_flag === true && pcap.wk_flag === false)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
 
         width: 100
         height: 100
@@ -142,6 +185,8 @@ Item {
         MouseArea {
             id: img_save_m
             anchors.fill: parent
+            enabled: img_save.func_can();
+
             onPressed: {
                 img_save.scale = 0.9
                 saveDia.open();

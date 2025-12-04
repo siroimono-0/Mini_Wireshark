@@ -62,6 +62,11 @@ class Pcap : public QObject
     Q_OBJECT
     Q_PROPERTY(Capture* md READ get_md NOTIFY sig_md FINAL)
 
+    Q_PROPERTY(bool stop_flag READ get_stop_flag WRITE set_stop_flag
+               NOTIFY sig_stop_flag FINAL)
+    Q_PROPERTY(bool wk_flag READ get_wk_flag WRITE set_wk_flag
+               NOTIFY sig_wk_flag FINAL)
+
 public:
     explicit Pcap(QObject *parent = nullptr);
 
@@ -77,6 +82,14 @@ public:
     void update_md(st_pkt pkt);
     void set_wk_life(bool set);
     void dump_push_back(dump_data st_dump);
+
+    //========================================================================
+    bool get_stop_flag();
+    void set_stop_flag(bool set);
+    //========================================================================
+    bool get_wk_flag ();
+    void set_wk_flag (bool set);
+    //========================================================================
 
     //========================================================================
     Capture* get_md();
@@ -102,9 +115,13 @@ private:
     //========================================================================
     QVector<dump_data> vec_dump;
     bool stop_flag = false;
+    bool wk_flag = false;
     //========================================================================
 signals:
     void sig_md();
+    void sig_stop_flag();
+    void sig_wk_flag();
+
 };
 
 #endif // PCAP_H

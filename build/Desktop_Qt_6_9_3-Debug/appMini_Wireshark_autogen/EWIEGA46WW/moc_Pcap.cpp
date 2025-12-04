@@ -126,6 +126,8 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         "Pcap",
         "sig_md",
         "",
+        "sig_stop_flag",
+        "sig_wk_flag",
         "create_Th",
         "QVariant",
         "qba",
@@ -136,32 +138,42 @@ template <> constexpr inline auto Pcap::qt_create_metaobjectdata<qt_meta_tag_ZN4
         "path",
         "save_md",
         "md",
-        "Capture*"
+        "Capture*",
+        "stop_flag",
+        "wk_flag"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'sig_md'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'sig_stop_flag'
+        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'sig_wk_flag'
+        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'create_Th'
-        QtMocHelpers::MethodData<void(QVariant, QVariant)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 4, 5 }, { 0x80000000 | 4, 6 },
+        QtMocHelpers::MethodData<void(QVariant, QVariant)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 6, 7 }, { 0x80000000 | 6, 8 },
         }}),
         // Method 'stop_Th'
-        QtMocHelpers::MethodData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::MethodData<void()>(9, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'reset_md'
-        QtMocHelpers::MethodData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::MethodData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'pcapFile_Read'
-        QtMocHelpers::MethodData<void(QString)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 },
+        QtMocHelpers::MethodData<void(QString)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 12 },
         }}),
         // Method 'save_md'
-        QtMocHelpers::MethodData<void(QString)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 10 },
+        QtMocHelpers::MethodData<void(QString)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 12 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'md'
-        QtMocHelpers::PropertyData<Capture*>(12, 0x80000000 | 13, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
+        QtMocHelpers::PropertyData<Capture*>(14, 0x80000000 | 15, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Final, 0),
+        // property 'stop_flag'
+        QtMocHelpers::PropertyData<bool>(16, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::Final, 1),
+        // property 'wk_flag'
+        QtMocHelpers::PropertyData<bool>(17, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::Final, 2),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -184,22 +196,38 @@ void Pcap::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->sig_md(); break;
-        case 1: _t->create_Th((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
-        case 2: _t->stop_Th(); break;
-        case 3: _t->reset_md(); break;
-        case 4: _t->pcapFile_Read((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 5: _t->save_md((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->sig_stop_flag(); break;
+        case 2: _t->sig_wk_flag(); break;
+        case 3: _t->create_Th((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
+        case 4: _t->stop_Th(); break;
+        case 5: _t->reset_md(); break;
+        case 6: _t->pcapFile_Read((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 7: _t->save_md((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (Pcap::*)()>(_a, &Pcap::sig_md, 0))
             return;
+        if (QtMocHelpers::indexOfMethod<void (Pcap::*)()>(_a, &Pcap::sig_stop_flag, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Pcap::*)()>(_a, &Pcap::sig_wk_flag, 2))
+            return;
     }
     if (_c == QMetaObject::ReadProperty) {
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast<Capture**>(_v) = _t->get_md(); break;
+        case 1: *reinterpret_cast<bool*>(_v) = _t->get_stop_flag(); break;
+        case 2: *reinterpret_cast<bool*>(_v) = _t->get_wk_flag(); break;
+        default: break;
+        }
+    }
+    if (_c == QMetaObject::WriteProperty) {
+        void *_v = _a[0];
+        switch (_id) {
+        case 1: _t->set_stop_flag(*reinterpret_cast<bool*>(_v)); break;
+        case 2: _t->set_wk_flag(*reinterpret_cast<bool*>(_v)); break;
         default: break;
         }
     }
@@ -224,20 +252,20 @@ int Pcap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 8;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }
@@ -246,5 +274,17 @@ int Pcap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void Pcap::sig_md()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void Pcap::sig_stop_flag()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void Pcap::sig_wk_flag()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP

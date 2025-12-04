@@ -1,0 +1,196 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-56237f0fe5402b11018a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Mini_Wireshark",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-fc9ab4da38921ee31f04.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-0c7944fb2dcfaad607ce.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-2a1acffdcadf05532cdf.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-65c6a4b0b940b35ac882.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-7682151298734f0471ce.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark-Debug-c22bf377db2123539667.json",
+					"name" : "appMini_Wireshark",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_autogen-Debug-a6e5d179dc38df42ff59.json",
+					"name" : "appMini_Wireshark_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_autogen_timestamp_deps-Debug-4573e3bc80db0dd47eb5.json",
+					"name" : "appMini_Wireshark_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_copy_qml-Debug-6e7e3f0dd6d575bfd5c5.json",
+					"name" : "appMini_Wireshark_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_copy_res-Debug-d049fab818fda55ab2a6.json",
+					"name" : "appMini_Wireshark_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_qmlimportscan-Debug-e628d35e75e99a606c06.json",
+					"name" : "appMini_Wireshark_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_qmllint-Debug-710d6ef123c196b061f4.json",
+					"name" : "appMini_Wireshark_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_qmllint_json-Debug-1c98d90efc4a7927081a.json",
+					"name" : "appMini_Wireshark_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_qmllint_module-Debug-62a716aed23e17a73073.json",
+					"name" : "appMini_Wireshark_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appMini_Wireshark_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appMini_Wireshark_qmltyperegistration-Debug-1ceb2e2dabd2c0e79dcd.json",
+					"name" : "appMini_Wireshark_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_appMini_Wireshark_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_appMini_Wireshark_aotstats_target-Debug-c291de9dfa3c9690f53a.json",
+					"name" : "module_appMini_Wireshark_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
+		"source" : "/home/gray/gray/Mini_Wireshark"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -291,6 +291,9 @@ Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
     connect(th, &QThread::finished, th, &QObject::deleteLater);
 
     th->start();
+    this->set_stop_flag(false);
+    this->set_wk_flag(true);
+
 }
 
 Q_INVOKABLE void Pcap::stop_Th()
@@ -302,7 +305,18 @@ Q_INVOKABLE void Pcap::stop_Th()
     }
 
     pcap_breakloop(this->wk_pp);
+    this->set_stop_flag(true);
+    this->set_wk_flag(false);
+
     qDebug() << "Stop";
+    if(this->stop_flag == true && this->wk_flag == false)
+    {
+
+    }
+    else if(this->stop_flag == false && this->wk_flag == true)
+    {
+
+    }
     return;
 }
 
@@ -373,7 +387,8 @@ Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 
 Q_INVOKABLE void Pcap::save_md(QString path)
 {
-    if(this->wk_pp == nullptr || this->vec_dump.empty() || this->stop_flag == false)
+    if(this->wk_pp == nullptr ||
+        this->vec_dump.empty() || this->stop_flag == false)
     {
         return;
     }
@@ -384,7 +399,7 @@ Q_INVOKABLE void Pcap::save_md(QString path)
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
 
     pcap_dumper_t* p_dump_handle =
-    pcap_dump_open(this->wk_pp, localPath.c_str());
+        pcap_dump_open(this->wk_pp, localPath.c_str());
 
     if(p_dump_handle == NULL)
     {
@@ -407,8 +422,8 @@ Q_INVOKABLE void Pcap::save_md(QString path)
 }
 
 void Pcap::packet_func( u_char *user,
-                 const struct pcap_pkthdr *header,
-                 const u_char * packet)
+                       const struct pcap_pkthdr *header,
+                       const u_char * packet)
 {
     Pcap* p_this = (Pcap *) user;
     st_pkt pkt = {0};
@@ -553,4 +568,26 @@ void Pcap::packet_func( u_char *user,
 void Pcap::dump_push_back(dump_data st_dump)
 {
     this->vec_dump.push_back(st_dump);
+}
+
+void Pcap::set_stop_flag(bool set)
+{
+    this->stop_flag = set;
+    emit sig_stop_flag();
+}
+
+bool Pcap::get_stop_flag()
+{
+    return this->stop_flag;
+}
+
+bool Pcap::get_wk_flag ()
+{
+    return this->wk_flag;
+}
+
+void Pcap::set_wk_flag (bool set)
+{
+    this->wk_flag = set;
+    emit sig_wk_flag();
 }
