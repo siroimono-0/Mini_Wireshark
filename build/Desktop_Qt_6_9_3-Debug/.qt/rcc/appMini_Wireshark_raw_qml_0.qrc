@@ -3,6 +3,7 @@
     <file alias="Main.qml">/home/gray/gray/Mini_Wireshark/Main.qml</file>
     <file alias="NicListView.qml">/home/gray/gray/Mini_Wireshark/NicListView.qml</file>
     <file alias="CaptureView.qml">/home/gray/gray/Mini_Wireshark/CaptureView.qml</file>
+    <file alias="PktView.qml">/home/gray/gray/Mini_Wireshark/PktView.qml</file>
     <file alias="img/mini.png">/home/gray/gray/Mini_Wireshark/img/mini.png</file>
     <file alias="img/mini_gray.png">/home/gray/gray/Mini_Wireshark/img/mini_gray.png</file>
     <file alias="img/back.png">/home/gray/gray/Mini_Wireshark/img/back.png</file>
@@ -11,6 +12,7 @@
     <file alias="img/reset.png">/home/gray/gray/Mini_Wireshark/img/reset.png</file>
     <file alias="img/save.png">/home/gray/gray/Mini_Wireshark/img/save.png</file>
     <file alias="img/save_gray.png">/home/gray/gray/Mini_Wireshark/img/save_gray.png</file>
+    <file alias="img/pkt_back.png">/home/gray/gray/Mini_Wireshark/img/pkt_back.png</file>
   </qresource>
 </RCC>
 

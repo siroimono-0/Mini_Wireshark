@@ -1,9 +1,12 @@
 appMini_Wireshark_autogen/timestamp: \
+	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractItemModel \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
+	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QString \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QUrl \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVariant \
+	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVector \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20functional.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20memory.h \
@@ -123,6 +126,7 @@ appMini_Wireshark_autogen/timestamp: \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qutf8stringview.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvariant.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvarlengtharray.h \
+	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvector.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qversiontagging.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qxptype_traits.h \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/qyieldcpu.h \
@@ -1078,6 +1082,10 @@ appMini_Wireshark_autogen/timestamp: \
 	/home/gray/gray/Mini_Wireshark/Pcap.h \
 	/home/gray/gray/Mini_Wireshark/Struct_in.h \
 	/home/gray/gray/Mini_Wireshark/Support.h \
+	/home/gray/gray/Mini_Wireshark/TreeItem.cpp \
+	/home/gray/gray/Mini_Wireshark/TreeItem.h \
+	/home/gray/gray/Mini_Wireshark/TreeModel.cpp \
+	/home/gray/gray/Mini_Wireshark/TreeModel.h \
 	/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/qml_imports/appMini_Wireshark_conf.cmake \
 	/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/auto-setup.cmake \
 	/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \

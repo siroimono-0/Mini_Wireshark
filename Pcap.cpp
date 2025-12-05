@@ -7,6 +7,7 @@ using namespace std;
 Pcap::Pcap(QObject *parent): QObject{parent}
 {
     this->md = new Capture(this);
+    this->tree_md = new TreeModel(this);
 }
 
 
@@ -294,6 +295,8 @@ Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
     this->set_stop_flag(false);
     this->set_wk_flag(true);
 
+    this->md->reset();
+    vec_dump_file.clear();
 }
 
 Q_INVOKABLE void Pcap::stop_Th()
@@ -416,9 +419,6 @@ Q_INVOKABLE void Pcap::save_md(QString path)
     pcap_dump_close(p_dump_handle);
 
     return;
-    /*
-     need icon change //
-     */
 }
 
 void Pcap::packet_func( u_char *user,
@@ -562,7 +562,13 @@ void Pcap::packet_func( u_char *user,
 
     pkt.len = header->len;
 
+    QByteArray qba ((const char*)packet, header->len);
+    dump_data st_dump = {};
+    st_dump.data = qba;
+    st_dump.header = *header;
+
     this->update_md(pkt);
+    this->vec_dump.push_back(st_dump);
 }
 
 void Pcap::dump_push_back(dump_data st_dump)
@@ -591,3 +597,126 @@ void Pcap::set_wk_flag (bool set)
     this->wk_flag = set;
     emit sig_wk_flag();
 }
+
+QString Pcap::start_hax(int idx)
+{
+    dump_data d_data;
+    if (vec_dump_file.empty())
+        d_data = vec_dump.at(idx);
+    else
+        d_data = vec_dump_file.at(idx);
+
+    int len = d_data.header.caplen;
+    const u_char* data = (const u_char*)d_data.data.constData();
+
+    QString out;
+
+    for (int i = 0; i < len; i += 16)
+    {
+        // Offset (0000, 0010, ...)
+        out += QString("%1   ").arg(i, 4, 16, QLatin1Char('0'));
+
+        QString hexPart;
+        QString asciiPart;
+
+        // Build hex + ascii separately
+        for (int j = 0; j < 16; j++)
+        {
+            if (i + j < len)
+            {
+                unsigned char c = data[i + j];
+
+                // hex
+                hexPart += QString("%1 ").arg(c, 2, 16, QLatin1Char('0'));
+
+                // ascii
+                if (c >= 32 && c <= 126)
+                    asciiPart += QChar(c);
+                else
+                    asciiPart += ".";
+            }
+            else
+            {
+                // padding for missing bytes
+                hexPart += "   ";
+                asciiPart += " ";
+            }
+        }
+
+        // hex는 16 * 3 = 48칸 → 고정 너비
+        hexPart = hexPart.leftJustified(48, ' ');
+
+        // hexPart + 공백 5칸 + asciiPart
+        out += hexPart + "     " + asciiPart + "\n";
+    }
+
+    return out;
+}
+
+TreeModel* Pcap::get_tree_md()
+{
+    return this->tree_md;
+}
+
+Q_INVOKABLE void Pcap::start_tree_md(int idx)
+{
+    TreeItem* root = new TreeItem("root");
+    this->tree_md->setPacketTree(root);
+
+    dump_data data;
+    if(!this->vec_dump_file.empty())
+    {
+        data = this->vec_dump_file.at(idx);
+    }
+    else
+    {
+        data = this->vec_dump.at(idx);
+    }
+
+    e_H* e_h = (e_H*)data.data.constData();
+
+    QString dst = this->macToString((const u_char*)e_h->ether_dhost);
+    QString src = this->macToString((const u_char*)e_h->ether_shost);
+    QString e_tmp = QString("Ethernet II,     Src: %1,     Dst : %2").arg(dst).arg(src);
+
+    TreeItem* ether = new TreeItem(e_tmp, root);
+    root->addChild(ether);
+
+    QString ch_dst = QString("Destination : (%1)").arg(dst);
+    QString ch_src = QString("Source : (%1)").arg(src);
+    QString ch_type = "";
+    if(ntohs(e_h->ether_type) == 0x0800)
+    {
+        ch_type = "Type: IPv4 (0x0800)";
+    }
+    else if(ntohs(e_h->ether_type) == 0x086DD)
+    {
+        ch_type = "Type: IPv6 (0x086DD)";
+    }
+    else if(ntohs(e_h->ether_type) == 0x0806)
+    {
+        ch_type = "Type: ARP (0x0806)";
+    }
+    TreeItem* ether_ch_dst = new TreeItem(ch_dst, ether);
+    TreeItem* ether_ch_src = new TreeItem(ch_src, ether);
+    TreeItem* ether_ch_type = new TreeItem(ch_type, ether);
+
+    ether->addChild(ether_ch_dst);
+    ether->addChild(ether_ch_src);
+    ether->addChild(ether_ch_type);
+
+    return;
+}
+
+QString Pcap::macToString(const u_char* mac)
+{
+    return QString("%1:%2:%3:%4:%5:%6")
+        .arg(mac[0], 2, 16, QLatin1Char('0'))
+        .arg(mac[1], 2, 16, QLatin1Char('0'))
+        .arg(mac[2], 2, 16, QLatin1Char('0'))
+        .arg(mac[3], 2, 16, QLatin1Char('0'))
+        .arg(mac[4], 2, 16, QLatin1Char('0'))
+        .arg(mac[5], 2, 16, QLatin1Char('0'))
+        .toUpper();
+}
+

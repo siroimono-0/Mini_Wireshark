@@ -13,10 +13,6 @@ Item {
     property string nicName: ""
     property string pcap_path: ""
 
-    Pcap {
-        id: pcap
-    }
-
     Component.onCompleted: {
         if (pcap_path != "") {
             pcap.pcapFile_Read(pcap_path)
@@ -150,14 +146,7 @@ Item {
             {
                 return "img/save.png"
             }
-            else if(pcap.stop_flag === true &&
-                    pcap.wk_flag === false)
-            {
-                return "img/save_gray.png"
-            }
-            else if(pcap.stop_flag === false &&
-                    pcap.wk_flag === false)
-            {
+            else             {
                 return "img/save_gray.png"
             }
         }
@@ -441,9 +430,9 @@ Item {
         delegate: Rectangle {
             width: l_view.width - 20
             height: 30
-            color: "#FAFAFA"
-            border.color: "#404040"
-            border.width: 1
+            color: ListView.isCurrentItem ? "#D0E8FF" : "#FAFAFA"
+            border.color: ListView.isCurrentItem ? "#2196F3" : "#404040"
+            border.width:ListView.isCurrentItem ? 2 : 1
             radius: 5
 
             Row {
@@ -474,7 +463,28 @@ Item {
                 Text {
                     text: model.info
                     width: 300
+
                 } // Info
+            }
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    l_view.currentIndex = index;
+                }
+
+                onDoubleClicked: {
+                    if(capture_animation.isCapturing)
+                    {
+                        console.log("lock...");
+                        return;
+                    }
+
+                    pcap.start_tree_md(l_view.currentIndex);
+                    stk.push("PktView.qml",
+                         {dump_idx: l_view.currentIndex,
+                          pcap: pcap});
+                }
             }
         }
     }

@@ -8,6 +8,7 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PCAP REQUIRED libpcap)
 
@@ -24,6 +25,7 @@ qt_add_qml_module(appMini_Wireshark
         Main.qml
         NicListView.qml
         CaptureView.qml
+        PktView.qml
 
     SOURCES
         NicList.h
@@ -34,6 +36,10 @@ qt_add_qml_module(appMini_Wireshark
         Pcap.h
         Pcap.cpp
         Struct_in.h
+        TreeItem.h
+        TreeItem.cpp
+        TreeModel.h
+        TreeModel.cpp
 
     RESOURCES
         img/mini.png
@@ -44,6 +50,7 @@ qt_add_qml_module(appMini_Wireshark
         img/reset.png
         img/save.png
         img/save_gray.png
+        img/pkt_back.png
 
 )
 
@@ -66,6 +73,7 @@ target_link_libraries(appMini_Wireshark
     PRIVATE
         ${PCAP_LIBRARIES}
 )
+target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
 target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
 target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
 include_directories(${PCAP_INCLUDE_DIRS})

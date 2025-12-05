@@ -10,5 +10,6 @@
 /home/gray/gray/Mini_Wireshark/Main.qml
 /home/gray/gray/Mini_Wireshark/NicListView.qml
 /home/gray/gray/Mini_Wireshark/CaptureView.qml
+/home/gray/gray/Mini_Wireshark/PktView.qml
 --json
 /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_qmllint.json

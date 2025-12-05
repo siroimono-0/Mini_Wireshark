@@ -5,3 +5,4 @@
 /qt/qml/Mini_Wireshark/Main.qml
 /qt/qml/Mini_Wireshark/NicListView.qml
 /qt/qml/Mini_Wireshark/CaptureView.qml
+/qt/qml/Mini_Wireshark/PktView.qml

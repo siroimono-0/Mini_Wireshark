@@ -1,0 +1,18 @@
+{
+    "classes": [
+        {
+            "className": "TreeModel",
+            "lineNumber": 8,
+            "object": true,
+            "qualifiedClassName": "TreeModel",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractItemModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "TreeModel.h",
+    "outputRevision": 69
+}

@@ -7,6 +7,7 @@
 #include <QUrl>
 //=====================================================================
 #include "Struct_in.h"
+#include "TreeModel.h"
 #include <pcap.h>
 #include <net/ethernet.h>   // struct ether_header
 #include <netinet/if_ether.h>
@@ -23,6 +24,7 @@ typedef struct dump_data
 
 class Pcap;
 class Capture;
+class TreeModel;
 
 class Worker: public QObject
 {
@@ -61,6 +63,8 @@ class Pcap : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Capture* md READ get_md NOTIFY sig_md FINAL)
+    Q_PROPERTY(TreeModel* tree_md READ get_tree_md
+                   NOTIFY sig_tree_md  FINAL)
 
     Q_PROPERTY(bool stop_flag READ get_stop_flag WRITE set_stop_flag
                NOTIFY sig_stop_flag FINAL)
@@ -77,9 +81,9 @@ public:
     Q_INVOKABLE void pcapFile_Read(QString path);
 
     Q_INVOKABLE void save_md(QString path);
+    Q_INVOKABLE QString start_hax(int idx);
 
     void set_wk_pp(pcap_t* set);
-    void update_md(st_pkt pkt);
     void set_wk_life(bool set);
     void dump_push_back(dump_data st_dump);
 
@@ -90,9 +94,12 @@ public:
     bool get_wk_flag ();
     void set_wk_flag (bool set);
     //========================================================================
-
+    TreeModel* get_tree_md();
+    Q_INVOKABLE void start_tree_md(int idx);
+    QString macToString(const u_char* mac);
     //========================================================================
     Capture* get_md();
+    void update_md(st_pkt pkt);
     //========================================================================
     void packet_func( u_char *user,
                      const struct pcap_pkthdr *header,
@@ -108,17 +115,20 @@ private:
     pcap_t* wk_pp = nullptr;
 
     Capture* md = nullptr;
+    TreeModel* tree_md = nullptr;
 
     //========================================================================
     pcap_t* p_pcap = nullptr;
     int num = 0;
     //========================================================================
     QVector<dump_data> vec_dump;
+    QVector<dump_data> vec_dump_file;
     bool stop_flag = false;
     bool wk_flag = false;
     //========================================================================
 signals:
     void sig_md();
+    void sig_tree_md();
     void sig_stop_flag();
     void sig_wk_flag();
 

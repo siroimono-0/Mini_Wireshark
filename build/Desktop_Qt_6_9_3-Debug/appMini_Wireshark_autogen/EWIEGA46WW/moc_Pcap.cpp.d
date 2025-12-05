@@ -1,15 +1,19 @@
 /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/EWIEGA46WW/moc_Pcap.cpp: /home/gray/gray/Mini_Wireshark/Pcap.h \
   /home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractItemModel \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QString \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QUrl \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVariant \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QVector \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20functional.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20memory.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20type_traits.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q20utility.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q23utility.h \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qabstractitemmodel.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qalgorithms.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qanystringview.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qarraydata.h \
@@ -122,10 +126,13 @@
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qutf8stringview.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvariant.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvarlengtharray.h \
+  /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qvector.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qversiontagging.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qxptype_traits.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qyieldcpu.h \
   /home/gray/gray/Mini_Wireshark/Struct_in.h \
+  /home/gray/gray/Mini_Wireshark/TreeItem.h \
+  /home/gray/gray/Mini_Wireshark/TreeModel.h \
   /usr/include/alloca.h \
   /usr/include/arpa/inet.h \
   /usr/include/asm-generic/bitsperlong.h \

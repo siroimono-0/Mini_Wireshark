@@ -8,6 +8,8 @@ set(src_and_dest_list
     "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/NicListView.qml"
     "/home/gray/gray/Mini_Wireshark/CaptureView.qml"
     "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/CaptureView.qml"
+    "/home/gray/gray/Mini_Wireshark/PktView.qml"
+    "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/PktView.qml"
 
 )
 set(timestamp_file "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/appMini_Wireshark_qml.txt")

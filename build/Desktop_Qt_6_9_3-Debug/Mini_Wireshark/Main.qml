@@ -10,6 +10,11 @@ Window {
     visible: true
     title: qsTr("The Mini Wireshark");
 
+        Pcap {
+        id: pcap
+    }
+
+
     StackView{
         id:stk
         anchors.fill: parent

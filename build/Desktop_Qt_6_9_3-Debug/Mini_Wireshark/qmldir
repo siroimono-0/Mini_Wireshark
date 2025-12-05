@@ -4,5 +4,6 @@ prefer :/qt/qml/Mini_Wireshark/
 Main 1.0 Main.qml
 NicListView 1.0 NicListView.qml
 CaptureView 1.0 CaptureView.qml
+PktView 1.0 PktView.qml
 depends QtQuick
 

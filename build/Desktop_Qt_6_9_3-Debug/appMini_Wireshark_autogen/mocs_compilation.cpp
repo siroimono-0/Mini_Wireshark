@@ -2,3 +2,4 @@
 #include "EWIEGA46WW/moc_Capture.cpp"
 #include "EWIEGA46WW/moc_NicList.cpp"
 #include "EWIEGA46WW/moc_Pcap.cpp"
+#include "EWIEGA46WW/moc_TreeModel.cpp"

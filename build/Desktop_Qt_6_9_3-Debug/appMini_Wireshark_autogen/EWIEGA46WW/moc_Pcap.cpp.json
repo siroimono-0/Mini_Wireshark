@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "Worker",
-            "lineNumber": 27,
+            "lineNumber": 29,
             "object": true,
             "qualifiedClassName": "Worker",
             "signals": [
@@ -22,7 +22,7 @@
         },
         {
             "className": "Pcap",
-            "lineNumber": 60,
+            "lineNumber": 62,
             "methods": [
                 {
                     "access": "public",
@@ -36,19 +36,19 @@
                             "type": "QVariant"
                         }
                     ],
-                    "index": 3,
+                    "index": 4,
                     "name": "create_Th",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 4,
+                    "index": 5,
                     "name": "stop_Th",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
-                    "index": 5,
+                    "index": 6,
                     "name": "reset_md",
                     "returnType": "void"
                 },
@@ -60,7 +60,7 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 6,
+                    "index": 7,
                     "name": "pcapFile_Read",
                     "returnType": "void"
                 },
@@ -72,8 +72,32 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 7,
+                    "index": 8,
                     "name": "save_md",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "idx",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 9,
+                    "name": "start_hax",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "idx",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 10,
+                    "name": "start_tree_md",
                     "returnType": "void"
                 }
             ],
@@ -98,6 +122,20 @@
                     "designable": true,
                     "final": true,
                     "index": 1,
+                    "name": "tree_md",
+                    "notify": "sig_tree_md",
+                    "read": "get_tree_md",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "TreeModel*",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
                     "name": "stop_flag",
                     "notify": "sig_stop_flag",
                     "read": "get_stop_flag",
@@ -112,7 +150,7 @@
                     "constant": false,
                     "designable": true,
                     "final": true,
-                    "index": 2,
+                    "index": 3,
                     "name": "wk_flag",
                     "notify": "sig_wk_flag",
                     "read": "get_wk_flag",
@@ -135,12 +173,18 @@
                 {
                     "access": "public",
                     "index": 1,
-                    "name": "sig_stop_flag",
+                    "name": "sig_tree_md",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 2,
+                    "name": "sig_stop_flag",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 3,
                     "name": "sig_wk_flag",
                     "returnType": "void"
                 }
