@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug"
+			"value" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -463,7 +463,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -535,7 +535,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/gray/gray/Mini_Wireshark"
+			"value" : "/home/gray/Mini_Wireshark"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1047,7 +1047,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/auto-setup.cmake"
+			"value" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1463,7 +1463,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug"
+			"value" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug"
 		},
 		{
 			"name" : "Mini_Wireshark_IS_TOP_LEVEL",
@@ -1487,7 +1487,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gray/gray/Mini_Wireshark"
+			"value" : "/home/gray/Mini_Wireshark"
 		},
 		{
 			"name" : "OPENGL_EGL_INCLUDE_DIR",
@@ -7647,7 +7647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/tmp"
+			"value" : "/usr/local"
 		},
 		{
 			"name" : "__pkg_config_arguments_PCAP",

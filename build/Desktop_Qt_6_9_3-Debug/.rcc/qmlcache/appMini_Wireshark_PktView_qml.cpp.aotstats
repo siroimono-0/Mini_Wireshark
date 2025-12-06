@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 12,
-                        "durationMicroseconds": 111,
+                        "durationMicroseconds": 94,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "width",
                         "line": 8
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 13,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 57,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "height",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 28,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 31,
                         "errorMessage": "",
                         "functionName": "onCompleted",
                         "line": 15
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 73,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 20
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 57,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 22
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 49,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 26
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 20,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 19,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "model",
                         "line": 40
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 30,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 35
@@ -89,7 +89,7 @@
                         "durationMicroseconds": 15,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
-                        "line": 49
+                        "line": 48
                     },
                     {
                         "codegenSuccessful": false,
@@ -97,55 +97,55 @@
                         "durationMicroseconds": 6,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "width",
-                        "line": 53
+                        "line": 52
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 56,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 67
+                        "line": 66
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 51,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 69
+                        "line": 68
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 108,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "onPressed",
-                        "line": 75
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 25,
-                        "durationMicroseconds": 82,
-                        "errorMessage": "",
-                        "functionName": "onReleased",
-                        "line": 79
-                    },
-                    {
-                        "codegenSuccessful": true,
-                        "column": 27,
-                        "durationMicroseconds": 37,
-                        "errorMessage": "",
-                        "functionName": "fill",
                         "line": 74
                     },
                     {
                         "codegenSuccessful": true,
+                        "column": 25,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 78
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 27,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 73
+                    },
+                    {
+                        "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "type",
-                        "line": 87
+                        "line": 86
                     },
                     {
                         "codegenSuccessful": false,
@@ -153,7 +153,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"left\".",
                         "functionName": "left",
-                        "line": 95
+                        "line": 94
                     },
                     {
                         "codegenSuccessful": false,
@@ -161,7 +161,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"right\".",
                         "functionName": "right",
-                        "line": 97
+                        "line": 96
                     },
                     {
                         "codegenSuccessful": false,
@@ -169,7 +169,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"top\".",
                         "functionName": "top",
-                        "line": 99
+                        "line": 98
                     },
                     {
                         "codegenSuccessful": false,
@@ -177,7 +177,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"bottom\".",
                         "functionName": "bottom",
-                        "line": 100
+                        "line": 99
                     },
                     {
                         "codegenSuccessful": false,
@@ -185,15 +185,15 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"policy\".",
                         "functionName": "policy",
-                        "line": 107
+                        "line": 106
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 25,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
-                        "line": 112
+                        "line": 111
                     },
                     {
                         "codegenSuccessful": false,
@@ -201,7 +201,7 @@
                         "durationMicroseconds": 10,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "opacity",
-                        "line": 113
+                        "line": 112
                     },
                     {
                         "codegenSuccessful": false,
@@ -209,7 +209,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"policy\".",
                         "functionName": "policy",
-                        "line": 125
+                        "line": 124
                     },
                     {
                         "codegenSuccessful": false,
@@ -217,7 +217,7 @@
                         "durationMicroseconds": 17,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
-                        "line": 130
+                        "line": 129
                     },
                     {
                         "codegenSuccessful": false,
@@ -225,7 +225,7 @@
                         "durationMicroseconds": 8,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "opacity",
-                        "line": 131
+                        "line": 130
                     },
                     {
                         "codegenSuccessful": false,
@@ -233,7 +233,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"wrapMode\".",
                         "functionName": "wrapMode",
-                        "line": 145
+                        "line": 144
                     },
                     {
                         "codegenSuccessful": false,
@@ -241,10 +241,10 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"text\".",
                         "functionName": "text",
-                        "line": 148
+                        "line": 147
                     }
                 ],
-                "filePath": "/home/gray/gray/Mini_Wireshark/PktView.qml"
+                "filePath": "/home/gray/Mini_Wireshark/PktView.qml"
             }
         ],
         "moduleId": "Mini_Wireshark(appMini_Wireshark)"

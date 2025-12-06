@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import Mini_Wireshark 1.0   // ← 정확히 이거
 
-
-Window {
+ApplicationWindow
+{
     id: win
     width: 1500
     height: 900

@@ -128,6 +128,7 @@ Item {
         id: input_text
         text: "Input Capther Filter ::"
         font.pixelSize: 18;
+        color: "white"
 
         anchors.left: rec_hello.left
         anchors.leftMargin: 10

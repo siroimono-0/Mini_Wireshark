@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 167,
+                        "durationMicroseconds": 173,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onCompleted",
                         "line": 22
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 68,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 28
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 30
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 37,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 43
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "when",
                         "line": 74
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 48,
                         "errorMessage": "",
                         "functionName": "target",
                         "line": 76
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 37,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 96
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 39,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 49,
                         "errorMessage": "",
                         "functionName": "horizontalCenter",
                         "line": 97
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 72,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 105
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 21,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 66,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "onAccepted",
                         "line": 117
@@ -134,18 +134,18 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 54,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 132
+                        "line": 133
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 51,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 134
+                        "line": 135
                     },
                     {
                         "codegenSuccessful": false,
@@ -153,7 +153,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"model\".",
                         "functionName": "model",
-                        "line": 147
+                        "line": 148
                     },
                     {
                         "codegenSuccessful": false,
@@ -161,7 +161,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find signal \"activated\".",
                         "functionName": "onActivated",
-                        "line": 153
+                        "line": 154
                     },
                     {
                         "codegenSuccessful": false,
@@ -169,7 +169,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find signal \"activated\".",
                         "functionName": "onActivated",
-                        "line": 153
+                        "line": 154
                     },
                     {
                         "codegenSuccessful": false,
@@ -177,7 +177,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"left\".",
                         "functionName": "left",
-                        "line": 142
+                        "line": 143
                     },
                     {
                         "codegenSuccessful": false,
@@ -185,15 +185,15 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"top\".",
                         "functionName": "top",
-                        "line": 144
+                        "line": 145
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 19,
-                        "durationMicroseconds": 14,
+                        "durationMicroseconds": 13,
                         "errorMessage": "Cannot access value for name f_Box",
                         "functionName": "text",
-                        "line": 191
+                        "line": 192
                     },
                     {
                         "codegenSuccessful": false,
@@ -201,15 +201,15 @@
                         "durationMicroseconds": 9,
                         "errorMessage": "Cannot access value for name f_Box",
                         "functionName": "font",
-                        "line": 192
+                        "line": 193
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 32,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 131,
                         "errorMessage": "Cannot access value for name Text",
                         "functionName": "verticalAlignment",
-                        "line": 194
+                        "line": 195
                     },
                     {
                         "codegenSuccessful": false,
@@ -217,7 +217,7 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"y\".",
                         "functionName": "y",
-                        "line": 199
+                        "line": 200
                     },
                     {
                         "codegenSuccessful": false,
@@ -225,23 +225,23 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"width\".",
                         "functionName": "width",
-                        "line": 200
+                        "line": 201
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 33,
-                        "durationMicroseconds": 4,
+                        "durationMicroseconds": 5,
                         "errorMessage": "Cannot access value for name contentHeight",
                         "functionName": "implicitHeight",
-                        "line": 205
+                        "line": 206
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 28,
                         "errorMessage": "Cannot access value for name f_Box",
                         "functionName": "model",
-                        "line": 206
+                        "line": 207
                     },
                     {
                         "codegenSuccessful": false,
@@ -249,7 +249,7 @@
                         "durationMicroseconds": 9,
                         "errorMessage": "Cannot access value for name f_Box",
                         "functionName": "currentIndex",
-                        "line": 207
+                        "line": 208
                     },
                     {
                         "codegenSuccessful": false,
@@ -257,39 +257,39 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"width\".",
                         "functionName": "width",
-                        "line": 221
+                        "line": 222
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 23,
-                        "durationMicroseconds": 154,
+                        "durationMicroseconds": 169,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "text",
-                        "line": 223
+                        "line": 224
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 23,
-                        "durationMicroseconds": 9,
+                        "durationMicroseconds": 11,
                         "errorMessage": "Cannot access value for name f_Box",
                         "functionName": "font",
-                        "line": 225
-                    },
-                    {
-                        "codegenSuccessful": false,
-                        "column": 36,
-                        "durationMicroseconds": 105,
-                        "errorMessage": "Cannot access value for name Text",
-                        "functionName": "verticalAlignment",
                         "line": 226
                     },
                     {
                         "codegenSuccessful": false,
+                        "column": 36,
+                        "durationMicroseconds": 108,
+                        "errorMessage": "Cannot access value for name Text",
+                        "functionName": "verticalAlignment",
+                        "line": 227
+                    },
+                    {
+                        "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 218,
+                        "durationMicroseconds": 217,
                         "errorMessage": "Cannot access value for name highlighted",
                         "functionName": "color",
-                        "line": 230
+                        "line": 231
                     },
                     {
                         "codegenSuccessful": false,
@@ -297,15 +297,15 @@
                         "durationMicroseconds": 7,
                         "errorMessage": "Cannot retrieve a non-object type by ID: nic",
                         "functionName": "model",
-                        "line": 259
+                        "line": 260
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 67,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 252
+                        "line": 253
                     },
                     {
                         "codegenSuccessful": true,
@@ -313,7 +313,7 @@
                         "durationMicroseconds": 53,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 254
+                        "line": 255
                     },
                     {
                         "codegenSuccessful": false,
@@ -321,55 +321,55 @@
                         "durationMicroseconds": 104,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "color",
-                        "line": 271
+                        "line": 272
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 95,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "color",
-                        "line": 284
+                        "line": 285
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 93,
+                        "durationMicroseconds": 101,
                         "errorMessage": "",
                         "functionName": "width",
-                        "line": 295
+                        "line": 296
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 23,
-                        "durationMicroseconds": 16,
+                        "durationMicroseconds": 18,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
-                        "line": 299
+                        "line": 300
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 177,
+                        "durationMicroseconds": 176,
                         "errorMessage": "",
                         "functionName": "color",
-                        "line": 304
+                        "line": 305
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 57,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 301
+                        "line": 302
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 41,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
-                        "line": 303
+                        "line": 304
                     },
                     {
                         "codegenSuccessful": false,
@@ -377,26 +377,26 @@
                         "durationMicroseconds": 151,
                         "errorMessage": "Cannot access value for name l_view",
                         "functionName": "onClicked",
-                        "line": 311
+                        "line": 312
                     },
                     {
                         "codegenSuccessful": false,
                         "column": 34,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 102,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "onDoubleClicked",
-                        "line": 316
+                        "line": 317
                     },
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 32,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 309
+                        "line": 310
                     }
                 ],
-                "filePath": "/home/gray/gray/Mini_Wireshark/NicListView.qml"
+                "filePath": "/home/gray/Mini_Wireshark/NicListView.qml"
             }
         ],
         "moduleId": "Mini_Wireshark(appMini_Wireshark)"

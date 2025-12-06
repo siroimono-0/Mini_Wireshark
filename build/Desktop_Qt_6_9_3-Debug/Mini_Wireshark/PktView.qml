@@ -44,11 +44,10 @@ Item {
 
                 contentItem: RowLayout {
                     spacing: 4
-
                     Text {
                         text: model.display
                         color: "white"
-                        font.pixelSize: 14
+                        font.pixelSize: 18
                         font.family: "monospace"
                         width: parent.width
                     }
@@ -141,7 +140,7 @@ Item {
         TextArea {
             id: tArea
             font.family: "monospace"
-            font.pixelSize: 14
+            font.pixelSize: 18
             wrapMode: Text.NoWrap
             readOnly: true
 

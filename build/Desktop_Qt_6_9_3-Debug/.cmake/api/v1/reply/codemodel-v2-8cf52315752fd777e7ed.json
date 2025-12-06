@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-78c279c66eb4a9a90047.json",
+					"jsonFile" : "directory-.-Debug-1c55c3d494718335253e.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -105,7 +105,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appMini_Wireshark::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appMini_Wireshark-Debug-26f33bb6649f15cb0c94.json",
+					"jsonFile" : "target-appMini_Wireshark-Debug-30d17ec56df69049550a.json",
 					"name" : "appMini_Wireshark",
 					"projectIndex" : 0
 				},
@@ -185,8 +185,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
-		"source" : "/home/gray/gray/Mini_Wireshark"
+		"build" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
+		"source" : "/home/gray/Mini_Wireshark"
 	},
 	"version" : 
 	{

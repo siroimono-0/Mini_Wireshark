@@ -1,4 +1,4 @@
-# Install script for directory: /home/gray/gray/Mini_Wireshark
+# Install script for directory: /home/gray/Mini_Wireshark
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -49,7 +49,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/appMini_Wireshark"
          RPATH "\$ORIGIN:\$ORIGIN/../lib")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/appMini_Wireshark" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/appMini_Wireshark")
     file(RPATH_CHANGE
@@ -77,6 +77,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

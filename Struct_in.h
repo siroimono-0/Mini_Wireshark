@@ -26,16 +26,22 @@ typedef struct st_packet{
 
 
 #pragma pack(push, 1)
-
 typedef struct e_H{
     u_int8_t  ether_dhost[ETH_ALEN];      // 6바이트: 목적지 MAC
     u_int8_t  ether_shost[ETH_ALEN];      // 6바이트: 출발지 MAC
     u_int16_t ether_type;                 // 2바이트: EtherType
 }e_H;
+#pragma pack(pop)
 
+#pragma pack(push, 1)
 typedef struct ip_H{
-
-    uint8_t ihl:4, version:4;
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    uint8_t ihl:4;
+    uint8_t version:4;
+#else
+    uint8_t version:4;
+    uint8_t ihl:4;
+#endif
     uint8_t tos;
     uint16_t tot_len;
     uint16_t id;
@@ -45,8 +51,10 @@ typedef struct ip_H{
     uint16_t check;
     uint32_t saddr;
     uint32_t daddr;
-}ip_H;
+} ip_H;
+#pragma pack(pop)
 
+#pragma pack(push, 1)
 typedef struct tcp_H{
     uint16_t source;
     uint16_t dest;
@@ -81,14 +89,18 @@ typedef struct tcp_H{
     uint16_t check;
     uint16_t urg_ptr;
 }tcp_H;
+#pragma pack(pop)
 
+#pragma pack(push, 1)
 typedef struct udp_H {
     uint16_t source;   // Source Port
     uint16_t dest;     // Destination Port
     uint16_t len;      // UDP header + data 전체 길이
     uint16_t check;    // Checksum
 }udp_H;
+#pragma pack(pop)
 
+#pragma pack(push, 1)
 typedef struct icmp_H {
     uint8_t  type;      // 메시지 타입
 
@@ -109,7 +121,6 @@ typedef struct icmp_H {
         } frag;                 // Fragmentation needed
     } un;
 }icmp_H;
-
 #pragma pack(pop)
 
 

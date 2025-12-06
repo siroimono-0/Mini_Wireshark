@@ -97,6 +97,7 @@ public:
     TreeModel* get_tree_md();
     Q_INVOKABLE void start_tree_md(int idx);
     QString macToString(const u_char* mac);
+    uint16_t compute_ip_checksum(const uint8_t* data, int header_len);
     //========================================================================
     Capture* get_md();
     void update_md(st_pkt pkt);
@@ -104,8 +105,8 @@ public:
     void packet_func( u_char *user,
                      const struct pcap_pkthdr *header,
                      const u_char * packet);
-
     //========================================================================
+
     //========================================================================
 public slots:
 

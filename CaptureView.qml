@@ -209,6 +209,7 @@ Item {
         id: nic_text
         text: "Capture :: " + nicName
         font.pixelSize: 18
+        color: "white"
 
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -442,26 +443,32 @@ Item {
 
                 Text {
                     text: model.number
+                    font.pixelSize: 18;
                     width: 50
                 } // No
                 Text {
                     text: model.source
+                    font.pixelSize: 18;
                     width: 150
                 } // Source
                 Text {
                     text: model.destination
+                    font.pixelSize: 18;
                     width: 150
                 } // Destination
                 Text {
                     text: model.protocol
+                    font.pixelSize: 18;
                     width: 80
                 } // Protocol
                 Text {
                     text: model.length
+                    font.pixelSize: 18;
                     width: 60
                 } // Length
                 Text {
                     text: model.info
+                    font.pixelSize: 18;
                     width: 300
 
                 } // Info

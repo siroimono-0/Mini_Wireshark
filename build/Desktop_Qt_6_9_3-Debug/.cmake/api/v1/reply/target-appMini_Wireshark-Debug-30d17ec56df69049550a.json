@@ -649,11 +649,11 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "/home/gray/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/include"
+					"path" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/include"
 				},
 				{
 					"backtrace" : 64,
-					"path" : "/home/gray/gray/Mini_Wireshark"
+					"path" : "/home/gray/Mini_Wireshark"
 				},
 				{
 					"backtrace" : 65,
