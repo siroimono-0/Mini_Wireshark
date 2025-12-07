@@ -302,6 +302,8 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_back.scale = 0.9
+                pcap.stop_Th();
+                pcap.reset_md();
                 stk.pop()
             }
             onReleased: {
@@ -330,66 +332,197 @@ Item {
         anchors.topMargin: 10
 
         Rectangle {
+            id: no;
+
             width: 50
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: "No."
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    no.scale = 0.9;
+                    pcap.md.sort_num();
+                }
+                onReleased: {
+                    no.scale = 1.0;
+                }
+            }
+
         }
         Rectangle {
+            id: source
+
             width: 150
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: "Source"
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    source.scale = 0.9;
+                    pcap.md.sort_src();
+                }
+                onReleased: {
+                    source.scale = 1.0;
+                }
+            }
+
         }
         Rectangle {
+            id: destinaion
+
             width: 150
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: "Destination"
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    destinaion.scale = 0.9;
+                    pcap.md.sort_dst();
+                }
+                onReleased: {
+                    destinaion.scale = 1.0;
+                }
+            }
+
         }
         Rectangle {
+            id: protocol
+
             width: 80
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: "Protocol"
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    protocol.scale = 0.9;
+                    pcap.md.sort_proto();
+                }
+                onReleased: {
+                    protocol.scale = 1.0;
+                }
+            }
+
         }
         Rectangle {
+            id: length
+
             width: 60
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
             Text {
                 anchors.centerIn: parent
                 text: "Length"
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    length.scale = 0.9;
+                    pcap.md.sort_len()
+                }
+                onReleased: {
+                    length.scale = 1.0;
+                }
+            }
         }
+
         Rectangle {
+            id: info
+
             width: 900
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
+
+            Behavior on scale {
+                NumberAnimation{
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: "Info"
             }
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: {
+                    info.scale = 0.9;
+                }
+                onReleased: {
+                    info.scale = 1.0;
+                }
+            }
         }
     }
+
+
 
     ListView {
         id: l_view
@@ -489,8 +622,8 @@ Item {
 
                     pcap.start_tree_md(l_view.currentIndex);
                     stk.push("PktView.qml",
-                         {dump_idx: l_view.currentIndex,
-                          pcap: pcap});
+                             {dump_idx: l_view.currentIndex,
+                                 pcap: pcap});
                 }
             }
         }

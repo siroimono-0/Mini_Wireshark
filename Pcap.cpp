@@ -16,6 +16,7 @@ Pcap::Pcap(QObject *parent): QObject{parent}
 Worker::Worker(QObject *parent): QObject{parent}
 {}
 
+
 void Worker::my_packet_handler( u_char *user,
                                const struct pcap_pkthdr *header,
                                const u_char * packet)
@@ -204,6 +205,7 @@ void Worker::my_packet_handler( u_char *user,
         qDebug() << "Err invo_2";
     }
 
+    return;
 }
 
 int  Worker::set_Capture()
@@ -313,7 +315,8 @@ Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
     this->set_wk_flag(true);
 
     this->md->reset();
-    vec_dump_file.clear();
+    this->vec_dump_file.clear();
+    this->vec_dump.clear();
 }
 
 Q_INVOKABLE void Pcap::stop_Th()
@@ -327,16 +330,11 @@ Q_INVOKABLE void Pcap::stop_Th()
     pcap_breakloop(this->wk_pp);
     this->set_stop_flag(true);
     this->set_wk_flag(false);
+    // this->vec_dump.clear();
+    // this->vec_dump_file.clear();
 
     qDebug() << "Stop";
-    if(this->stop_flag == true && this->wk_flag == false)
-    {
 
-    }
-    else if(this->stop_flag == false && this->wk_flag == true)
-    {
-
-    }
     return;
 }
 
@@ -365,6 +363,8 @@ Q_INVOKABLE void  Pcap::reset_md()
     if(wk_life == false)
     {
         md->reset();
+        this->vec_dump.clear();
+        this->vec_dump_file.clear();
     }
     else
     {
@@ -1065,7 +1065,99 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
         tcp_root->addChild(tcp_ack);
         //=============================================================
 
+        //=============================================================
+        int i_tcp_hLen = tcp_h->doff * 4;
+        QString qs_tcp_hLen =
+            QString("Header Length: %1").arg(QString::number(i_tcp_hLen));
+        TreeItem* tcp_hLen = new TreeItem(qs_tcp_hLen, tcp_root);
+        tcp_root->addChild(tcp_hLen);
+        //=============================================================
 
+        //=============================================================
+        uint16_t flags =
+            (tcp_h->cwr << 7) |
+            (tcp_h->ece << 6) |
+            (tcp_h->urg << 5) |
+            (tcp_h->ack << 4) |
+            (tcp_h->psh << 3) |
+            (tcp_h->rst << 2) |
+            (tcp_h->syn << 1) |
+            (tcp_h->fin);
+
+        QStringList list;
+        if (tcp_h->fin) list << "FIN";
+        if (tcp_h->syn) list << "SYN";
+        if (tcp_h->rst) list << "RST";
+        if (tcp_h->psh) list << "PSH";
+        if (tcp_h->ack) list << "ACK";
+        if (tcp_h->urg) list << "URG";
+        if (tcp_h->ece) list << "ECE";
+        if (tcp_h->cwr) list << "CWR";
+
+        QString flagNames = list.join(", ");
+
+        QString qs_flags = QString("Flags: 0x%1 (%2)")
+                               .arg(flags, 4, 16, QLatin1Char('0'))
+                               .arg(flagNames);
+
+        TreeItem* tcp_flag_root = new TreeItem(qs_flags, tcp_root);
+        tcp_root->addChild(tcp_flag_root);
+
+        QString qs_res1 = (tcp_h->res1)
+                              ? QString("Reserved: Set (%1)").arg(tcp_h->res1)
+                              : QString("Reserved: Not set");
+
+        QString qs_cwr = (tcp_h->cwr)
+            ? "Congestion Window Reduced (CWR): Set"
+                             : "Congestion Window Reduced (CWR): Not set";
+
+        QString qs_ece = (tcp_h->ece)
+            ? "ECN Echo (ECE): Set"
+                             : "ECN Echo (ECE): Not set";
+
+        QString qs_urg = (tcp_h->urg)
+            ? "Urgent (URG): Set"
+                             : "Urgent (URG): Not set";
+
+        QString qs_ack = (tcp_h->ack)
+            ? "Acknowledgment (ACK): Set"
+                             : "Acknowledgment (ACK): Not set";
+
+        QString qs_psh = (tcp_h->psh)
+            ? "Push (PSH): Set"
+                             : "Push (PSH): Not set";
+
+        QString qs_rst = (tcp_h->rst)
+            ? "Reset (RST): Set"
+                             : "Reset (RST): Not set";
+
+        QString qs_syn = (tcp_h->syn)
+            ? "Syn (SYN): Set"
+                             : "Syn (SYN): Not set";
+
+        QString qs_fin = (tcp_h->fin)
+            ? "Fin (FIN): Set"
+                             : "Fin (FIN): Not set";
+
+        tcp_flag_root->addChild(new TreeItem(qs_res1, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_cwr, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_ece, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_urg, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_ack, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_psh, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_rst, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_syn, tcp_flag_root));
+        tcp_flag_root->addChild(new TreeItem(qs_fin, tcp_flag_root));
+        //=============================================================
+
+        //=============================================================
+        QString qs_win =
+            QString("Window: %1").arg(ntohs(tcp_h->window));
+        TreeItem* tcp_win = new TreeItem(qs_win, tcp_root);
+
+        tcp_root->addChild(tcp_win);
+        //=============================================================
+        //=============================================================
     }
     else if(proto == 17)
     {
@@ -1093,6 +1185,7 @@ QString Pcap::macToString(const u_char* mac)
 uint16_t Pcap::compute_ip_checksum(const uint8_t* data, int header_len)
 {
     uint32_t sum = 0;
+    int i = 0;
 
     // 16비트씩 더함
     for(int i = 0; i < header_len; i += 2)

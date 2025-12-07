@@ -83,3 +83,194 @@ void Capture::reset()
     endResetModel();
     return;
 }
+
+Q_INVOKABLE void Capture::sort_num()
+{
+    std::sort(this->vec.begin(), this->vec.end(),
+              [&] (st_pkt pkt_1, st_pkt pkt_2){
+        if(this->num_flag == false)
+        {
+            return pkt_1.num > pkt_2.num;
+        }
+        else
+        {
+            return pkt_1.num < pkt_2.num;
+        }
+    });
+
+    if(num_flag == true) {
+        num_flag = false;
+    }
+    else
+    {
+        num_flag = true;
+    }
+
+
+    beginResetModel();
+    endResetModel();
+    return;
+}
+
+Q_INVOKABLE void Capture::sort_src()
+{
+    paser_and_sort(SRC);
+}
+
+Q_INVOKABLE void  Capture::sort_dst()
+{
+    paser_and_sort(DST);
+}
+
+void Capture::paser_and_sort(int target)
+{
+    if(target == SRC)
+    {
+        std::sort(this->vec.begin(), this->vec.end(),
+                  [&] (st_pkt pkt_1, st_pkt pkt_2){
+            QString qs_1 = pkt_1.src;
+            QString qs_2 = pkt_2.src;
+            QStringList qs_1_arr = qs_1.split(".");
+            QStringList qs_2_arr = qs_2.split(".");
+
+            if(this->src_flag == false)
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    if(qs_1_arr[i].toInt() != qs_2_arr[i].toInt())
+                    {
+                        return qs_1_arr[i].toInt() > qs_2_arr[i].toInt();
+                    }
+                }
+            }
+            else
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    if(qs_1_arr[i].toInt() != qs_2_arr[i].toInt())
+                    {
+                        return qs_1_arr[i].toInt() < qs_2_arr[i].toInt();
+                    }
+                }
+            }
+            return false;
+        });
+        if(src_flag == true)
+        {
+            src_flag = false;
+        }
+        else
+        {
+            src_flag = true;
+        }
+    }
+    else if(target == DST)
+    {
+        std::sort(this->vec.begin(), this->vec.end(),
+                  [&] (st_pkt pkt_1, st_pkt pkt_2){
+            QString qs_1 = pkt_1.dst;
+            QString qs_2 = pkt_2.dst;
+            QStringList qs_1_arr = qs_1.split(".");
+            QStringList qs_2_arr = qs_2.split(".");
+
+            if(this->dst_flag == false)
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    if(qs_1_arr[i].toInt() != qs_2_arr[i].toInt())
+                    {
+                        return qs_1_arr[i].toInt() > qs_2_arr[i].toInt();
+                    }
+                }
+            }
+            else
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    if(qs_1_arr[i].toInt() != qs_2_arr[i].toInt())
+                    {
+                        return qs_1_arr[i].toInt() < qs_2_arr[i].toInt();
+                    }
+                }
+            }
+            return false;
+        });
+        if(dst_flag == true)
+        {
+            dst_flag = false;
+        }
+        else
+        {
+            dst_flag = true;
+        }
+    }
+
+    beginResetModel();
+    endResetModel();
+    return;
+}
+
+Q_INVOKABLE void Capture::sort_proto()
+{
+    this->proto_num = (this->proto_num + 1) % 3;
+
+    std::sort(this->vec.begin(), this->vec.end(),
+              [&] (st_pkt pkt_1, st_pkt pkt_2){
+
+        int proto_1 = get_proto_num(pkt_1.proto);
+        int proto_2 = get_proto_num(pkt_2.proto);
+
+        proto_1 = (proto_1 + 3 - this->proto_num) % 3;
+        proto_2 = (proto_2 + 3 - this->proto_num) % 3;
+
+        return  proto_1 < proto_2;
+    });
+
+    beginResetModel();
+    endResetModel();
+    return;
+}
+
+int Capture::get_proto_num(QString qs)
+{
+    if(qs == "TCP")
+    {
+        return 0;
+    }
+    else if(qs == "UDP")
+    {
+        return 1;
+    }
+    else if(qs == "ICMP")
+    {
+        return 2;
+    }
+    return 0;
+}
+
+Q_INVOKABLE void Capture::sort_len()
+{
+    if(this->len_flag == false)
+    {
+        this->len_flag = true;
+        std::sort(this->vec.begin(), this->vec.end(),
+                  [&] (st_pkt pkt_1, st_pkt pkt_2){
+
+            return pkt_1.len < pkt_2.len;
+        });
+    }
+    else
+    {
+        this->len_flag = false;
+        std::sort(this->vec.begin(), this->vec.end(),
+                  [&] (st_pkt pkt_1, st_pkt pkt_2){
+
+            return pkt_1.len > pkt_2.len;
+        });
+    }
+
+    beginResetModel();
+    endResetModel();
+    return;
+}
+

@@ -9,6 +9,7 @@
 #include <net/ethernet.h>   // struct ether_header
 #include <netinet/if_ether.h>
 #include <netinet/ip.h>
+#include <algorithm>
 //==============================Cpp==============================
 
 
@@ -17,6 +18,11 @@ class Capture  : public QAbstractListModel
     Q_OBJECT
 
 public:
+
+    enum TARGET{
+        SRC = 1,
+        DST = 2
+    };
 
     //==============================Default==============================
     // QML에서 접근할 "역할(role)" 이름 정의
@@ -42,8 +48,16 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     //==============================Default==============================
 
+    Q_INVOKABLE void sort_num();
+    Q_INVOKABLE void sort_src();
+    Q_INVOKABLE void sort_dst();
+    Q_INVOKABLE void sort_proto();
+    Q_INVOKABLE void sort_len();
+
     void update_md(st_pkt& pkt);
     void reset();
+    void paser_and_sort(int target);
+    int get_proto_num(QString qs);
 
 public slots:
 
@@ -51,6 +65,14 @@ private:
     QVector<st_pkt> vec;
     pcap_t* pp = nullptr;
     int num = 0;
+
+    bool num_flag = false;
+    bool src_flag = false;
+    bool dst_flag = false;
+    bool proto_flag = false;
+    bool len_flag = false;
+
+    int proto_num = 0;
 
 signals:
 };

@@ -18,7 +18,39 @@
                         ]
                     }
                 ],
-                "lineNumber": 15,
+                "lineNumber": 16,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "name": "sort_num",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "name": "sort_src",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "name": "sort_dst",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "name": "sort_proto",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "name": "sort_len",
+                        "returnType": "void"
+                    }
+                ],
                 "object": true,
                 "qualifiedClassName": "Capture",
                 "superClasses": [

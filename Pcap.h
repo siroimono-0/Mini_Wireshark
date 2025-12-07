@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE void start_tree_md(int idx);
     QString macToString(const u_char* mac);
     uint16_t compute_ip_checksum(const uint8_t* data, int header_len);
+
     //========================================================================
     Capture* get_md();
     void update_md(st_pkt pkt);
