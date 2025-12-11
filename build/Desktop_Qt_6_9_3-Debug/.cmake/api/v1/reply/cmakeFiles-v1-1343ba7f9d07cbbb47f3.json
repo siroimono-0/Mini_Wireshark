@@ -7782,8 +7782,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
-		"source" : "/home/gray/Mini_Wireshark"
+		"build" : "/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
+		"source" : "/home/gray/gray/git_shark/Mini_Wireshark"
 	},
 	"version" : 
 	{

@@ -105,7 +105,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appMini_Wireshark::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appMini_Wireshark-Debug-30d17ec56df69049550a.json",
+					"jsonFile" : "target-appMini_Wireshark-Debug-6e6787bc0464389f9dbd.json",
 					"name" : "appMini_Wireshark",
 					"projectIndex" : 0
 				},
@@ -185,8 +185,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
-		"source" : "/home/gray/Mini_Wireshark"
+		"build" : "/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug",
+		"source" : "/home/gray/gray/git_shark/Mini_Wireshark"
 	},
 	"version" : 
 	{

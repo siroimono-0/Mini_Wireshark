@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 12,
-                        "durationMicroseconds": 102,
+                        "durationMicroseconds": 98,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "width",
                         "line": 8
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 13,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 56,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "height",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 28,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 33,
                         "errorMessage": "",
                         "functionName": "onCompleted",
                         "line": 15
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 72,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 20
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 54,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 22
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 55,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 24
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 48,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 26
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 30,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 35
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 31,
-                        "durationMicroseconds": 16,
+                        "durationMicroseconds": 15,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 48
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 52,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 66
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 50,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 68
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 108,
+                        "durationMicroseconds": 104,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "onPressed",
                         "line": 74
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 30,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 73
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 41,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 86
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 27,
+                        "durationMicroseconds": 26,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
                         "line": 111
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 17,
+                        "durationMicroseconds": 16,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
                         "line": 129
@@ -244,7 +244,7 @@
                         "line": 147
                     }
                 ],
-                "filePath": "/home/gray/Mini_Wireshark/PktView.qml"
+                "filePath": "/home/gray/gray/git_shark/Mini_Wireshark/PktView.qml"
             }
         ],
         "moduleId": "Mini_Wireshark(appMini_Wireshark)"

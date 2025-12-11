@@ -192,6 +192,7 @@ void Worker::my_packet_handler( u_char *user,
     dump_data st_dump = {};
     st_dump.data = qba;
     st_dump.header = *header;
+    st_dump.pkt_num = pkt.num;
 
     bool ret_invo_2 =
         QMetaObject::invokeMethod(p_this->p_Pcap,
@@ -634,10 +635,29 @@ void Pcap::set_wk_flag (bool set)
 QString Pcap::start_hax(int idx)
 {
     dump_data d_data;
-    if (vec_dump_file.empty())
-        d_data = vec_dump.at(idx);
+
+    if(!this->vec_dump_file.empty())
+    {
+        for(auto& v : this->vec_dump_file)
+        {
+            if(v.pkt_num == idx)
+            {
+                d_data = v;
+            }
+        }
+    }
     else
-        d_data = vec_dump_file.at(idx);
+    {
+        for(auto& v : this->vec_dump)
+        {
+            if(v.pkt_num == idx)
+            {
+                d_data = v;
+            }
+        }
+    }
+
+
 
     int len = d_data.header.caplen;
     const u_char* data = (const u_char*)d_data.data.constData();
@@ -699,11 +719,23 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     dump_data data;
     if(!this->vec_dump_file.empty())
     {
-        data = this->vec_dump_file.at(idx);
+        for(auto& v : this->vec_dump_file)
+        {
+            if(v.pkt_num == idx)
+            {
+                data = v;
+            }
+        }
     }
     else
     {
-        data = this->vec_dump.at(idx);
+        for(auto& v : this->vec_dump)
+        {
+            if(v.pkt_num == idx)
+            {
+                data = v;
+            }
+        }
     }
 
     //==============================Ether==============================
@@ -1076,13 +1108,13 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
         //=============================================================
         uint16_t flags =
             (tcp_h->cwr << 7) |
-            (tcp_h->ece << 6) |
-            (tcp_h->urg << 5) |
-            (tcp_h->ack << 4) |
-            (tcp_h->psh << 3) |
-            (tcp_h->rst << 2) |
-            (tcp_h->syn << 1) |
-            (tcp_h->fin);
+                         (tcp_h->ece << 6) |
+                         (tcp_h->urg << 5) |
+                         (tcp_h->ack << 4) |
+                         (tcp_h->psh << 3) |
+                         (tcp_h->rst << 2) |
+                         (tcp_h->syn << 1) |
+                         (tcp_h->fin);
 
         QStringList list;
         if (tcp_h->fin) list << "FIN";
@@ -1104,39 +1136,39 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
         tcp_root->addChild(tcp_flag_root);
 
         QString qs_res1 = (tcp_h->res1)
-                              ? QString("Reserved: Set (%1)").arg(tcp_h->res1)
+            ? QString("Reserved: Set (%1)").arg(tcp_h->res1)
                               : QString("Reserved: Not set");
 
         QString qs_cwr = (tcp_h->cwr)
-            ? "Congestion Window Reduced (CWR): Set"
+                             ? "Congestion Window Reduced (CWR): Set"
                              : "Congestion Window Reduced (CWR): Not set";
 
         QString qs_ece = (tcp_h->ece)
-            ? "ECN Echo (ECE): Set"
+                             ? "ECN Echo (ECE): Set"
                              : "ECN Echo (ECE): Not set";
 
         QString qs_urg = (tcp_h->urg)
-            ? "Urgent (URG): Set"
+                             ? "Urgent (URG): Set"
                              : "Urgent (URG): Not set";
 
         QString qs_ack = (tcp_h->ack)
-            ? "Acknowledgment (ACK): Set"
+                             ? "Acknowledgment (ACK): Set"
                              : "Acknowledgment (ACK): Not set";
 
         QString qs_psh = (tcp_h->psh)
-            ? "Push (PSH): Set"
+                             ? "Push (PSH): Set"
                              : "Push (PSH): Not set";
 
         QString qs_rst = (tcp_h->rst)
-            ? "Reset (RST): Set"
+                             ? "Reset (RST): Set"
                              : "Reset (RST): Not set";
 
         QString qs_syn = (tcp_h->syn)
-            ? "Syn (SYN): Set"
+                             ? "Syn (SYN): Set"
                              : "Syn (SYN): Not set";
 
         QString qs_fin = (tcp_h->fin)
-            ? "Fin (FIN): Set"
+                             ? "Fin (FIN): Set"
                              : "Fin (FIN): Not set";
 
         tcp_flag_root->addChild(new TreeItem(qs_res1, tcp_flag_root));

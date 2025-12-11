@@ -1,6 +1,6 @@
 <RCC>
   <qresource prefix="/qt/qml/Mini_Wireshark">
-    <file alias="qmldir">/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/qmldir</file>
+    <file alias="qmldir">/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/Mini_Wireshark/qmldir</file>
   </qresource>
 </RCC>
 

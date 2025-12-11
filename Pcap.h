@@ -17,6 +17,7 @@
 
 typedef struct dump_data
 {
+    int pkt_num;
     pcap_pkthdr header;
     QByteArray data;
 

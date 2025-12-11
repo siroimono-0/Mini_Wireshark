@@ -620,9 +620,9 @@ Item {
                         return;
                     }
 
-                    pcap.start_tree_md(l_view.currentIndex);
+                    pcap.start_tree_md(model.number);
                     stk.push("PktView.qml",
-                             {dump_idx: l_view.currentIndex,
+                             {dump_idx: model.number,
                                  pcap: pcap});
                 }
             }

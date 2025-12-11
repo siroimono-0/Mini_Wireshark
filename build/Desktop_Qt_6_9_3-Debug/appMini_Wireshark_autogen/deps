@@ -1,24 +1,4 @@
 appMini_Wireshark_autogen/timestamp: \
-	/home/gray/Mini_Wireshark/CMakeLists.txt \
-	/home/gray/Mini_Wireshark/Capture.cpp \
-	/home/gray/Mini_Wireshark/Capture.h \
-	/home/gray/Mini_Wireshark/NicList.cpp \
-	/home/gray/Mini_Wireshark/NicList.h \
-	/home/gray/Mini_Wireshark/Pcap.cpp \
-	/home/gray/Mini_Wireshark/Pcap.h \
-	/home/gray/Mini_Wireshark/Struct_in.h \
-	/home/gray/Mini_Wireshark/Support.h \
-	/home/gray/Mini_Wireshark/TreeItem.cpp \
-	/home/gray/Mini_Wireshark/TreeItem.h \
-	/home/gray/Mini_Wireshark/TreeModel.cpp \
-	/home/gray/Mini_Wireshark/TreeModel.h \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/qml_imports/appMini_Wireshark_conf.cmake \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/auto-setup.cmake \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
-	/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
-	/home/gray/Mini_Wireshark/main.cpp \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractItemModel \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel \
 	/home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
@@ -1153,6 +1133,26 @@ appMini_Wireshark_autogen/timestamp: \
 	/home/gray/Qt/Tools/CMake/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake \
 	/home/gray/Qt/Tools/CMake/share/cmake-3.30/Modules/Platform/Linux.cmake \
 	/home/gray/Qt/Tools/CMake/share/cmake-3.30/Modules/Platform/UnixPaths.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/CMakeLists.txt \
+	/home/gray/gray/git_shark/Mini_Wireshark/Capture.cpp \
+	/home/gray/gray/git_shark/Mini_Wireshark/Capture.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/NicList.cpp \
+	/home/gray/gray/git_shark/Mini_Wireshark/NicList.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/Pcap.cpp \
+	/home/gray/gray/git_shark/Mini_Wireshark/Pcap.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/Struct_in.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/Support.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/TreeItem.cpp \
+	/home/gray/gray/git_shark/Mini_Wireshark/TreeItem.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/TreeModel.cpp \
+	/home/gray/gray/git_shark/Mini_Wireshark/TreeModel.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/qml_imports/appMini_Wireshark_conf.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/auto-setup.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qtc/package-manager/maintenance_tool_provider.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
+	/home/gray/gray/git_shark/Mini_Wireshark/main.cpp \
 	/usr/include/alloca.h \
 	/usr/include/arpa/inet.h \
 	/usr/include/asm-generic/bitsperlong.h \

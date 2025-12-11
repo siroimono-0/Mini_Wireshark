@@ -1,6 +1,5 @@
-/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/EWIEGA46WW/moc_Capture.cpp: /home/gray/Mini_Wireshark/Capture.h \
-  /home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
-  /home/gray/Mini_Wireshark/Struct_in.h \
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/EWIEGA46WW/moc_Capture.cpp: /home/gray/gray/git_shark/Mini_Wireshark/Capture.h \
+  /home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QThread \
@@ -126,6 +125,7 @@
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qversiontagging.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qxptype_traits.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/qyieldcpu.h \
+  /home/gray/gray/git_shark/Mini_Wireshark/Struct_in.h \
   /usr/include/alloca.h \
   /usr/include/arpa/inet.h \
   /usr/include/asm-generic/bitsperlong.h \

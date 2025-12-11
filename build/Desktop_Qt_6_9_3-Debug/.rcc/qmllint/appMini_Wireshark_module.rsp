@@ -1,10 +1,10 @@
 -I
-/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug
 -I
 /home/gray/Qt/6.9.3/gcc_64/qml
 --resource
-/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/qmake_Mini_Wireshark.qrc
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/qmake_Mini_Wireshark.qrc
 --resource
-/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0.qrc
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0.qrc
 --module
 Mini_Wireshark

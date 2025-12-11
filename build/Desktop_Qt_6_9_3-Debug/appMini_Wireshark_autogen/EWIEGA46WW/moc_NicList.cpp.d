@@ -1,5 +1,5 @@
-/home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/EWIEGA46WW/moc_NicList.cpp: /home/gray/Mini_Wireshark/NicList.h \
-  /home/gray/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/EWIEGA46WW/moc_NicList.cpp: /home/gray/gray/git_shark/Mini_Wireshark/NicList.h \
+  /home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark_autogen/moc_predefs.h \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QAbstractListModel \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/QObject \
   /home/gray/Qt/6.9.3/gcc_64/include/QtCore/q17memory.h \
