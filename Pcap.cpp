@@ -1193,9 +1193,72 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
     else if(proto == 17)
     {
+        udp_H* udp_h = (udp_H*)(pkt + e_h_size + (ip_h->ihl * 4));
+        QString qs_udp_src = QString::number(ntohs(udp_h->source));
+        QString qs_udp_dst = QString::number(ntohs(udp_h->dest));
+
+        QString qs_udp_root =
+            QString("User Datagram Protocol, Src Prot: %1,    "
+                    "Dst Port: %2").arg(qs_udp_src).arg(qs_udp_dst);
+
+        TreeItem* udp_root = new TreeItem(qs_udp_root, root);
+        root->addChild(udp_root);
+
+        QString qs_udp_src_ch =
+            QString("Source Port: %1").arg(qs_udp_src);
+        TreeItem* udp_src = new TreeItem(qs_udp_src_ch, udp_root);
+        udp_root->addChild(udp_src);
+
+        QString qs_udp_dst_ch =
+            QString("Destination Port: %1").arg(qs_udp_dst);
+        TreeItem* udp_dst = new TreeItem(qs_udp_dst_ch, udp_root);
+        udp_root->addChild(udp_dst);
+
+        QString qs_udp_len = QString::number(ntohs(udp_h->len));
+        QString qs_udp_len_ch =
+            QString("Length: %1").arg(qs_udp_len);
+        TreeItem* udp_len = new TreeItem(qs_udp_len_ch, udp_root);
+        udp_root->addChild(udp_len);
+
     }
     else if(proto == 1)
     {
+        icmp_H* icmp_h = (icmp_H*)(pkt + e_h_size + (ip_h->ihl * 4));
+
+         QString qs_icmp_root =
+            QString("Internet Control Message Protocol");
+        TreeItem* icmp_root = new TreeItem(qs_icmp_root, root);
+         root->addChild(icmp_root);
+
+        QString qs_icmp_type = "";
+        int icmp_type = icmp_h->type;
+        if(icmp_type == 0)
+        {
+            qs_icmp_type = "Echo Reply";
+        }
+        else if(icmp_type == 3)
+        {
+            qs_icmp_type = "Destination Unreachable";
+        }
+        else if(icmp_type == 5)
+        {
+            qs_icmp_type = "Redirect";
+        }
+        else if(icmp_type == 8)
+        {
+            qs_icmp_type = "Echo Request";
+        }
+        else if(icmp_type == 11)
+        {
+            qs_icmp_type = "Time Exceeded";
+        }
+        TreeItem* icmp_type_ch = new TreeItem(qs_icmp_type, icmp_root);
+        icmp_root->addChild(icmp_type_ch);
+
+
+        QString qs_icmp_code = QString("code: %1").arg(QString::number(icmp_h->code));
+        TreeItem* icmp_code = new TreeItem(qs_icmp_code, root);
+        icmp_root->addChild(icmp_code);
     }
 
 

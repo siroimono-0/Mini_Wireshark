@@ -564,7 +564,7 @@ Item {
         delegate: Rectangle {
             width: l_view.width - 20
             height: 30
-            color: ListView.isCurrentItem ? "#D0E8FF" : "#FAFAFA"
+            color: get_color();
             border.color: ListView.isCurrentItem ? "#2196F3" : "#404040"
             border.width:ListView.isCurrentItem ? 2 : 1
             radius: 5
@@ -624,6 +624,28 @@ Item {
                     stk.push("PktView.qml",
                              {dump_idx: model.number,
                                  pcap: pcap});
+                }
+            }
+
+            function get_color(){
+
+                let proto = model.protocol
+
+                if(ListView.isCurrentItem)
+                {
+                    return "#D0E8FF";
+                }
+                else if(proto === "TCP")
+                {
+                    return "#E7FBEA";
+                }
+                else if(proto === "UDP")
+                {
+                    return "#E6F3FF";
+                }
+                else if(proto === "ICMP")
+                {
+                    return "#FFE6F2";
                 }
             }
         }
