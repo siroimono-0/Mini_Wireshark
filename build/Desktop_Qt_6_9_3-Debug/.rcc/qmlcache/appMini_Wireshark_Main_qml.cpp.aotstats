@@ -5,7 +5,7 @@
                 "entries": [
                     {
                         "codegenSuccessful": false,
-                        "column": 23,
+                        "column": 27,
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find property \"fill\".",
                         "functionName": "fill",

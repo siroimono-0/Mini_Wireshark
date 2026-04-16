@@ -2,7 +2,11 @@
 /home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/qmake_Mini_Wireshark.qrc
 --resource
 /home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0.qrc
+--resource
+/home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/.qt/rcc/appMini_Wireshark_raw_qml_0_extra_qmldirs.qrc
 /qt/qml/Mini_Wireshark/Main.qml
 /qt/qml/Mini_Wireshark/NicListView.qml
 /qt/qml/Mini_Wireshark/CaptureView.qml
 /qt/qml/Mini_Wireshark/PktView.qml
+/qt/qml/Mini_Wireshark/TEST.qml
+/qt/qml/Mini_Wireshark/Qml_Module/Rec_icon.qml

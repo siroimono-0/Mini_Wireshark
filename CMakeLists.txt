@@ -8,6 +8,7 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 COMPONENTS Sql REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PCAP REQUIRED libpcap)
@@ -26,6 +27,8 @@ qt_add_qml_module(appMini_Wireshark
         NicListView.qml
         CaptureView.qml
         PktView.qml
+        TEST.qml
+        Qml_Module/Rec_icon.qml
 
     SOURCES
         NicList.h
@@ -40,6 +43,7 @@ qt_add_qml_module(appMini_Wireshark
         TreeItem.cpp
         TreeModel.h
         TreeModel.cpp
+        Open_List.h Open_List.cpp
 
     RESOURCES
         img/mini.png
@@ -51,6 +55,15 @@ qt_add_qml_module(appMini_Wireshark
         img/save.png
         img/save_gray.png
         img/pkt_back.png
+        img/wireshark_it_security_neon_white.svg
+        img/start_.svg
+        img/start_gray.svg
+        img/stop_new.svg
+        img/stop_new_gray.svg
+        img/back_new.svg
+        img/reset_new.svg
+        img/save_new.svg
+        img/save_new_gray.svg
 
 )
 
@@ -75,6 +88,7 @@ target_link_libraries(appMini_Wireshark
 )
 target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
 target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
+target_link_libraries(appMini_Wireshark PRIVATE Qt6::Sql)
 target_link_libraries(appMini_Wireshark PRIVATE Qt6::Core)
 include_directories(${PCAP_INCLUDE_DIRS})
 

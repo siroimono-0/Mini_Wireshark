@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Effects
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
@@ -58,15 +59,15 @@ Item {
 
     Image {
         id: img_back
-        source: "img/pkt_back.png"
+        source: "img/back_new.svg"
 
         width: 100
-        height: 80
+        height: 100
 
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: 20
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: 20
 
         MouseArea {
             id: img_back_m
@@ -77,6 +78,33 @@ Item {
             }
             onReleased: {
                 img_back.scale = 1.0
+            }
+        }
+
+        Rectangle{
+            id:  img_back_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 

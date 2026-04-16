@@ -79,7 +79,7 @@
                         ]
                     }
                 ],
-                "lineNumber": 11,
+                "lineNumber": 17,
                 "methods": [
                     {
                         "access": "public",
@@ -118,6 +118,48 @@
             }
         ],
         "inputFile": "NicList.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "Open_List",
+                "enums": [
+                    {
+                        "isClass": false,
+                        "isFlag": false,
+                        "name": "Role",
+                        "values": [
+                            "pathRole"
+                        ]
+                    }
+                ],
+                "lineNumber": 16,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "name": "add_db",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "Open_List",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QAbstractListModel"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "Open_List.h",
         "outputRevision": 69
     },
     {

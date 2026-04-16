@@ -3,6 +3,12 @@
 
 #include <QObject>
 #include <QAbstractListModel>
+#include <QCoreApplication>
+#include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QNetworkInterface>
+#include <QtSql>
 
 //==============================Cpp==============================
 #include <pcap.h>
@@ -51,6 +57,8 @@ public slots:
 
 private:
     QVector<std::pair<QString, int>> vec;
+
+
 
 signals:
 };

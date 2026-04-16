@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- lock shackle -->
+  <path d="M199 143
+           C199 82, 225 58, 256 58
+           C287 58, 313 82, 313 118
+           L313 143"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="16"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- lock body -->
+  <rect x="166" y="140" width="180" height="138" rx="18" ry="18"
+        fill="#ffffff"
+        fill-opacity="0.07"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <!-- keyhole -->
+  <path d="M256 177
+           C236 177, 222 191, 222 209
+           C222 222, 230 233, 242 238
+           L232 272
+           Q230 279 236 279
+           L276 279
+           Q282 279 280 272
+           L270 238
+           C282 233, 290 222, 290 209
+           C290 191, 276 177, 256 177 Z"
+        fill="#ffffff"
+        opacity="0.92"/>
+
+  <!-- wireshark fin line -->
+  <path d="M82 360 H230
+           C232 343, 236 331, 243 321
+           C249 313, 257 308, 267 307
+           C261 316, 258 330, 258 348
+           C258 354, 259 358, 262 360
+           H430"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- main title -->
+  <text x="256" y="418"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-family="Arial"
+        font-size="58"
+        font-weight="300"
+        letter-spacing="-1">
+    WIRESHARK
+  </text>
+
+  <!-- subtitle -->
+  <text x="256" y="468"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-family="Arial"
+        font-size="32"
+        font-weight="500">
+    IT Security
+  </text>
+</svg>

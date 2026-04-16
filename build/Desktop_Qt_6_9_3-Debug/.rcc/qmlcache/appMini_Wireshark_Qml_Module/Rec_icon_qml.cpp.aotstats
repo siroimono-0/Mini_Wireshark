@@ -1,0 +1,44 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessful": true,
+                        "column": 23,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 17,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 19,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessful": true,
+                        "column": 23,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 32
+                    }
+                ],
+                "filePath": "/home/gray/gray/git_shark/Mini_Wireshark/Qml_Module/Rec_icon.qml"
+            }
+        ],
+        "moduleId": "Mini_Wireshark(appMini_Wireshark)"
+    }
+]

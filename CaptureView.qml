@@ -1,9 +1,9 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Effects
 import QtQuick.Dialogs
 import Mini_Wireshark 1.0
 
-// ← 정확히 이거
 Item {
     id: root
     width: stk.width
@@ -26,8 +26,8 @@ Item {
         height: 100
 
         source: capture_animation.isCapturing
-                ? "img/mini_gray.png"
-                : "img/mini.png"
+                ? "img/start_gray.svg"
+                : "img/start_.svg"
 
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -41,6 +41,7 @@ Item {
             enabled: !capture_animation.isCapturing;
             onPressed: {
                 img_shark.scale = 0.9
+                img_shark_border.scale = 0.9
                 pcap.create_Th(nicName, filter_tf.text)
                 filter_tf.clear()
 
@@ -50,6 +51,33 @@ Item {
             }
             onReleased: {
                 img_shark.scale = 1.0
+                img_shark_border.scale = 1.0
+            }
+        }
+
+        Rectangle{
+            id:img_shark_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 
@@ -68,8 +96,8 @@ Item {
         height: 100
 
         source: capture_animation.isCapturing
-                ? "img/stop.png"
-                : "img/stop_gray"
+                ? "img/stop_new.svg"
+                : "img/stop_new_gray.svg"
 
 
         anchors.left: img_shark.right
@@ -85,6 +113,7 @@ Item {
 
             onPressed: {
                 img_stop.scale = 0.9
+                img_stop_border.scale = 0.9
                 pcap.stop_Th()
                 // 애니메이션 정지
                 capture_animation.isCapturing = false
@@ -93,6 +122,33 @@ Item {
             }
             onReleased: {
                 img_stop.scale = 1.0
+                img_stop_border.scale = 1.0
+            }
+        }
+
+        Rectangle{
+            id: img_stop_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 
@@ -106,7 +162,7 @@ Item {
 
     Image {
         id: img_reset
-        source: "img/reset.png"
+        source: "img/reset_new.svg"
 
         width: 100
         height: 100
@@ -121,10 +177,38 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_reset.scale = 0.9
+                img_reset_border.scale = 0.9;
                 pcap.reset_md()
             }
             onReleased: {
                 img_reset.scale = 1.0
+                img_reset_border.scale = 1.0;
+            }
+        }
+
+        Rectangle{
+            id:  img_reset_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 
@@ -144,10 +228,10 @@ Item {
         {
             if(pcap.stop_flag === true && pcap.wk_flag === false)
             {
-                return "img/save.png"
+                return "img/save_new.svg"
             }
             else             {
-                return "img/save_gray.png"
+                return "img/save_new_gray.svg"
             }
         }
 
@@ -178,10 +262,38 @@ Item {
 
             onPressed: {
                 img_save.scale = 0.9
+                img_save_border.scale = 0.9
                 saveDia.open();
             }
             onReleased: {
                 img_save.scale = 1.0
+                img_save_border.scale = 1.0
+            }
+        }
+
+        Rectangle{
+            id:   img_save_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 
@@ -287,7 +399,7 @@ Item {
 
     Image {
         id: img_back
-        source: "img/back.png"
+        source: "img/back_new.svg"
 
         width: 100
         height: 100
@@ -302,12 +414,41 @@ Item {
             anchors.fill: parent
             onPressed: {
                 img_back.scale = 0.9
+                img_back_border.scale = 0.9
                 pcap.stop_Th();
                 pcap.reset_md();
                 stk.pop()
             }
             onReleased: {
                 img_back.scale = 1.0
+                img_back_border.scale = 1.0
+            }
+        }
+
+        Rectangle{
+            id:  img_back_border
+            color: "transparent"
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.fill: parent
+            anchors.margins: -2
+
+            layer.enabled: true
+
+            layer.effect: MultiEffect{
+                shadowEnabled: true;
+                shadowBlur: 1
+                shadowColor: "#FFFFFF"
+                shadowOpacity: 1
+                shadowVerticalOffset: 0
+                shadowHorizontalOffset: 0
+            }
+
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 80
+                    easing.type: Easing.InOutQuad
+                }
             }
         }
 

@@ -136,6 +136,7 @@ signals:
     void sig_wk_flag();
 
 };
+Q_DECLARE_METATYPE(Pcap*)
 
 #endif // PCAP_H
 

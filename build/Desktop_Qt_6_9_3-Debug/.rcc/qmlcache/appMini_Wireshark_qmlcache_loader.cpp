@@ -33,6 +33,20 @@ namespace _qt_qml_Mini_Wireshark_PktView_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_Mini_Wireshark_TEST_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_Mini_Wireshark_Qml_Module_Rec_icon_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 
 }
 namespace {
@@ -51,6 +65,8 @@ Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/Mini_Wireshark/NicListView.qml"), &QmlCacheGeneratedCode::_qt_qml_Mini_Wireshark_NicListView_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/Mini_Wireshark/CaptureView.qml"), &QmlCacheGeneratedCode::_qt_qml_Mini_Wireshark_CaptureView_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/Mini_Wireshark/PktView.qml"), &QmlCacheGeneratedCode::_qt_qml_Mini_Wireshark_PktView_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/Mini_Wireshark/TEST.qml"), &QmlCacheGeneratedCode::_qt_qml_Mini_Wireshark_TEST_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/Mini_Wireshark/Qml_Module/Rec_icon.qml"), &QmlCacheGeneratedCode::_qt_qml_Mini_Wireshark_Qml_Module_Rec_icon_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.structVersion = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

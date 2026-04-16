@@ -110,3 +110,6 @@ Q_INVOKABLE QString NicList::get_FirstNic()
 {
     return this->vec.at(0).first;
 }
+
+
+
