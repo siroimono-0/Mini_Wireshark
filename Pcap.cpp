@@ -4,40 +4,88 @@
 
 using namespace std;
 
-Pcap::Pcap(QObject *parent): QObject{parent}
+Pcap::Pcap(QObject *parent) : QObject{parent}
 {
     this->md = new Capture(this);
     this->tree_md = new TreeModel(this);
 }
 
-
 //=============================================================================
 //=============================================================================
-Worker::Worker(QObject *parent): QObject{parent}
-{}
-
-
-void Worker::my_packet_handler( u_char *user,
-                               const struct pcap_pkthdr *header,
-                               const u_char * packet)
+Worker::Worker(QObject *parent) : QObject{parent}
 {
-    Worker* p_this = (Worker *) user;
+}
+
+void Worker::my_packet_handler(u_char *user,
+                               const struct pcap_pkthdr *header,
+                               const u_char *packet)
+{
+    Worker *p_this = (Worker *)user;
     st_pkt pkt = {0};
 
+    /*
    e_H* e_header = (e_H*)packet;
     if (ntohs(e_header->ether_type) != 0x0800) {
         return; // IPv4 아니면 무시
     }
 
     ip_H* ip_header = (ip_H*)(packet + sizeof(e_H));
-
-
-    if(ip_header->protocol == 6)
+    */
+    if (header->caplen < sizeof(e_H))
     {
+        return;
+    }
+
+    e_H *e_header = (e_H *)packet;
+
+    if (ntohs(e_header->ether_type) != 0x0800)
+    {
+        return;
+    }
+
+    if (header->caplen < sizeof(e_H) + sizeof(ip_H))
+    {
+        return;
+    }
+
+    ip_H *ip_header = (ip_H *)(packet + sizeof(e_H));
+
+    if (ip_header->ihl < 5)
+    {
+        return;
+    }
+
+    int i_ip_len = ip_header->ihl * 4;
+
+    if (header->caplen < sizeof(e_H) + i_ip_len)
+    {
+        return;
+    }
+
+    if (ip_header->protocol == 6)
+    {
+        if (header->caplen < sizeof(e_H) + i_ip_len + sizeof(tcp_H))
+        {
+            return;
+        }
+
+        tcp_H *tcp_header = (tcp_H *)((u_char *)ip_header + i_ip_len);
+
+        if (tcp_header->doff < 5)
+        {
+            return;
+        }
+
+        int i_tcp_len = tcp_header->doff * 4;
+        if (header->caplen < sizeof(e_H) + i_ip_len + i_tcp_len)
+        {
+            return;
+        }
+
         pkt.proto = "TCP";
 
-        tcp_H* tcp_header =
-            (tcp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        tcp_H *tcp_header =
+            (tcp_H *)((u_char *)ip_header + ip_header->ihl * 4);
 
         QString qs_ret = "";
 
@@ -50,7 +98,7 @@ void Worker::my_packet_handler( u_char *user,
         qs_ret += QString::number(port_dst);
 
         // 🔹 TCP 헤더 길이 (옵션 포함)
-        uint8_t tcp_doff = tcp_header->doff;  // 4bit = "words"
+        uint8_t tcp_doff = tcp_header->doff; // 4bit = "words"
         uint32_t tcp_header_len = tcp_doff * 4;
 
         // 🔹 Flags
@@ -88,18 +136,18 @@ void Worker::my_packet_handler( u_char *user,
         // 🔹 Payload Length (옵션 포함 계산)
         int payload_len =
             ntohs(ip_header->tot_len) -
-                          (ip_header->ihl * 4) -
-                          tcp_header_len;
+            (ip_header->ihl * 4) -
+            tcp_header_len;
 
         qs_ret += "   Len=";
         qs_ret += QString::number(payload_len);
 
         pkt.info = qs_ret;
     }
-    else if(ip_header->protocol == 17)
+    else if (ip_header->protocol == 17)
     {
         pkt.proto = "UDP";
-        udp_H* udp_header = (udp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        udp_H *udp_header = (udp_H *)((u_char *)ip_header + ip_header->ihl * 4);
         QString qs_ret = "";
 
         int port_src = ntohs(udp_header->source);
@@ -118,12 +166,11 @@ void Worker::my_packet_handler( u_char *user,
         qs_ret += qs_len;
 
         pkt.info = qs_ret;
-
     }
-    else if(ip_header->protocol == 1)
+    else if (ip_header->protocol == 1)
     {
         pkt.proto = "ICMP";
-        icmp_H* icmp_header = (icmp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        icmp_H *icmp_header = (icmp_H *)((u_char *)ip_header + ip_header->ihl * 4);
         QString qs_ret = "";
 
         qs_ret += (icmp_header->type == 0) ? "Echo Reply" : "";
@@ -133,19 +180,20 @@ void Worker::my_packet_handler( u_char *user,
         qs_ret += (icmp_header->type == 11) ? "Time Exceeded" : "";
         qs_ret += "   ";
 
-        if(icmp_header->type == 3)
+        if (icmp_header->type == 3)
         {
             qs_ret += (icmp_header->code == 0) ? "Network Unreachable" : "";
             qs_ret += (icmp_header->code == 1) ? "Host Unreachable" : "";
             qs_ret += (icmp_header->code == 3) ? "Port Unreachable" : "";
         }
-        else if(icmp_header->type == 11)
+        else if (icmp_header->type == 11)
         {
             qs_ret += (icmp_header->code == 0) ? "TTL exceeded" : "";
             qs_ret += (icmp_header->code == 1)
-                          ? "fragment reassembly time exceeded" : "";
+                          ? "fragment reassembly time exceeded"
+                          : "";
         }
-        else if(icmp_header->type == 0 || icmp_header->type == 8)
+        else if (icmp_header->type == 0 || icmp_header->type == 8)
         {
             qs_ret += "id=";
             uint16_t id = ntohs(icmp_header->un.echo.id);
@@ -168,27 +216,25 @@ void Worker::my_packet_handler( u_char *user,
         return;
     }
 
-    pkt.src = inet_ntoa(*(struct in_addr*)&ip_header->saddr);
-    pkt.dst = inet_ntoa(*(struct in_addr*)&ip_header->daddr);
+    pkt.src = inet_ntoa(*(struct in_addr *)&ip_header->saddr);
+    pkt.dst = inet_ntoa(*(struct in_addr *)&ip_header->daddr);
     pkt.num = p_this->num++;
 
     int totalLen = ntohs(ip_header->tot_len) + sizeof(e_H);
     pkt.len = totalLen;
 
-
     bool ret_invo =
         QMetaObject::invokeMethod(p_this->p_Pcap,
-                                              &Pcap::update_md,
-                                              Qt::QueuedConnection,
-                                              pkt);
+                                  &Pcap::update_md,
+                                  Qt::QueuedConnection,
+                                  pkt);
 
-
-    if(ret_invo == false)
+    if (ret_invo == false)
     {
         qDebug() << "Err invo";
     }
 
-    QByteArray qba ((const char*)packet, header->len);
+    QByteArray qba((const char *)packet, header->len);
     dump_data st_dump = {};
     st_dump.data = qba;
     st_dump.header = *header;
@@ -196,12 +242,11 @@ void Worker::my_packet_handler( u_char *user,
 
     bool ret_invo_2 =
         QMetaObject::invokeMethod(p_this->p_Pcap,
-                                                &Pcap::dump_push_back,
-                                                Qt::QueuedConnection,
-                                                st_dump);
+                                  &Pcap::dump_push_back,
+                                  Qt::QueuedConnection,
+                                  st_dump);
 
-
-    if(ret_invo_2 == false)
+    if (ret_invo_2 == false)
     {
         qDebug() << "Err invo_2";
     }
@@ -209,7 +254,7 @@ void Worker::my_packet_handler( u_char *user,
     return;
 }
 
-int  Worker::set_Capture()
+int Worker::set_Capture()
 {
     char errbuf[PCAP_ERRBUF_SIZE];
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
@@ -218,11 +263,11 @@ int  Worker::set_Capture()
     // this->pp = pcap_open_live("wlo1", 65535, 0, 0, errbuf);
     bool ret_invo =
         QMetaObject::invokeMethod(this->p_Pcap,
-                                              &Pcap::set_wk_pp,
-                                              Qt::QueuedConnection,
-                                              this->pp);
+                                  &Pcap::set_wk_pp,
+                                  Qt::QueuedConnection,
+                                  this->pp);
 
-    if(ret_invo == false)
+    if (ret_invo == false)
     {
         qDebug() << "Err invo";
     }
@@ -235,12 +280,12 @@ int  Worker::set_Capture()
 
     qDebug() << Q_FUNC_INFO;
 
-    if(this->BFS_ft.empty())
+    if (this->BFS_ft.empty())
     {
-        pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
+        pcap_loop(this->pp, -1, my_packet_handler, (u_char *)this);
         qDebug() << Q_FUNC_INFO;
     }
-    else if(!this->BFS_ft.empty())
+    else if (!this->BFS_ft.empty())
     {
         struct bpf_program st_bpf = {};
         bpf_u_int32 net = 0xffffff00;
@@ -248,7 +293,7 @@ int  Worker::set_Capture()
                                     &st_bpf,
                                     BFS_ft.c_str(),
                                     1, net);
-        if(ret_pcap == -1)
+        if (ret_pcap == -1)
         {
             qDebug() << "Err pcap_compile";
             return 0;
@@ -256,7 +301,7 @@ int  Worker::set_Capture()
 
         pcap_setfilter(this->pp, &st_bpf);
 
-        pcap_loop(this->pp, -1, my_packet_handler ,(u_char*)this);
+        pcap_loop(this->pp, -1, my_packet_handler, (u_char *)this);
         qDebug() << Q_FUNC_INFO;
     }
 
@@ -264,7 +309,7 @@ int  Worker::set_Capture()
     QMetaObject::invokeMethod(this->p_Pcap,
                               "set_wk_pp",
                               Qt::BlockingQueuedConnection,
-                              Q_ARG(Pcap*, nullptr));
+                              Q_ARG(Pcap *, nullptr));
 
     bool set_2 = false;
     QMetaObject::invokeMethod(this->p_Pcap,
@@ -281,7 +326,7 @@ void Worker::set_nicName(string set)
     this->nicName = set;
 }
 
-void Worker::set_p_Pcap(Pcap* set)
+void Worker::set_p_Pcap(Pcap *set)
 {
     this->p_Pcap = set;
 }
@@ -302,8 +347,8 @@ Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
     QString qs_2 = ft.toString();
     string str_2 = qs_2.toStdString();
 
-    QThread* th = new QThread;
-    Worker* wk = new Worker();
+    QThread *th = new QThread;
+    Worker *wk = new Worker();
     this->p_Wk = wk;
     wk->set_nicName(str);
     wk->set_p_Pcap(this);
@@ -326,7 +371,7 @@ Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
 
 Q_INVOKABLE void Pcap::stop_Th()
 {
-    if(this->wk_pp == nullptr)
+    if (this->wk_pp == nullptr)
     {
         qDebug() << "Current Stoped";
         return;
@@ -340,13 +385,12 @@ Q_INVOKABLE void Pcap::stop_Th()
         // this->vec_dump_file.clear();
 
         qDebug() << "Stop";
-
     }
 
     return;
 }
 
-void Pcap::set_wk_pp(pcap_t* set)
+void Pcap::set_wk_pp(pcap_t *set)
 {
     this->wk_pp = set;
     qDebug() << Q_FUNC_INFO;
@@ -360,15 +404,14 @@ void Pcap::update_md(st_pkt pkt)
     return;
 }
 
-Capture* Pcap::get_md()
+Capture *Pcap::get_md()
 {
     return this->md;
 }
 
-
-Q_INVOKABLE void  Pcap::reset_md()
+Q_INVOKABLE void Pcap::reset_md()
 {
-    if(wk_life == false)
+    if (wk_life == false)
     {
         md->reset();
         this->vec_dump.clear();
@@ -398,26 +441,24 @@ Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 
     qDebug() << Q_FUNC_INFO;
 
-
     const u_char *pkt_data = nullptr;
-    struct pcap_pkthdr* pkt_h = nullptr;
+    struct pcap_pkthdr *pkt_h = nullptr;
 
-    while(pcap_next_ex(this->p_pcap, &pkt_h, &pkt_data) == 1)
+    while (pcap_next_ex(this->p_pcap, &pkt_h, &pkt_data) == 1)
     {
-        this->packet_func((u_char*)this, pkt_h, pkt_data);
+        this->packet_func((u_char *)this, pkt_h, pkt_data);
     }
-
 
     pcap_close(this->p_pcap);
     this->p_pcap = nullptr;
 
     this->num = 0;
-    return ;
+    return;
 }
 
 Q_INVOKABLE void Pcap::save_md(QString path)
 {
-    if(this->wk_pp == nullptr ||
+    if (this->wk_pp == nullptr ||
         this->vec_dump.empty() || this->stop_flag == false)
     {
         return;
@@ -428,19 +469,19 @@ Q_INVOKABLE void Pcap::save_md(QString path)
     char errbuf[PCAP_ERRBUF_SIZE];
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
 
-    pcap_dumper_t* p_dump_handle =
+    pcap_dumper_t *p_dump_handle =
         pcap_dump_open(this->wk_pp, localPath.c_str());
 
-    if(p_dump_handle == NULL)
+    if (p_dump_handle == NULL)
     {
         qDebug() << "Err pcap_dump_open";
     }
 
-    for(auto& v : this->vec_dump)
+    for (auto &v : this->vec_dump)
     {
-        pcap_dump((u_char*)p_dump_handle,
+        pcap_dump((u_char *)p_dump_handle,
                   &v.header,
-                  (const u_char*)v.data.constData());
+                  (const u_char *)v.data.constData());
     }
 
     pcap_dump_close(p_dump_handle);
@@ -448,30 +489,80 @@ Q_INVOKABLE void Pcap::save_md(QString path)
     return;
 }
 
-void Pcap::packet_func( u_char *user,
+void Pcap::packet_func(u_char *user,
                        const struct pcap_pkthdr *header,
-                       const u_char * packet)
+                       const u_char *packet)
 {
-    Pcap* p_this = (Pcap *) user;
+    Pcap *p_this = (Pcap *)user;
     st_pkt pkt = {0};
 
-    e_H* e_header = (e_H*)packet;
-    if (ntohs(e_header->ether_type) != 0x0800) {
+    /*
+    e_H *e_header = (e_H *)packet;
+    if (ntohs(e_header->ether_type) != 0x0800)
+    {
         return; // IPv4 아니면 무시
     }
 
-    ip_H* ip_header = (ip_H*)(packet + sizeof(e_H));
+    ip_H *ip_header = (ip_H *)(packet + sizeof(e_H));*/
 
-    if(ip_header->protocol == 6)
+    if (header->caplen < sizeof(e_H))
     {
+        return;
+    }
+
+    e_H *e_header = (e_H *)packet;
+
+    if (ntohs(e_header->ether_type) != 0x0800)
+    {
+        return;
+    }
+
+    if (header->caplen < sizeof(e_H) + sizeof(ip_H))
+    {
+        return;
+    }
+
+    ip_H *ip_header = (ip_H *)(packet + sizeof(e_H));
+
+    if (ip_header->ihl < 5)
+    {
+        return;
+    }
+
+    int i_ip_len = ip_header->ihl * 4;
+    if (header->caplen < sizeof(e_H) + i_ip_len)
+    {
+        return;
+    }
+
+    if (ip_header->protocol == 6)
+    {
+        if (header->caplen < sizeof(e_H) + i_ip_len + sizeof(tcp_H))
+        {
+            return;
+        }
+
+        tcp_H *tcp_header = (tcp_H *)((u_char *)ip_header + i_ip_len);
+
+        if (tcp_header->doff < 5)
+        {
+            return;
+        }
+
+        int i_tcp_len = tcp_header->doff * 4;
+        if (header->caplen < sizeof(e_H) + i_ip_len + i_tcp_len)
+        {
+            return;
+        }
+
         pkt.proto = "TCP";
 
-        tcp_H* tcp_header =
-            (tcp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        tcp_H *tcp_header =
+            (tcp_H *)((u_char *)ip_header + ip_header->ihl * 4);
 
         QString qs_ret = "";
 
-               // 🔹 포트
+        // 🔹 포트
         int port_src = ntohs(tcp_header->source);
         int port_dst = ntohs(tcp_header->dest);
 
@@ -479,11 +570,11 @@ void Pcap::packet_func( u_char *user,
         qs_ret += " ---> ";
         qs_ret += QString::number(port_dst);
 
-               // 🔹 TCP 헤더 길이 (옵션 포함)
-        uint8_t tcp_doff = tcp_header->doff;  // 4bit = "words"
+        // 🔹 TCP 헤더 길이 (옵션 포함)
+        uint8_t tcp_doff = tcp_header->doff; // 4bit = "words"
         uint32_t tcp_header_len = tcp_doff * 4;
 
-               // 🔹 Flags
+        // 🔹 Flags
         bool fin = tcp_header->fin;
         bool syn = tcp_header->syn;
         bool rst = tcp_header->rst;
@@ -504,18 +595,18 @@ void Pcap::packet_func( u_char *user,
 
         qs_ret += qs_flag;
 
-               // 🔹 Seq / Ack
+        // 🔹 Seq / Ack
         qs_ret += "Seq=";
         qs_ret += QString::number(ntohl(tcp_header->seq));
 
         qs_ret += "   Ack=";
         qs_ret += QString::number(ntohl(tcp_header->ack_seq));
 
-               // 🔹 Window Size
+        // 🔹 Window Size
         qs_ret += "   Win=";
         qs_ret += QString::number(ntohs(tcp_header->window));
 
-               // 🔹 Payload Length (옵션 포함 계산)
+        // 🔹 Payload Length (옵션 포함 계산)
         int payload_len =
             ntohs(ip_header->tot_len) -
             (ip_header->ihl * 4) -
@@ -526,10 +617,10 @@ void Pcap::packet_func( u_char *user,
 
         pkt.info = qs_ret;
     }
-    else if(ip_header->protocol == 17)
+    else if (ip_header->protocol == 17)
     {
         pkt.proto = "UDP";
-        udp_H* udp_header = (udp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        udp_H *udp_header = (udp_H *)((u_char *)ip_header + ip_header->ihl * 4);
         QString qs_ret = "";
 
         int port_src = ntohs(udp_header->source);
@@ -548,12 +639,11 @@ void Pcap::packet_func( u_char *user,
         qs_ret += qs_len;
 
         pkt.info = qs_ret;
-
     }
-    else if(ip_header->protocol == 1)
+    else if (ip_header->protocol == 1)
     {
         pkt.proto = "ICMP";
-        icmp_H* icmp_header = (icmp_H*)((u_char*)ip_header + ip_header->ihl * 4);
+        icmp_H *icmp_header = (icmp_H *)((u_char *)ip_header + ip_header->ihl * 4);
         QString qs_ret = "";
 
         qs_ret += (icmp_header->type == 0) ? "Echo Reply" : "";
@@ -563,19 +653,20 @@ void Pcap::packet_func( u_char *user,
         qs_ret += (icmp_header->type == 11) ? "Time Exceeded" : "";
         qs_ret += "   ";
 
-        if(icmp_header->type == 3)
+        if (icmp_header->type == 3)
         {
             qs_ret += (icmp_header->code == 0) ? "Network Unreachable" : "";
             qs_ret += (icmp_header->code == 1) ? "Host Unreachable" : "";
             qs_ret += (icmp_header->code == 3) ? "Port Unreachable" : "";
         }
-        else if(icmp_header->type == 11)
+        else if (icmp_header->type == 11)
         {
             qs_ret += (icmp_header->code == 0) ? "TTL exceeded" : "";
             qs_ret += (icmp_header->code == 1)
-                          ? "fragment reassembly time exceeded" : "";
+                          ? "fragment reassembly time exceeded"
+                          : "";
         }
-        else if(icmp_header->type == 0 || icmp_header->type == 8)
+        else if (icmp_header->type == 0 || icmp_header->type == 8)
         {
             qs_ret += "id=";
             uint16_t id = ntohs(icmp_header->un.echo.id);
@@ -598,12 +689,11 @@ void Pcap::packet_func( u_char *user,
         return;
     }
 
-    pkt.src = inet_ntoa(*(struct in_addr*)&ip_header->saddr);
-    pkt.dst = inet_ntoa(*(struct in_addr*)&ip_header->daddr);
+    pkt.src = inet_ntoa(*(struct in_addr *)&ip_header->saddr);
+    pkt.dst = inet_ntoa(*(struct in_addr *)&ip_header->daddr);
     pkt.num = p_this->num++;
 
-
-    QByteArray qba ((const char*)packet, header->len);
+    QByteArray qba((const char *)packet, header->len);
     dump_data st_dump = {};
     st_dump.data = qba;
     st_dump.header = *header;
@@ -630,12 +720,12 @@ bool Pcap::get_stop_flag()
     return this->stop_flag;
 }
 
-bool Pcap::get_wk_flag ()
+bool Pcap::get_wk_flag()
 {
     return this->wk_flag;
 }
 
-void Pcap::set_wk_flag (bool set)
+void Pcap::set_wk_flag(bool set)
 {
     this->wk_flag = set;
     emit sig_wk_flag();
@@ -645,11 +735,11 @@ QString Pcap::start_hax(int idx)
 {
     dump_data d_data;
 
-    if(!this->vec_dump_file.empty())
+    if (!this->vec_dump_file.empty())
     {
-        for(auto& v : this->vec_dump_file)
+        for (auto &v : this->vec_dump_file)
         {
-            if(v.pkt_num == idx)
+            if (v.pkt_num == idx)
             {
                 d_data = v;
             }
@@ -657,20 +747,18 @@ QString Pcap::start_hax(int idx)
     }
     else
     {
-        for(auto& v : this->vec_dump)
+        for (auto &v : this->vec_dump)
         {
-            if(v.pkt_num == idx)
+            if (v.pkt_num == idx)
             {
                 d_data = v;
             }
         }
     }
 
-
-
     int len = d_data.header.caplen;
-    const u_char* data = (const u_char*)d_data.data.constData();
-    if(d_data.data.isEmpty())
+    const u_char *data = (const u_char *)d_data.data.constData();
+    if (d_data.data.isEmpty())
     {
         return "-";
     }
@@ -685,17 +773,17 @@ QString Pcap::start_hax(int idx)
         QString hexPart;
         QString asciiPart;
 
-               // Build hex + ascii separately
+        // Build hex + ascii separately
         for (int j = 0; j < 16; j++)
         {
             if (i + j < len)
             {
                 unsigned char c = data[i + j];
 
-                       // hex
+                // hex
                 hexPart += QString("%1 ").arg(c, 2, 16, QLatin1Char('0'));
 
-                       // ascii
+                // ascii
                 if (c >= 32 && c <= 126)
                     asciiPart += QChar(c);
                 else
@@ -709,32 +797,32 @@ QString Pcap::start_hax(int idx)
             }
         }
 
-               // hex는 16 * 3 = 48칸 → 고정 너비
+        // hex는 16 * 3 = 48칸 → 고정 너비
         hexPart = hexPart.leftJustified(48, ' ');
 
-               // hexPart + 공백 5칸 + asciiPart
+        // hexPart + 공백 5칸 + asciiPart
         out += hexPart + "     " + asciiPart + "\n";
     }
 
     return out;
 }
 
-TreeModel* Pcap::get_tree_md()
+TreeModel *Pcap::get_tree_md()
 {
     return this->tree_md;
 }
 
 Q_INVOKABLE void Pcap::start_tree_md(int idx)
 {
-    TreeItem* root = new TreeItem("root");
+    TreeItem *root = new TreeItem("root");
     this->tree_md->setPacketTree(root);
 
     dump_data data;
-    if(!this->vec_dump_file.empty())
+    if (!this->vec_dump_file.empty())
     {
-        for(auto& v : this->vec_dump_file)
+        for (auto &v : this->vec_dump_file)
         {
-            if(v.pkt_num == idx)
+            if (v.pkt_num == idx)
             {
                 data = v;
             }
@@ -742,45 +830,45 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
     else
     {
-        for(auto& v : this->vec_dump)
+        for (auto &v : this->vec_dump)
         {
-            if(v.pkt_num == idx)
+            if (v.pkt_num == idx)
             {
                 data = v;
             }
         }
     }
 
-           //==============================Ether==============================
     //==============================Ether==============================
-    u_char* pkt = (u_char*)data.data.constData();
-    e_H* e_h = (e_H*)pkt;
+    //==============================Ether==============================
+    u_char *pkt = (u_char *)data.data.constData();
+    e_H *e_h = (e_H *)pkt;
 
-    QString dst = this->macToString((const u_char*)e_h->ether_dhost);
-    QString src = this->macToString((const u_char*)e_h->ether_shost);
+    QString dst = this->macToString((const u_char *)e_h->ether_dhost);
+    QString src = this->macToString((const u_char *)e_h->ether_shost);
     QString e_tmp = QString("Ethernet II,    Src: %1,    Dst : %2").arg(dst).arg(src);
 
-    TreeItem* ether = new TreeItem(e_tmp, root);
+    TreeItem *ether = new TreeItem(e_tmp, root);
     root->addChild(ether);
 
     QString ch_dst = QString("Destination : (%1)").arg(dst);
     QString ch_src = QString("Source : (%1)").arg(src);
     QString ch_type = "";
-    if(ntohs(e_h->ether_type) == 0x0800)
+    if (ntohs(e_h->ether_type) == 0x0800)
     {
         ch_type = "Type: IPv4 (0x0800)";
     }
-    else if(ntohs(e_h->ether_type) == 0x086DD)
+    else if (ntohs(e_h->ether_type) == 0x086DD)
     {
         ch_type = "Type: IPv6 (0x086DD)";
     }
-    else if(ntohs(e_h->ether_type) == 0x0806)
+    else if (ntohs(e_h->ether_type) == 0x0806)
     {
         ch_type = "Type: ARP (0x0806)";
     }
-    TreeItem* ether_ch_dst = new TreeItem(ch_dst, ether);
-    TreeItem* ether_ch_src = new TreeItem(ch_src, ether);
-    TreeItem* ether_ch_type = new TreeItem(ch_type, ether);
+    TreeItem *ether_ch_dst = new TreeItem(ch_dst, ether);
+    TreeItem *ether_ch_src = new TreeItem(ch_src, ether);
+    TreeItem *ether_ch_type = new TreeItem(ch_type, ether);
 
     ether->addChild(ether_ch_dst);
     ether->addChild(ether_ch_src);
@@ -788,27 +876,30 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     //==============================Ether==============================
     //==============================Ether==============================
 
-           //==============================ip==============================
     //==============================ip==============================
-    ip_H* ip_h = (ip_H*)(pkt + sizeof(e_H));
-    QString src_ip = inet_ntoa(*(struct in_addr*)&ip_h->saddr);
-    QString dst_ip = inet_ntoa(*(struct in_addr*)&ip_h->daddr);
+    //==============================ip==============================
+    ip_H *ip_h = (ip_H *)(pkt + sizeof(e_H));
+    QString src_ip = inet_ntoa(*(struct in_addr *)&ip_h->saddr);
+    QString dst_ip = inet_ntoa(*(struct in_addr *)&ip_h->daddr);
 
     QString ip_tmp = QString("Internet Protocol Version %1,    Src: %2,    Dst: %3")
-                         .arg(ip_h->version).arg(src_ip).arg(dst_ip);
+                         .arg(ip_h->version)
+                         .arg(src_ip)
+                         .arg(dst_ip);
 
-    TreeItem* ip_root = new TreeItem(ip_tmp , root);
+    TreeItem *ip_root = new TreeItem(ip_tmp, root);
     root->addChild(ip_root);
     //==============================================================
     QString qs_ipVersion = QString("Version: %1").arg(ip_h->version);
-    TreeItem* ip_version = new TreeItem(qs_ipVersion, ip_root);
+    TreeItem *ip_version = new TreeItem(qs_ipVersion, ip_root);
     ip_root->addChild(ip_version);
 
-           //==============================================================
+    //==============================================================
     QString qs_ipHeaderLen = QString("Header Length: %1    bytes (%2)")
-                                 .arg(ip_h->ihl * 4).arg(ip_h->ihl);
+                                 .arg(ip_h->ihl * 4)
+                                 .arg(ip_h->ihl);
 
-    TreeItem* ip_ipHeaderLen = new TreeItem(qs_ipHeaderLen, ip_root);
+    TreeItem *ip_ipHeaderLen = new TreeItem(qs_ipHeaderLen, ip_root);
     ip_root->addChild(ip_ipHeaderLen);
     //==============================================================
     uint8_t tos = ip_h->tos;
@@ -817,54 +908,54 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     QString qs_tmp_sdcp = "";
     QString qs_tmp_ecn = "";
 
-    if(dscp >= 0 && dscp <= 7)
+    if (dscp >= 0 && dscp <= 7)
     {
         qs_tmp_sdcp = "CS0";
     }
-    else if(dscp >= 8 && dscp <= 15)
+    else if (dscp >= 8 && dscp <= 15)
     {
         qs_tmp_sdcp = "CS1";
     }
-    else if(dscp >= 16 && dscp <= 23)
+    else if (dscp >= 16 && dscp <= 23)
     {
         qs_tmp_sdcp = "CS2";
     }
-    else if(dscp >= 24 && dscp <= 31)
+    else if (dscp >= 24 && dscp <= 31)
     {
         qs_tmp_sdcp = "CS3";
     }
-    else if(dscp >= 32 && dscp <= 39)
+    else if (dscp >= 32 && dscp <= 39)
     {
         qs_tmp_sdcp = "CS4";
     }
-    else if(dscp >= 40 && dscp <= 47)
+    else if (dscp >= 40 && dscp <= 47)
     {
         qs_tmp_sdcp = "CS5";
     }
-    else if(dscp >= 48 && dscp <= 55)
+    else if (dscp >= 48 && dscp <= 55)
     {
         qs_tmp_sdcp = "CS6";
     }
-    else if(dscp >= 56 && dscp <= 63)
+    else if (dscp >= 56 && dscp <= 63)
     {
         qs_tmp_sdcp = "CS7";
     }
 
-    if(ecn == 0)
+    if (ecn == 0)
     {
-        qs_tmp_ecn  = "Not-ECT";
+        qs_tmp_ecn = "Not-ECT";
     }
-    else if(ecn == 2)
+    else if (ecn == 2)
     {
-        qs_tmp_ecn  = "ECT(0)";
+        qs_tmp_ecn = "ECT(0)";
     }
-    else if(ecn == 1)
+    else if (ecn == 1)
     {
-        qs_tmp_ecn  = "ECT(1)";
+        qs_tmp_ecn = "ECT(1)";
     }
-    else if(ecn == 3)
+    else if (ecn == 3)
     {
-        qs_tmp_ecn  = "CE";
+        qs_tmp_ecn = "CE";
     }
 
     QString qs_hex_tos = QString("0x%1")
@@ -884,37 +975,39 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
                          .arg(ip_h->version).arg(qs_tmp_sdcp).arg(qs_tmp_ecn);
     */
 
-    TreeItem* ip_tos = new TreeItem(qs_tos, ip_root);
+    TreeItem *ip_tos = new TreeItem(qs_tos, ip_root);
     ip_root->addChild(ip_tos);
 
-    QString  qs_tos_ch1 =
+    QString qs_tos_ch1 =
         QString("Differentiated Services Codepoint: %1 (%2)")
-            .arg(qs_tmp_sdcp).arg(dscp);
-    TreeItem* ip_tos_ch1 = new TreeItem(qs_tos_ch1, ip_tos);
+            .arg(qs_tmp_sdcp)
+            .arg(dscp);
+    TreeItem *ip_tos_ch1 = new TreeItem(qs_tos_ch1, ip_tos);
 
     ip_tos->addChild(ip_tos_ch1);
 
-    QString  qs_tos_ch2 =
+    QString qs_tos_ch2 =
         QString("Explicit Congestion Notification: %1 (%2)")
-            .arg(qs_tmp_ecn).arg(ecn);
-    TreeItem* ip_tos_ch2 = new TreeItem(qs_tos_ch2, ip_tos);
+            .arg(qs_tmp_ecn)
+            .arg(ecn);
+    TreeItem *ip_tos_ch2 = new TreeItem(qs_tos_ch2, ip_tos);
 
     ip_tos->addChild(ip_tos_ch2);
     //==============================================================
 
     QString qs_totalLen =
         QString("Total Length: %1").arg(ntohs(ip_h->tot_len));
-    TreeItem* ip_totalLen = new TreeItem(qs_totalLen, ip_root);
+    TreeItem *ip_totalLen = new TreeItem(qs_totalLen, ip_root);
     ip_root->addChild(ip_totalLen);
     //==============================================================
 
     uint16_t id = ntohs(ip_h->id);
 
     QString qs_id = QString("Identification: 0x%1 (%2)")
-                        .arg(id, 4, 16, QLatin1Char('0'))  // hex 4자리, zero-padding
+                        .arg(id, 4, 16, QLatin1Char('0')) // hex 4자리, zero-padding
                         .arg(id);                         // decimal
 
-    TreeItem* ip_id = new TreeItem(qs_id, ip_root);
+    TreeItem *ip_id = new TreeItem(qs_id, ip_root);
     ip_root->addChild(ip_id);
     //==============================================================
 
@@ -924,11 +1017,11 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
 
     QString flagMeaning;
 
-    if(flags & 0x2)
+    if (flags & 0x2)
     {
         flagMeaning = "Don't fragment";
     }
-    else if(flags & 0x1)
+    else if (flags & 0x1)
     {
         flagMeaning = "More fragments";
     }
@@ -938,14 +1031,14 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
 
     QString qs_flag = QString("Flags: 0x%1, %2")
-                          .arg(flags, 0, 16)        // hex
+                          .arg(flags, 0, 16) // hex
                           .arg(flagMeaning);
 
-    TreeItem* ip_flag = new TreeItem(qs_flag, ip_root);
+    TreeItem *ip_flag = new TreeItem(qs_flag, ip_root);
     ip_root->addChild(ip_flag);
 
     QString tmp_flag_1 = "";
-    if((flags & 0x04) == 0)
+    if ((flags & 0x04) == 0)
     {
         tmp_flag_1 = "Not Set";
     }
@@ -955,7 +1048,7 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
 
     QString tmp_flag_2 = "";
-    if((flags & 0x02) == 0)
+    if ((flags & 0x02) == 0)
     {
         tmp_flag_2 = "Not Set";
     }
@@ -965,7 +1058,7 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
 
     QString tmp_flag_3 = "";
-    if((flags & 0x01) == 0)
+    if ((flags & 0x01) == 0)
     {
         tmp_flag_3 = "Not Set";
     }
@@ -978,9 +1071,9 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     QString DF = QString("Don't fragment: %1").arg(tmp_flag_2);
     QString MF = QString("More fragments: %1").arg(tmp_flag_3);
 
-    TreeItem* ip_flag_RF = new TreeItem(RF, ip_flag);
-    TreeItem* ip_flag_DF = new TreeItem(DF, ip_flag);
-    TreeItem* ip_flag_MF = new TreeItem(MF, ip_flag);
+    TreeItem *ip_flag_RF = new TreeItem(RF, ip_flag);
+    TreeItem *ip_flag_DF = new TreeItem(DF, ip_flag);
+    TreeItem *ip_flag_MF = new TreeItem(MF, ip_flag);
 
     ip_flag->addChild(ip_flag_RF);
     ip_flag->addChild(ip_flag_DF);
@@ -988,7 +1081,7 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     //==============================================================
     QString qs_ttl =
         QString("Time to Live: %1").arg(ip_h->ttl);
-    TreeItem* ip_ttl = new TreeItem(qs_ttl, ip_root);
+    TreeItem *ip_ttl = new TreeItem(qs_ttl, ip_root);
     ip_root->addChild(ip_ttl);
     //==============================================================
     // QString qs_check_stat = QString("[Header checksum status: %1]").arg(qs_ret_check);
@@ -998,31 +1091,31 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     uint8_t proto = ip_h->protocol;
     QString qs_proto = "";
 
-    if(proto == 6)
+    if (proto == 6)
     {
         qs_proto = "TCP (6)";
     }
-    else if(proto == 17)
+    else if (proto == 17)
     {
         qs_proto = "UDP (17)";
     }
-    else if(proto == 1)
+    else if (proto == 1)
     {
         qs_proto = "ICMP (1)";
     }
 
     QString qs_proto_2 = QString("Protocol: %1").arg(qs_proto);
 
-    TreeItem* ip_proto = new TreeItem(qs_proto_2, ip_root);
+    TreeItem *ip_proto = new TreeItem(qs_proto_2, ip_root);
     ip_root->addChild(ip_proto);
     //==============================================================
 
     uint16_t raw_checksum = ntohs(ip_h->check);
     QString qs_ret_check = "";
 
-    int ret_check = compute_ip_checksum((const uint8_t*)ip_h, ip_h->ihl * 4);
+    int ret_check = compute_ip_checksum((const uint8_t *)ip_h, ip_h->ihl * 4);
 
-    if(ret_check == 0)
+    if (ret_check == 0)
     {
         qs_ret_check = "Good";
     }
@@ -1032,38 +1125,39 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
     }
 
     QString qs_checksum = QString("Header Checksum: 0x%1 [%2]")
-                              .arg(raw_checksum, 4, 16, QLatin1Char('0')).arg(qs_ret_check);
+                              .arg(raw_checksum, 4, 16, QLatin1Char('0'))
+                              .arg(qs_ret_check);
 
-    TreeItem* ip_check = new TreeItem(qs_checksum, ip_root);
+    TreeItem *ip_check = new TreeItem(qs_checksum, ip_root);
     ip_root->addChild(ip_check);
 
     QString qs_check_stat = QString("[Header checksum status: %1]").arg(qs_ret_check);
-    TreeItem* ip_check_stat = new TreeItem(qs_check_stat, ip_root);
-    ip_root->addChild(ip_check_stat );
+    TreeItem *ip_check_stat = new TreeItem(qs_check_stat, ip_root);
+    ip_root->addChild(ip_check_stat);
     //==============================================================
-    QString tmp_ipSrc = inet_ntoa(*(struct in_addr*)&ip_h->saddr);
+    QString tmp_ipSrc = inet_ntoa(*(struct in_addr *)&ip_h->saddr);
     QString qs_ipSrc = QString("Source Address: %1").arg(tmp_ipSrc);
-    TreeItem* ip_src = new TreeItem(qs_ipSrc, ip_root);
+    TreeItem *ip_src = new TreeItem(qs_ipSrc, ip_root);
     ip_root->addChild(ip_src);
 
-    QString tmp_ipDst = inet_ntoa(*(struct in_addr*)&ip_h->daddr);
+    QString tmp_ipDst = inet_ntoa(*(struct in_addr *)&ip_h->daddr);
     QString qs_ipDst = QString("Destination Address: %1").arg(tmp_ipDst);
-    TreeItem* ip_Dst = new TreeItem(qs_ipDst, ip_root);
+    TreeItem *ip_Dst = new TreeItem(qs_ipDst, ip_root);
     ip_root->addChild(ip_Dst);
     //==============================ip==============================
     //==============================ip==============================
 
-           //==============================tcp==============================
+    //==============================tcp==============================
     //==============================tcp==============================
 
     int e_h_size = sizeof(e_H);
-    if(proto == 6)
+    if (proto == 6)
     {
-        tcp_H* tcp_h = (tcp_H*)(pkt + e_h_size + (ip_h->ihl * 4));
+        tcp_H *tcp_h = (tcp_H *)(pkt + e_h_size + (ip_h->ihl * 4));
 
         int ip_total = ntohs(ip_h->tot_len);
         int ip_header_len = ip_h->ihl * 4;
-        int tcp_header_len = tcp_h->doff* 4;
+        int tcp_header_len = tcp_h->doff * 4;
         int tcp_payload = ip_total - ip_header_len - tcp_header_len;
 
         QString tmp_tcpSrc = QString::number(ntohs(tcp_h->source));
@@ -1075,50 +1169,53 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
         QString qs_tcp_root =
             QString("Transmission Control Protocol, Src Port: %1,"
                     " Dst Port: %2, Seq: %3, Ack: %4, Len: %5")
-                .arg(tmp_tcpSrc).arg(tmp_tcpDst).arg(tmp_seq)
-                .arg(tmp_ack).arg(tmp_tcpLen);
-        TreeItem* tcp_root = new TreeItem(qs_tcp_root, root);
+                .arg(tmp_tcpSrc)
+                .arg(tmp_tcpDst)
+                .arg(tmp_seq)
+                .arg(tmp_ack)
+                .arg(tmp_tcpLen);
+        TreeItem *tcp_root = new TreeItem(qs_tcp_root, root);
         root->addChild(tcp_root);
 
-               //=============================================================
+        //=============================================================
         QString qs_tcpSrc = QString("Source Port: %1").arg(tmp_tcpSrc);
-        TreeItem* tcp_src = new TreeItem(qs_tcpSrc, tcp_root);
+        TreeItem *tcp_src = new TreeItem(qs_tcpSrc, tcp_root);
         tcp_root->addChild(tcp_src);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         QString qs_tcpDst = QString("Destination Port: %1").arg(tmp_tcpDst);
-        TreeItem* tcp_dst = new TreeItem(qs_tcpDst, tcp_root);
+        TreeItem *tcp_dst = new TreeItem(qs_tcpDst, tcp_root);
         tcp_root->addChild(tcp_dst);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         QString qs_tcpLen = QString("[Tcp Segment Len: %1]").arg(tmp_tcpLen);
-        TreeItem* tcp_len = new TreeItem(qs_tcpLen, tcp_root);
+        TreeItem *tcp_len = new TreeItem(qs_tcpLen, tcp_root);
         tcp_root->addChild(tcp_len);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         QString qs_tcpSeq = QString("Sequence Number: %1").arg(tmp_seq);
-        TreeItem* tcp_seq = new TreeItem(qs_tcpSeq, tcp_root);
+        TreeItem *tcp_seq = new TreeItem(qs_tcpSeq, tcp_root);
         tcp_root->addChild(tcp_seq);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         QString qs_ackseq = QString("Acknowledgment Number: %1").arg(tmp_ack);
-        TreeItem* tcp_ack = new TreeItem(qs_ackseq, tcp_root);
+        TreeItem *tcp_ack = new TreeItem(qs_ackseq, tcp_root);
         tcp_root->addChild(tcp_ack);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         int i_tcp_hLen = tcp_h->doff * 4;
         QString qs_tcp_hLen =
             QString("Header Length: %1").arg(QString::number(i_tcp_hLen));
-        TreeItem* tcp_hLen = new TreeItem(qs_tcp_hLen, tcp_root);
+        TreeItem *tcp_hLen = new TreeItem(qs_tcp_hLen, tcp_root);
         tcp_root->addChild(tcp_hLen);
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         uint16_t flags =
             (tcp_h->cwr << 7) |
             (tcp_h->ece << 6) |
@@ -1130,14 +1227,22 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
             (tcp_h->fin);
 
         QStringList list;
-        if (tcp_h->fin) list << "FIN";
-        if (tcp_h->syn) list << "SYN";
-        if (tcp_h->rst) list << "RST";
-        if (tcp_h->psh) list << "PSH";
-        if (tcp_h->ack) list << "ACK";
-        if (tcp_h->urg) list << "URG";
-        if (tcp_h->ece) list << "ECE";
-        if (tcp_h->cwr) list << "CWR";
+        if (tcp_h->fin)
+            list << "FIN";
+        if (tcp_h->syn)
+            list << "SYN";
+        if (tcp_h->rst)
+            list << "RST";
+        if (tcp_h->psh)
+            list << "PSH";
+        if (tcp_h->ack)
+            list << "ACK";
+        if (tcp_h->urg)
+            list << "URG";
+        if (tcp_h->ece)
+            list << "ECE";
+        if (tcp_h->cwr)
+            list << "CWR";
 
         QString flagNames = list.join(", ");
 
@@ -1145,7 +1250,7 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
                                .arg(flags, 4, 16, QLatin1Char('0'))
                                .arg(flagNames);
 
-        TreeItem* tcp_flag_root = new TreeItem(qs_flags, tcp_root);
+        TreeItem *tcp_flag_root = new TreeItem(qs_flags, tcp_root);
         tcp_root->addChild(tcp_flag_root);
 
         QString qs_res1 = (tcp_h->res1)
@@ -1153,35 +1258,35 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
                               : QString("Reserved: Not set");
 
         QString qs_cwr = (tcp_h->cwr)
-            ? "Congestion Window Reduced (CWR): Set"
+                             ? "Congestion Window Reduced (CWR): Set"
                              : "Congestion Window Reduced (CWR): Not set";
 
         QString qs_ece = (tcp_h->ece)
-            ? "ECN Echo (ECE): Set"
+                             ? "ECN Echo (ECE): Set"
                              : "ECN Echo (ECE): Not set";
 
         QString qs_urg = (tcp_h->urg)
-            ? "Urgent (URG): Set"
+                             ? "Urgent (URG): Set"
                              : "Urgent (URG): Not set";
 
         QString qs_ack = (tcp_h->ack)
-            ? "Acknowledgment (ACK): Set"
+                             ? "Acknowledgment (ACK): Set"
                              : "Acknowledgment (ACK): Not set";
 
         QString qs_psh = (tcp_h->psh)
-            ? "Push (PSH): Set"
+                             ? "Push (PSH): Set"
                              : "Push (PSH): Not set";
 
         QString qs_rst = (tcp_h->rst)
-            ? "Reset (RST): Set"
+                             ? "Reset (RST): Set"
                              : "Reset (RST): Not set";
 
         QString qs_syn = (tcp_h->syn)
-            ? "Syn (SYN): Set"
+                             ? "Syn (SYN): Set"
                              : "Syn (SYN): Not set";
 
         QString qs_fin = (tcp_h->fin)
-            ? "Fin (FIN): Set"
+                             ? "Fin (FIN): Set"
                              : "Fin (FIN): Not set";
 
         tcp_flag_root->addChild(new TreeItem(qs_res1, tcp_flag_root));
@@ -1195,90 +1300,89 @@ Q_INVOKABLE void Pcap::start_tree_md(int idx)
         tcp_flag_root->addChild(new TreeItem(qs_fin, tcp_flag_root));
         //=============================================================
 
-               //=============================================================
+        //=============================================================
         QString qs_win =
             QString("Window: %1").arg(ntohs(tcp_h->window));
-        TreeItem* tcp_win = new TreeItem(qs_win, tcp_root);
+        TreeItem *tcp_win = new TreeItem(qs_win, tcp_root);
 
         tcp_root->addChild(tcp_win);
         //=============================================================
         //=============================================================
     }
-    else if(proto == 17)
+    else if (proto == 17)
     {
-        udp_H* udp_h = (udp_H*)(pkt + e_h_size + (ip_h->ihl * 4));
+        udp_H *udp_h = (udp_H *)(pkt + e_h_size + (ip_h->ihl * 4));
         QString qs_udp_src = QString::number(ntohs(udp_h->source));
         QString qs_udp_dst = QString::number(ntohs(udp_h->dest));
 
         QString qs_udp_root =
             QString("User Datagram Protocol, Src Prot: %1,    "
-                    "Dst Port: %2").arg(qs_udp_src).arg(qs_udp_dst);
+                    "Dst Port: %2")
+                .arg(qs_udp_src)
+                .arg(qs_udp_dst);
 
-        TreeItem* udp_root = new TreeItem(qs_udp_root, root);
+        TreeItem *udp_root = new TreeItem(qs_udp_root, root);
         root->addChild(udp_root);
 
         QString qs_udp_src_ch =
             QString("Source Port: %1").arg(qs_udp_src);
-        TreeItem* udp_src = new TreeItem(qs_udp_src_ch, udp_root);
+        TreeItem *udp_src = new TreeItem(qs_udp_src_ch, udp_root);
         udp_root->addChild(udp_src);
 
         QString qs_udp_dst_ch =
             QString("Destination Port: %1").arg(qs_udp_dst);
-        TreeItem* udp_dst = new TreeItem(qs_udp_dst_ch, udp_root);
+        TreeItem *udp_dst = new TreeItem(qs_udp_dst_ch, udp_root);
         udp_root->addChild(udp_dst);
 
         QString qs_udp_len = QString::number(ntohs(udp_h->len));
         QString qs_udp_len_ch =
             QString("Length: %1").arg(qs_udp_len);
-        TreeItem* udp_len = new TreeItem(qs_udp_len_ch, udp_root);
+        TreeItem *udp_len = new TreeItem(qs_udp_len_ch, udp_root);
         udp_root->addChild(udp_len);
-
     }
-    else if(proto == 1)
+    else if (proto == 1)
     {
-        icmp_H* icmp_h = (icmp_H*)(pkt + e_h_size + (ip_h->ihl * 4));
+        icmp_H *icmp_h = (icmp_H *)(pkt + e_h_size + (ip_h->ihl * 4));
 
         QString qs_icmp_root =
             QString("Internet Control Message Protocol");
-        TreeItem* icmp_root = new TreeItem(qs_icmp_root, root);
+        TreeItem *icmp_root = new TreeItem(qs_icmp_root, root);
         root->addChild(icmp_root);
 
         QString qs_icmp_type = "";
         int icmp_type = icmp_h->type;
-        if(icmp_type == 0)
+        if (icmp_type == 0)
         {
             qs_icmp_type = "Echo Reply";
         }
-        else if(icmp_type == 3)
+        else if (icmp_type == 3)
         {
             qs_icmp_type = "Destination Unreachable";
         }
-        else if(icmp_type == 5)
+        else if (icmp_type == 5)
         {
             qs_icmp_type = "Redirect";
         }
-        else if(icmp_type == 8)
+        else if (icmp_type == 8)
         {
             qs_icmp_type = "Echo Request";
         }
-        else if(icmp_type == 11)
+        else if (icmp_type == 11)
         {
             qs_icmp_type = "Time Exceeded";
         }
-        TreeItem* icmp_type_ch = new TreeItem(qs_icmp_type, icmp_root);
+        TreeItem *icmp_type_ch = new TreeItem(qs_icmp_type, icmp_root);
         icmp_root->addChild(icmp_type_ch);
 
-
         QString qs_icmp_code = QString("code: %1").arg(QString::number(icmp_h->code));
-        TreeItem* icmp_code = new TreeItem(qs_icmp_code, root);
+        TreeItem *icmp_code = new TreeItem(qs_icmp_code, root);
         icmp_root->addChild(icmp_code);
     }
-
 
     return;
 }
 
-QString Pcap::macToString(const u_char* mac)
+QString Pcap::macToString(const u_char *mac)
 {
     return QString("%1:%2:%3:%4:%5:%6")
         .arg(mac[0], 2, 16, QLatin1Char('0'))
@@ -1290,22 +1394,21 @@ QString Pcap::macToString(const u_char* mac)
         .toUpper();
 }
 
-uint16_t Pcap::compute_ip_checksum(const uint8_t* data, int header_len)
+uint16_t Pcap::compute_ip_checksum(const uint8_t *data, int header_len)
 {
     uint32_t sum = 0;
     int i = 0;
 
-           // 16비트씩 더함
-    for(int i = 0; i < header_len; i += 2)
+    // 16비트씩 더함
+    for (int i = 0; i < header_len; i += 2)
     {
         uint16_t word = (data[i] << 8) | data[i + 1];
         sum += word;
     }
 
-           // carry 처리
-    while(sum >> 16)
+    // carry 처리
+    while (sum >> 16)
         sum = (sum & 0xFFFF) + (sum >> 16);
 
     return ~sum & 0xFFFF;
 }
-
