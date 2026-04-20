@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 12,
-                        "durationMicroseconds": 101,
+                        "durationMicroseconds": 113,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "width",
                         "line": 9
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 13,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 61,
                         "errorMessage": "Cannot access value for name stk",
                         "functionName": "height",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 90,
+                        "durationMicroseconds": 93,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onCompleted",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 65,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 32
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 62,
                         "errorMessage": "",
                         "functionName": "enabled",
                         "line": 41
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 173,
+                        "durationMicroseconds": 172,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 42
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 109,
+                        "durationMicroseconds": 110,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 52
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 33,
+                        "durationMicroseconds": 34,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 87
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 55,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 103
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 54,
+                        "durationMicroseconds": 50,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 105
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 105,
+                        "durationMicroseconds": 109,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 123
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 28,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 110
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 24,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 134
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 41,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 150
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 46,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 158
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 62,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 170
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 134,
+                        "durationMicroseconds": 137,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 178
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 103,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 183
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 9,
-                        "durationMicroseconds": 252,
+                        "durationMicroseconds": 259,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "func_save",
                         "line": 227
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 9,
-                        "durationMicroseconds": 194,
+                        "durationMicroseconds": 187,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "func_can",
                         "line": 238
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 54,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 255
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 63,
                         "errorMessage": "",
                         "functionName": "enabled",
                         "line": 261
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 142,
+                        "durationMicroseconds": 144,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 263
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 112,
+                        "durationMicroseconds": 115,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 268
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 30,
+                        "durationMicroseconds": 29,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 260
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 27,
+                        "durationMicroseconds": 26,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 279
@@ -334,7 +334,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 43,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 295
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 37,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 303
@@ -358,7 +358,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 63,
                         "errorMessage": "",
                         "functionName": "nameFilters",
                         "line": 312
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 21,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 64,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onAccepted",
                         "line": 315
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 62,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 326
@@ -390,7 +390,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 58,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 328
@@ -398,7 +398,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 58,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 335
@@ -414,7 +414,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 28,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "loops",
                         "line": 353
@@ -430,7 +430,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 35,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 44,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "duration",
                         "line": 358
@@ -446,7 +446,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 38,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 38,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 374
@@ -478,7 +478,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 61,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 407
@@ -494,7 +494,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 296,
+                        "durationMicroseconds": 301,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 415
@@ -502,7 +502,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 119,
+                        "durationMicroseconds": 107,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 422
@@ -510,7 +510,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 32,
+                        "durationMicroseconds": 28,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 414
@@ -518,7 +518,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 27,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 433
@@ -534,7 +534,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 30,
-                        "durationMicroseconds": 40,
+                        "durationMicroseconds": 39,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 458
@@ -542,7 +542,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 23,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 99,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 468
@@ -550,7 +550,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 71,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 470
@@ -558,7 +558,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 22,
-                        "durationMicroseconds": 15,
+                        "durationMicroseconds": 22,
                         "errorMessage": "Cannot retrieve a non-object type by ID: filter_tf",
                         "functionName": "top",
                         "line": 472
@@ -566,7 +566,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 50,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 486
@@ -574,7 +574,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 35,
-                        "durationMicroseconds": 30,
+                        "durationMicroseconds": 38,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 491
@@ -582,7 +582,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 119,
+                        "durationMicroseconds": 152,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 497
@@ -590,7 +590,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 82,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 501
@@ -598,7 +598,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 34,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 496
@@ -606,7 +606,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 41,
+                        "durationMicroseconds": 43,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 518
@@ -614,7 +614,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 35,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 39,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 523
@@ -622,7 +622,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 150,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 529
@@ -630,7 +630,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 73,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 533
@@ -638,7 +638,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 28,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 528
@@ -646,7 +646,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 35,
+                        "durationMicroseconds": 43,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 550
@@ -654,7 +654,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 35,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 31,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 555
@@ -662,7 +662,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 135,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 561
@@ -670,7 +670,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 70,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 565
@@ -678,7 +678,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 27,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 560
@@ -686,7 +686,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 35,
+                        "durationMicroseconds": 39,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 582
@@ -702,7 +702,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 142,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 593
@@ -710,7 +710,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 71,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 597
@@ -718,7 +718,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 29,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 592
@@ -726,7 +726,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 41,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 614
@@ -734,7 +734,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 35,
-                        "durationMicroseconds": 27,
+                        "durationMicroseconds": 29,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 618
@@ -742,7 +742,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 128,
+                        "durationMicroseconds": 130,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "onPressed",
                         "line": 624
@@ -750,7 +750,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 68,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 628
@@ -758,7 +758,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 27,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 623
@@ -766,7 +766,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 34,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 38,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 645
@@ -774,7 +774,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 35,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 28,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 650
@@ -782,7 +782,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 28,
-                        "durationMicroseconds": 69,
+                        "durationMicroseconds": 77,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 656
@@ -790,7 +790,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 29,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 78,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 659
@@ -798,7 +798,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 27,
+                        "durationMicroseconds": 29,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 655
@@ -806,7 +806,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 16,
-                        "durationMicroseconds": 262,
+                        "durationMicroseconds": 276,
                         "errorMessage": "Cannot access value for name pcap",
                         "functionName": "model",
                         "line": 682
@@ -822,7 +822,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 24,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 53,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 672
@@ -830,7 +830,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 22,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 55,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 674
@@ -838,7 +838,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 25,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 50,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 676
@@ -854,7 +854,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 24,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 25,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
                         "line": 692
@@ -878,7 +878,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 20,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 55,
                         "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method get_color, returning QVariant -> QColor stored as QVariant",
                         "functionName": "color",
                         "line": 708
@@ -886,7 +886,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 13,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 50,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "get_color",
                         "line": 771
@@ -894,7 +894,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 27,
-                        "durationMicroseconds": 196,
+                        "durationMicroseconds": 204,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 709
@@ -902,7 +902,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 26,
-                        "durationMicroseconds": 86,
+                        "durationMicroseconds": 90,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 710
@@ -926,7 +926,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 15,
+                        "durationMicroseconds": 16,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 724
@@ -942,7 +942,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 14,
+                        "durationMicroseconds": 15,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 734
@@ -950,7 +950,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 27,
-                        "durationMicroseconds": 14,
+                        "durationMicroseconds": 15,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 739
@@ -966,7 +966,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 28,
-                        "durationMicroseconds": 145,
+                        "durationMicroseconds": 143,
                         "errorMessage": "Cannot access value for name l_view",
                         "functionName": "onClicked",
                         "line": 753
@@ -974,7 +974,7 @@
                     {
                         "codegenSuccessful": false,
                         "column": 34,
-                        "durationMicroseconds": 312,
+                        "durationMicroseconds": 321,
                         "errorMessage": "Cannot access value for name capture_animation",
                         "functionName": "onDoubleClicked",
                         "line": 757
@@ -982,7 +982,7 @@
                     {
                         "codegenSuccessful": true,
                         "column": 31,
-                        "durationMicroseconds": 34,
+                        "durationMicroseconds": 37,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 752

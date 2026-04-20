@@ -69,14 +69,14 @@ void Worker::my_packet_handler(u_char *user,
             return;
         }
 
-        tcp_H *tcp_header = (tcp_H *)((u_char *)ip_header + i_ip_len);
+        tcp_H *tcp_header_check = (tcp_H *)((u_char *)ip_header + i_ip_len);
 
-        if (tcp_header->doff < 5)
+        if (tcp_header_check->doff < 5)
         {
             return;
         }
 
-        int i_tcp_len = tcp_header->doff * 4;
+        int i_tcp_len = tcp_header_check->doff * 4;
         if (header->caplen < sizeof(e_H) + i_ip_len + i_tcp_len)
         {
             return;
@@ -542,14 +542,14 @@ void Pcap::packet_func(u_char *user,
             return;
         }
 
-        tcp_H *tcp_header = (tcp_H *)((u_char *)ip_header + i_ip_len);
+        tcp_H *tcp_header_check = (tcp_H *)((u_char *)ip_header + i_ip_len);
 
-        if (tcp_header->doff < 5)
+        if (tcp_header_check->doff < 5)
         {
             return;
         }
 
-        int i_tcp_len = tcp_header->doff * 4;
+        int i_tcp_len = tcp_header_check->doff * 4;
         if (header->caplen < sizeof(e_H) + i_ip_len + i_tcp_len)
         {
             return;
