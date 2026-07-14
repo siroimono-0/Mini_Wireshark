@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_appMini_Wireshark_FILE /home/gray/gray/git_shark/Mini_Wireshark/build/Desktop_Qt_6_9_3-Debug/appMini_Wireshark)
-set(__QT_DEPLOY_TARGET_appMini_Wireshark_TYPE EXECUTABLE)
