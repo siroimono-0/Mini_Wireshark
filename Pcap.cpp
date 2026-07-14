@@ -2,6 +2,8 @@
 #include "NicList.h"
 #include "Capture.h"
 
+#include <QFile>
+
 using namespace std;
 
 Pcap::Pcap(QObject *parent) : QObject{parent}
@@ -259,8 +261,23 @@ int Worker::set_Capture()
     char errbuf[PCAP_ERRBUF_SIZE];
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
 
-    this->pp = pcap_open_live(this->nicName.c_str(), 65535, 0, 0, errbuf);
-    // this->pp = pcap_open_live("wlo1", 65535, 0, 0, errbuf);
+    this->pp = pcap_open_live(this->nicName.c_str(), 65535, 1, 1000, errbuf);
+    if (this->pp == nullptr)
+    {
+        qDebug() << "pcap_open_live failed:" << errbuf;
+        bool set = false;
+        QMetaObject::invokeMethod(this->p_Pcap,
+                                  &Pcap::set_wk_life,
+                                  Qt::QueuedConnection,
+                                  set);
+        QMetaObject::invokeMethod(this->p_Pcap,
+                                  &Pcap::set_wk_flag,
+                                  Qt::QueuedConnection,
+                                  set);
+        emit sig_end();
+        return 0;
+    }
+
     bool ret_invo =
         QMetaObject::invokeMethod(this->p_Pcap,
                                   &Pcap::set_wk_pp,
@@ -295,21 +312,28 @@ int Worker::set_Capture()
                                     1, net);
         if (ret_pcap == -1)
         {
-            qDebug() << "Err pcap_compile";
-            return 0;
+            qDebug() << "Err pcap_compile:" << pcap_geterr(this->pp);
         }
-
-        pcap_setfilter(this->pp, &st_bpf);
-
-        pcap_loop(this->pp, -1, my_packet_handler, (u_char *)this);
-        qDebug() << Q_FUNC_INFO;
+        else
+        {
+            if (pcap_setfilter(this->pp, &st_bpf) == -1)
+            {
+                qDebug() << "Err pcap_setfilter:" << pcap_geterr(this->pp);
+            }
+            else
+            {
+                pcap_loop(this->pp, -1, my_packet_handler, (u_char *)this);
+                qDebug() << Q_FUNC_INFO;
+            }
+            pcap_freecode(&st_bpf);
+        }
     }
 
     pcap_close(this->pp);
+    this->pp = nullptr;
     QMetaObject::invokeMethod(this->p_Pcap,
-                              "set_wk_pp",
-                              Qt::BlockingQueuedConnection,
-                              Q_ARG(Pcap *, nullptr));
+                              [this]() { this->p_Pcap->set_wk_pp(nullptr); },
+                              Qt::BlockingQueuedConnection);
 
     bool set_2 = false;
     QMetaObject::invokeMethod(this->p_Pcap,
@@ -342,10 +366,18 @@ void Worker::set_BFS_ft(std::string set)
 Q_INVOKABLE void Pcap::create_Th(QVariant qba, QVariant ft)
 {
     QString qs = qba.toString();
-    string str = qs.toStdString();
+    QByteArray nicName = qs.toLocal8Bit();
+    string str = nicName.constData();
 
     QString qs_2 = ft.toString();
-    string str_2 = qs_2.toStdString();
+    QByteArray filter = qs_2.toLocal8Bit();
+    string str_2 = filter.constData();
+
+    if (str.empty())
+    {
+        qDebug() << "No capture interface selected";
+        return;
+    }
 
     QThread *th = new QThread;
     Worker *wk = new Worker();
@@ -432,12 +464,16 @@ void Pcap::set_wk_life(bool set)
 
 Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 {
-    string localPath = QUrl(path).toLocalFile().toStdString();
+    QByteArray localPath = QFile::encodeName(QUrl(path).toLocalFile());
     char errbuf[PCAP_ERRBUF_SIZE];
     memset(errbuf, 0, PCAP_ERRBUF_SIZE);
 
-    this->p_pcap = pcap_open_offline(localPath.c_str(), errbuf);
-    // this->pp = pcap_open_live("wlo1", 65535, 0, 0, errbuf);
+    this->p_pcap = pcap_open_offline(localPath.constData(), errbuf);
+    if (this->p_pcap == nullptr)
+    {
+        qDebug() << "pcap_open_offline failed:" << errbuf;
+        return;
+    }
 
     qDebug() << Q_FUNC_INFO;
 
@@ -458,23 +494,28 @@ Q_INVOKABLE void Pcap::pcapFile_Read(QString path)
 
 Q_INVOKABLE void Pcap::save_md(QString path)
 {
-    if (this->wk_pp == nullptr ||
-        this->vec_dump.empty() || this->stop_flag == false)
+    if (this->vec_dump.empty() || this->stop_flag == false)
     {
         return;
     }
 
-    string localPath = QUrl(path).toLocalFile().toStdString();
+    QByteArray localPath = QFile::encodeName(QUrl(path).toLocalFile());
 
-    char errbuf[PCAP_ERRBUF_SIZE];
-    memset(errbuf, 0, PCAP_ERRBUF_SIZE);
+    pcap_t *dump_pcap = pcap_open_dead(DLT_EN10MB, 65535);
+    if (dump_pcap == nullptr)
+    {
+        qDebug() << "Err pcap_open_dead";
+        return;
+    }
 
     pcap_dumper_t *p_dump_handle =
-        pcap_dump_open(this->wk_pp, localPath.c_str());
+        pcap_dump_open(dump_pcap, localPath.constData());
 
     if (p_dump_handle == NULL)
     {
-        qDebug() << "Err pcap_dump_open";
+        qDebug() << "Err pcap_dump_open:" << pcap_geterr(dump_pcap);
+        pcap_close(dump_pcap);
+        return;
     }
 
     for (auto &v : this->vec_dump)
@@ -485,6 +526,7 @@ Q_INVOKABLE void Pcap::save_md(QString path)
     }
 
     pcap_dump_close(p_dump_handle);
+    pcap_close(dump_pcap);
 
     return;
 }
@@ -697,6 +739,7 @@ void Pcap::packet_func(u_char *user,
     dump_data st_dump = {};
     st_dump.data = qba;
     st_dump.header = *header;
+    st_dump.pkt_num = pkt.num;
 
     int totalLen = ntohs(ip_header->tot_len) + sizeof(e_H);
     pkt.len = totalLen;

@@ -1,4 +1,4 @@
-#ifndef STRUCT_IN_H
+﻿#ifndef STRUCT_IN_H
 #define STRUCT_IN_H
 #pragma once
 
@@ -6,11 +6,7 @@
 #include <QVariant>
 #include <QThread>
 //=====================================================================
-#include <pcap.h>
-#include <net/ethernet.h>   // struct ether_header
-#include <netinet/if_ether.h>
-#include <netinet/ip.h>
-#include <netinet/tcp.h>
+#include "PlatformCompat.h"
 
 
 typedef struct st_packet{
@@ -24,18 +20,20 @@ typedef struct st_packet{
 
 } st_pkt;
 
+Q_DECLARE_METATYPE(st_pkt)
+
 
 #pragma pack(push, 1)
 typedef struct e_H{
-    u_int8_t  ether_dhost[ETH_ALEN];      // 6바이트: 목적지 MAC
-    u_int8_t  ether_shost[ETH_ALEN];      // 6바이트: 출발지 MAC
-    u_int16_t ether_type;                 // 2바이트: EtherType
+    uint8_t  ether_dhost[ETH_ALEN];      // 6諛붿씠?? 紐⑹쟻吏 MAC
+    uint8_t  ether_shost[ETH_ALEN];      // 6諛붿씠?? 異쒕컻吏 MAC
+    uint16_t ether_type;                 // 2諛붿씠?? EtherType
 }e_H;
 #pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct ip_H{
-#if __BYTE_ORDER == __LITTLE_ENDIAN
+#if MINI_WIRESHARK_LITTLE_ENDIAN
     uint8_t ihl:4;
     uint8_t version:4;
 #else
@@ -61,7 +59,7 @@ typedef struct tcp_H{
     uint32_t seq;
     uint32_t ack_seq;
 
-#if __BYTE_ORDER == __LITTLE_ENDIAN
+#if MINI_WIRESHARK_LITTLE_ENDIAN
     uint16_t res1:4,
         doff:4,
         fin:1,
@@ -95,16 +93,16 @@ typedef struct tcp_H{
 typedef struct udp_H {
     uint16_t source;   // Source Port
     uint16_t dest;     // Destination Port
-    uint16_t len;      // UDP header + data 전체 길이
+    uint16_t len;      // UDP header + data ?꾩껜 湲몄씠
     uint16_t check;    // Checksum
 }udp_H;
 #pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct icmp_H {
-    uint8_t  type;      // 메시지 타입
+    uint8_t  type;      // 硫붿떆吏 ???
 
-    uint8_t  code;      // 부가 코드(세부 원인)
+    uint8_t  code;      // 遺媛 肄붾뱶(?몃? ?먯씤)
 
     uint16_t checksum;  // ICMP checksum
 
@@ -114,7 +112,7 @@ typedef struct icmp_H {
             uint16_t sequence;
         } echo;                 // ICMP Echo (ping)
 
-        uint32_t   gateway;     // Redirect 메시지에서 사용
+        uint32_t   gateway;     // Redirect 硫붿떆吏?먯꽌 ?ъ슜
         struct {
             uint16_t __unused;
             uint16_t mtu;
@@ -125,3 +123,4 @@ typedef struct icmp_H {
 
 
 #endif // STRUCT_IN_H
+

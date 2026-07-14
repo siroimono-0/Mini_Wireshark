@@ -1,5 +1,4 @@
 #include "Capture.h"
-#include "Support.h"
 
 Capture::Capture(QObject *parent) : QAbstractListModel{parent}
 {

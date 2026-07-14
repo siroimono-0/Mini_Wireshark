@@ -1,3 +1,5 @@
+#include "PlatformCompat.h"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "Pcap.h"
@@ -7,6 +9,14 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef _WIN32
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
+    {
+        return -1;
+    }
+#endif
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
@@ -16,6 +26,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<Open_List>("Mini_Wireshark", 1, 0, "Open_List");
 
     qRegisterMetaType<Pcap*>("Pcap*");
+    qRegisterMetaType<st_pkt>("st_pkt");
+    qRegisterMetaType<dump_data>("dump_data");
 
     QObject::connect(
         &engine,
@@ -24,5 +36,11 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
     engine.loadFromModule("Mini_Wireshark", "Main");
-    return app.exec();
+    int exitCode = app.exec();
+
+#ifdef _WIN32
+    WSACleanup();
+#endif
+
+    return exitCode;
 }

@@ -107,26 +107,24 @@ QHash<int, QByteArray> TreeModel::roleNames() const
 
 void TreeModel::setPacketTree(TreeItem* newRoot)
 {
-    beginResetModel();          // ① 모델 전부를 리셋할 준비를 함
+    beginResetModel();
 
-    if (root != nullptr)    // ② 기존 트리가 있다면 메모리 해제
+    if (root != nullptr)
         delete root;
 
-    root = newRoot;         // ③ 모델이 사용할 새로운 루트 노드를 교체
-
-    endResetModel();            // ④ 뷰에게 “전체 구조 변경됨” 알림 → UI 갱신
+    root = newRoot;
+    endResetModel();
 }
 
 void TreeModel::clear()
 {
-    beginResetModel();          // ① 모델 전체 리셋 시작
-
-    if (root != nullptr)    // ② 기존 트리 메모리 해제
+    beginResetModel();
+    if (root != nullptr)
     {
-        delete root;        // ③ root 및 모든 자식 노드 완전 삭제
+        delete root;
         root = nullptr;
     }
 
-    endResetModel();            // ④ 모델 리셋 완료 → UI 갱신
+    endResetModel();
 }
 

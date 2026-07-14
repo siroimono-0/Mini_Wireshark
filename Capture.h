@@ -5,10 +5,6 @@
 
 //==============================Cpp==============================
 #include "Struct_in.h"
-#include <pcap.h>
-#include <net/ethernet.h>   // struct ether_header
-#include <netinet/if_ether.h>
-#include <netinet/ip.h>
 #include <algorithm>
 //==============================Cpp==============================
 

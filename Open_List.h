@@ -7,10 +7,11 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QNetworkInterface>
+#include <QStandardPaths>
 #include <QtSql>
 
 //==============================Cpp==============================
-#include <pcap.h>
+#include "PlatformCompat.h"
 //==============================Cpp==============================
 
 class Open_List : public QAbstractListModel

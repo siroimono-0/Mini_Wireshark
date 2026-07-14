@@ -12,6 +12,16 @@ Item {
 
     property string nicName: ""
     property string pcap_path: ""
+    readonly property real toolbarIconSize: Math.max(56, Math.min(78, width / 10))
+    readonly property real tableContentWidth: Math.max(560, l_view.width - 20)
+    readonly property real noColumnWidth: Math.max(44, tableContentWidth * 0.07)
+    readonly property real sourceColumnWidth: Math.max(105, tableContentWidth * 0.18)
+    readonly property real destinationColumnWidth: Math.max(105, tableContentWidth * 0.18)
+    readonly property real protocolColumnWidth: Math.max(70, tableContentWidth * 0.11)
+    readonly property real lengthColumnWidth: Math.max(58, tableContentWidth * 0.09)
+    readonly property real infoColumnWidth: Math.max(120,
+        tableContentWidth - noColumnWidth - sourceColumnWidth - destinationColumnWidth
+        - protocolColumnWidth - lengthColumnWidth - header.spacing * 5)
 
     Component.onCompleted: {
         if (pcap_path != "") {
@@ -22,8 +32,8 @@ Item {
     Image {
         id: img_shark
 
-        width: 100
-        height: 100
+        width: root.toolbarIconSize
+        height: root.toolbarIconSize
 
         source: capture_animation.isCapturing
                 ? "img/start_gray.svg"
@@ -92,8 +102,8 @@ Item {
     Image {
         id: img_stop
 
-        width: 100
-        height: 100
+        width: root.toolbarIconSize
+        height: root.toolbarIconSize
 
         source: capture_animation.isCapturing
                 ? "img/stop_new.svg"
@@ -164,8 +174,8 @@ Item {
         id: img_reset
         source: "img/reset_new.svg"
 
-        width: 100
-        height: 100
+        width: root.toolbarIconSize
+        height: root.toolbarIconSize
 
         anchors.left: img_stop.right
         anchors.leftMargin: 10
@@ -247,8 +257,8 @@ Item {
             }
         }
 
-        width: 100
-        height: 100
+        width: root.toolbarIconSize
+        height: root.toolbarIconSize
 
         anchors.left: img_reset.right
         anchors.leftMargin: 10
@@ -401,8 +411,8 @@ Item {
         id: img_back
         source: "img/back_new.svg"
 
-        width: 100
-        height: 100
+        width: root.toolbarIconSize
+        height: root.toolbarIconSize
 
         anchors.right: parent.right
         anchors.rightMargin: 20
@@ -463,7 +473,7 @@ Item {
     Row {
         id: header
         height: 30
-        spacing: 10
+        spacing: 4
 
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -475,7 +485,7 @@ Item {
         Rectangle {
             id: no;
 
-            width: 50
+            width: root.noColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -507,7 +517,7 @@ Item {
         Rectangle {
             id: source
 
-            width: 150
+            width: root.sourceColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -539,7 +549,7 @@ Item {
         Rectangle {
             id: destinaion
 
-            width: 150
+            width: root.destinationColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -571,7 +581,7 @@ Item {
         Rectangle {
             id: protocol
 
-            width: 80
+            width: root.protocolColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -603,7 +613,7 @@ Item {
         Rectangle {
             id: length
 
-            width: 60
+            width: root.lengthColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -634,7 +644,7 @@ Item {
         Rectangle {
             id: info
 
-            width: 900
+            width: root.infoColumnWidth
             height: 30
             border.color: "#DDDDDD"
             border.width: 2
@@ -712,38 +722,49 @@ Item {
 
             Row {
                 anchors.fill: parent
-                anchors.margins: 5
-                spacing: 10
+                spacing: header.spacing
 
                 Text {
                     text: model.number
-                    font.pixelSize: 18;
-                    width: 50
+                    font.pixelSize: 14
+                    width: root.noColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 } // No
                 Text {
                     text: model.source
-                    font.pixelSize: 18;
-                    width: 150
+                    font.pixelSize: 14
+                    width: root.sourceColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 } // Source
                 Text {
                     text: model.destination
-                    font.pixelSize: 18;
-                    width: 150
+                    font.pixelSize: 14
+                    width: root.destinationColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 } // Destination
                 Text {
                     text: model.protocol
-                    font.pixelSize: 18;
-                    width: 80
+                    font.pixelSize: 14
+                    width: root.protocolColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 } // Protocol
                 Text {
                     text: model.length
-                    font.pixelSize: 18;
-                    width: 60
+                    font.pixelSize: 14
+                    width: root.lengthColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
                 } // Length
                 Text {
                     text: model.info
-                    font.pixelSize: 18;
-                    width: 300
+                    font.pixelSize: 14
+                    width: root.infoColumnWidth
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
 
                 } // Info
             }

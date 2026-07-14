@@ -8,10 +8,6 @@
 //=====================================================================
 #include "Struct_in.h"
 #include "TreeModel.h"
-#include <pcap.h>
-#include <net/ethernet.h>   // struct ether_header
-#include <netinet/if_ether.h>
-#include <netinet/ip.h>
 #include <string>
 
 
@@ -22,6 +18,8 @@ typedef struct dump_data
     QByteArray data;
 
 }dump_data;
+
+Q_DECLARE_METATYPE(dump_data)
 
 class Pcap;
 class Capture;

@@ -11,7 +11,7 @@
 #include <QtSql>
 
 //==============================Cpp==============================
-#include <pcap.h>
+#include "PlatformCompat.h"
 //==============================Cpp==============================
 
 class NicList : public QAbstractListModel
@@ -51,7 +51,7 @@ public:
     Q_INVOKABLE void set_Nic(int set_flag = OP_Any);
     Q_INVOKABLE QString get_FirstNic();
 
-    int compare_Nic(const QString& name, int flags);
+    int compare_Nic(const QString& name, int flags, const QString& description = QString());
 
 public slots:
 

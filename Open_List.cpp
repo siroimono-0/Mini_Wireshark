@@ -34,8 +34,8 @@ void Open_List::create_db_lite()
     QString s_db_path;
     QDir qd_dir;
 
-    // s_data_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-    s_data_dir = "/home/gray/gray/git_shark/Mini_Wireshark/SQLITE";
+    s_data_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+                 + "/SQLITE";
     s_db_path = s_data_dir + "/db_lite.sqlite3";
     qDebug() << s_db_path;
     qd_dir.mkpath(s_data_dir);

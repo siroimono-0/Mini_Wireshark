@@ -1,5 +1,4 @@
 #include "NicList.h"
-#include "Support.h"
 
 NicList::NicList(QObject *parent) :  QAbstractListModel{parent}
 {
@@ -48,11 +47,17 @@ void NicList::set_Nic(int set_flag)
 {
     vec.clear();
 
-    pcap_if_t* pp;
+    pcap_if_t* pp = nullptr;
     char errBuf[PCAP_ERRBUF_SIZE];
     memset(errBuf, 0, PCAP_ERRBUF_SIZE);
 
-    pcap_findalldevs(&pp, errBuf);
+    if (pcap_findalldevs(&pp, errBuf) == -1)
+    {
+        qDebug() << "pcap_findalldevs failed:" << errBuf;
+        beginResetModel();
+        endResetModel();
+        return;
+    }
     // check::ck(string(Q_FUNC_INFO) + "pcap_findalldevs", ret_p, -1);
 
     // pcap_if_t 리스트 순회
@@ -60,14 +65,18 @@ void NicList::set_Nic(int set_flag)
     {
         if (p->name)
         {
-            int flag = compare_Nic(QString(p->name), p->flags);
+            QString name = QString::fromLocal8Bit(p->name);
+            QString description = p->description
+                                      ? QString::fromLocal8Bit(p->description)
+                                      : QString();
+            int flag = compare_Nic(name, p->flags, description);
             if(set_flag != OP_Any && flag == set_flag)
             {
-                vec.push_back({QString(p->name), flag});
+                vec.push_back({name, flag});
             }
             else if(set_flag == OP_Any && flag)
             {
-                vec.push_back({QString(p->name), flag});
+                vec.push_back({name, flag});
             }
 
             // 장치명 저장
@@ -83,17 +92,35 @@ void NicList::set_Nic(int set_flag)
     return;
 }
 
-int NicList::compare_Nic(const QString& name, int flags)
+int NicList::compare_Nic(const QString& name, int flags, const QString& description)
 {
+    QString key = (name + " " + description).toLower();
+
     if (flags & PCAP_IF_LOOPBACK)
     {
         return OP_Loop;
     }
-    else if(name.startsWith("wl"))
+    else if(name.startsWith("wl") ||
+             key.contains("wi-fi") ||
+             key.contains("wireless") ||
+             key.contains("wlan") ||
+             key.contains("802.11"))
     {
         return OP_Wlo;
     }
-    else if (name.startsWith("en") || name.startsWith("eth"))
+    else if(key.contains("virtual") ||
+             key.contains("vmware") ||
+             key.contains("virtualbox") ||
+             key.contains("hyper-v") ||
+             key.contains("npf_loopback"))
+    {
+        return OP_Virtual;
+    }
+    else if (name.startsWith("en") ||
+             name.startsWith("eth") ||
+             key.contains("ethernet") ||
+             key.contains("realtek") ||
+             key.contains("intel"))
     {
         return OP_Ethernet;
     }
@@ -102,12 +129,17 @@ int NicList::compare_Nic(const QString& name, int flags)
         return OP_Virtual;
     }
 
-    return 0;
+    return OP_Ethernet;
 
 }
 
 Q_INVOKABLE QString NicList::get_FirstNic()
 {
+    if (this->vec.empty())
+    {
+        return QString();
+    }
+
     return this->vec.at(0).first;
 }
 
